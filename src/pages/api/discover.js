@@ -11,7 +11,14 @@ const handler = async (req, res) => {
     page,
     year
   })
-  res.status(200).json(response)
+  const withFriendlyImages = {
+    ...response,
+    results: response.results.map(result => ({
+      ...result,
+      image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+    }))
+  }
+  res.status(200).json(withFriendlyImages)
 }
 
 export default handler

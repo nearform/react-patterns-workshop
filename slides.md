@@ -98,10 +98,12 @@ npm run start
 
 <div class="dense">
 
-Write a next.js page that:
+Use react query to fetch the most popular action movies from 2022
 
-- Lists the recommendations from the spotify api
-- Etc.
+- The url to call is "/api/discover?year=2022&genre=28&order_by=popularity.desc&page=1"
+- The hook to use is useQuery and this takes an identifier key and an async function
+- List the titles of the movies in a list
+- Bonus: show an image of each movie
 
 </div>
 
@@ -110,7 +112,7 @@ Write a next.js page that:
 # Step 1: Solution
 
 ```tsx
-// 12-ssr.jsx
+// 01-server-state.jsx
 const Step01HelloWorld = () => {
   return <div>Hello world</div>
 }
