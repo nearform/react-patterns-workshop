@@ -2,7 +2,7 @@ import { useDiscoverQuery } from '../../hooks/useDiscoverQuery.js'
 import Image from 'next/image'
 
 const Step12SSR = () => {
-  const discoverQuery = useDiscoverQuery({ genre: 'Action' })
+  const discoverQuery = useDiscoverQuery({ genres: [80, 35], page: 2 })
   if (!discoverQuery.data) {
     return null
   }
