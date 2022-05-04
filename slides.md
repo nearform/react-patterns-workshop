@@ -110,7 +110,7 @@ Write a next.js page that:
 # Step 1: Solution
 
 ```tsx
-// index.jsx
+// 12-ssr.jsx
 const Step01HelloWorld = () => {
   return <div>Hello world</div>
 }
