@@ -1,8 +1,15 @@
 import { useDiscoverQuery } from '../../hooks/useDiscoverQuery.js'
 import Image from 'next/image'
+import { useFilterQueryParams } from '../../hooks/useFilterQueryParams.js'
 
 const Step12SSR = () => {
-  const discoverQuery = useDiscoverQuery({ genres: [80, 35], page: 2 })
+  const [filterQueryParams] = useFilterQueryParams()
+
+  const discoverQuery = useDiscoverQuery({
+    genres: filterQueryParams.genre ? [filterQueryParams.genre] : [],
+    page: filterQueryParams.page,
+    year: filterQueryParams.year
+  })
   if (!discoverQuery.data) {
     return null
   }

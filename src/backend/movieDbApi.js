@@ -15,12 +15,13 @@ const genres = async () => {
   return makeRequest('genre/movie/list')
 }
 
-const discover = async ({ page = 1, genres = [] }) => {
+const discover = async ({ page = 1, year, genres = [] }) => {
   return makeRequest('discover/movie', [
     ['sort_by', 'popularity.desc'],
     ['include_video', false],
     ['page', page],
-    ...genres.map(genre => ['with_genres', genre])
+    ...genres.map(genre => ['with_genres', genre]),
+    ['year', year]
   ])
 }
 
