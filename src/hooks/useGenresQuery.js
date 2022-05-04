@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
 export const useGenresQuery = () =>
-  useQuery('genres', () =>
+  useQuery(['genres'], () =>
     fetch('/api/genres').then(response => response.json())
   )

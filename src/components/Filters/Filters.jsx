@@ -1,9 +1,21 @@
-import {useGenresQuery} from "../../hooks/useGenresQuery.js";
+import { GenreSelect } from './GenresSelect'
+import { useForm, FormProvider } from 'react-hook-form'
 
 export const Filters = () => {
-  const genresQuery = useGenresQuery()
-  if(genresQuery.data) {
-    console.log(genresQuery.data)
+  const formMethods = useForm()
+
+  const { handleSubmit } = useForm()
+
+  const onSubmit = values => {
+    console.log(values)
   }
-  return <div>Filters here...</div>
+
+  return (
+    <FormProvider {...formMethods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <GenreSelect id="genres" />
+        <button type="submit">Submit</button>
+      </form>
+    </FormProvider>
+  )
 }
