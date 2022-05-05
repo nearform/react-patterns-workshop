@@ -1,12 +1,16 @@
 import { useQuery } from 'react-query'
 import { SidebarLayout } from '../../components/SidebarLayout/SidebarLayout'
 import { useForm } from 'react-hook-form'
+import { NumberParam, useQueryParams } from 'next-query-params'
+
+const useFilterState = () => useQueryParams({ year: NumberParam })
 
 const FilterForm = () => {
   const formMethods = useForm()
+  const [, updateFilterState] = useFilterState()
 
   const onSubmit = values => {
-    console.log(values)
+    updateFilterState(values)
   }
 
   return (
@@ -20,10 +24,12 @@ const FilterForm = () => {
   )
 }
 
-const Step2FormState = () => {
-  const discoverQuery = useQuery(['discovery'], () =>
-    fetch('/api/discover?page=1&year=2020&genre=Action').then(response =>
-      response.json()
+const Step3FormState = () => {
+  const [filterState] = useFilterState()
+
+  const discoverQuery = useQuery(['discovery', filterState.year], () =>
+    fetch(`/api/discover?page=1&year=${filterState.year}&genre=Action`).then(
+      response => response.json()
     )
   )
 
@@ -33,6 +39,7 @@ const Step2FormState = () => {
 
   return (
     <SidebarLayout leftColumn={<FilterForm />}>
+      <h1>Action movies from {filterState.year}</h1>
       <ul>
         {discoverQuery.data.results.map(result => (
           <li key={result.id}>
@@ -50,4 +57,4 @@ const Step2FormState = () => {
   )
 }
 
-export default Step2FormState
+export default Step3FormState
