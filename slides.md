@@ -162,6 +162,27 @@ export default Step1ServerState
 
 ---
 
+# Step 2: Global state with query params
+
+<div class="dense">
+
+- Often developers reach for redux or the React context api to manage global state
+- Sometimes there are more suitable options that can be overlooked
+- Here we will explore using url query parameters to share state between components
+
+</div>
+
+---
+
+# Step 2: Trying it out
+
+- Run `npm run dev` in your terminal
+- Go to `http://localhost:3000?year=1985` in your web browser
+
+<img src="/images/screenshot-step-01.png" />
+
+---
+
 # Thanks For Having Us!
 
 ## 👏👏👏
