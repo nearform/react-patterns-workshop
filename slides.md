@@ -33,7 +33,6 @@ lineNumbers: false
 # Introduction: Why React patterns
 
 <div class="dense">
-
 - No need to reinvent the wheel
 </div>
 
@@ -53,10 +52,9 @@ lineNumbers: false
 ```bash
 git clone https://github.com/nearform/react-patterns-workshop
 npm i
-npm start
 
 # make sure you're all set
-npm test
+npm run build
 ```
 
 </div>
@@ -70,7 +68,8 @@ npm test
 - This workshop is made of multiple, incremental modules
 - Each module builds on top of the previous one
 - At each step you are asked to add features and solve problems
-- You will find the solution to each step in the `src/step-{n}-{name}` folder
+- You will find the solution to each step in the `src/pages/solutions/step-{n}-{name}.js` file
+- When the project is running you can visit these pages at `http://localhost:3000/solutions/step-{n}-{name}`
 - The 🏆 icon indicates bonus features
 - The 💡 icon indicates hints
 
@@ -78,19 +77,26 @@ npm test
 
 ---
 
-# Running the modules
+# Viewing the solutions
 
-- `cd src/step-{n}-{name}`
+- Open `src/pages/solutions/step-{n}-{name}.js`
 
-- Check out README.md
+- Read through the source code (includes helpful comments throughout)
 
-#### Example
+#### For example
+The first solution can be viewed here: `src/pages/solutions/step-01-server-state.js`
 
-```bash
-cd src/step-01-hello-world
+---
 
-npm run start
-```
+# Step 1: Server state
+
+<div class="dense">
+
+- A common concern in developing modern React apps is managing server state
+- A good approach to this is to use a tool designed for the job
+- A good example of this is (react-query)[https://react-query.tanstack.com/]
+
+</div>
 
 ---
 
@@ -109,23 +115,50 @@ Use react query to fetch the most popular action movies from 2022
 
 ---
 
-# Step 1: Solution
+# Step 1: Solution /1
 
-```tsx
+```jsx
 // 01-server-state.jsx
-const Step01HelloWorld = () => {
-  return <div>Hello world</div>
+const Step1ServerState = () => {
+  const discoverQuery = useQuery(['discovery'], () =>
+    fetch('/api/discover?page=1&year=2020&genre=Action').then(response =>
+      response.json()
+    )
+  )
+
+  if (!discoverQuery.data) {
+    return null
+  }
+```
+
+---
+
+
+# Step 1: Solution /2
+
+```jsx
+  return (
+    <ul>
+      {discoverQuery.data.results.map(result => (
+        <li key={result.id}>
+          <h3>{result.title}</h3>
+          <img src={result.image} alt={result.title} width={100} height={100} />
+        </li>
+      ))}
+    </ul>
+  )
 }
-export default Step01HelloWorld
+export default Step1ServerState
 ```
 
 ---
 
 # Step 1: Trying it out
 
-### In the browser:
+- Run `npm run dev` in your terminal
+- Go to `http://localhost:3000` in your web browser
 
-(image here...)
+<img src="/images/screenshot-step-01.png" />
 
 ---
 
