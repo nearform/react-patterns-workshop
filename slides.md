@@ -84,7 +84,7 @@ npm run build
 - Read through the source code (includes helpful comments throughout)
 
 #### For example
-The first solution can be viewed here: `src/pages/solutions/step-01-server-state.js`
+The first solution can be viewed here: `src/pages/solutions/step-01-server-state.jsx`
 
 ---
 
@@ -138,17 +138,17 @@ const Step1ServerState = () => {
 
 ```jsx
   return (
-    <ul>
-      {discoverQuery.data.results.map(result => (
-        <li key={result.id}>
-          <h3>{result.title}</h3>
-          <img src={result.image} alt={result.title} width={100} height={100} />
-        </li>
-      ))}
-    </ul>
-  )
+  <ul>
+    {discoverQuery.data.results.map(result => (
+      <li key={result.id}>
+        <h3>{result.title}</h3>
+        <img src={result.image} alt={result.title} width={100} height={100}/>
+      </li>
+    ))}
+  </ul>
+)
 }
-export default Step1ServerState
+export default Step01ServerState
 ```
 
 ---
