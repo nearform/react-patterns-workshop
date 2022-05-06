@@ -4,7 +4,7 @@ import {
   useFilterStateSolution
 } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
-import { MovieList } from '../../components/MovieList/MovieList'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
@@ -17,7 +17,9 @@ const MovieListContainer = () => {
     return null
   }
 
-  return <MovieList year={filterState.year} queryData={movieQuery.data} />
+  return (
+    <MovieListWrapper year={filterState.year} queryData={movieQuery.data} />
+  )
 }
 
 const Step10UseMemoUseCallbackMemo = () => {

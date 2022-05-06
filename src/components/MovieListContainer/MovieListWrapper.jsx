@@ -1,7 +1,7 @@
 import { FlexContainer } from '../FlexContainer/FlexContainer'
 import { useDialog } from '../../providers/DialogProvider.js'
 
-export const MovieList = ({ year, queryData }) => {
+export const MovieListWrapper = ({ year, children }) => {
   const dialog = useDialog()
   return (
     <div>
@@ -17,19 +17,7 @@ export const MovieList = ({ year, queryData }) => {
           </button>
         </div>
       </FlexContainer>
-      <ul>
-        {queryData.results.map(result => (
-          <li key={result.id}>
-            <h3>{result.title}</h3>
-            <img
-              src={result.image}
-              alt={result.title}
-              width={100}
-              height={100}
-            />
-          </li>
-        ))}
-      </ul>
+      {children}
     </div>
   )
 }

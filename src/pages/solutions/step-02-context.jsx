@@ -3,11 +3,12 @@ import {
   FilterStateProviderSolution,
   useFilterStateSolution
 } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { MovieList } from '../../components/MovieList/MovieList.jsx'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge.js'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
+import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -17,7 +18,16 @@ const MovieListContainer = () => {
     return null
   }
 
-  return <MovieList year={filterState.year} queryData={movieQuery.data} />
+  return (
+    <MovieListWrapper year={filterState.year}>
+      <MovieListChallenge
+        items={movieQuery.data}
+        hasNextPage={movieQuery.hasNextPage}
+        isNextPageLoading={movieQuery.isLoading}
+        loadNextPage={movieQuery.loadNextPage}
+      />
+    </MovieListWrapper>
+  )
 }
 
 const Step02Context = () => {
