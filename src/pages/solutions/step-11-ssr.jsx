@@ -24,7 +24,7 @@ const MovieListContainer = () => {
   return <MovieList year={filterState.year} queryData={movieQuery.data} />
 }
 
-const Step05Portals = () => {
+const Step11Ssr = () => {
   return (
     <ErrorBoundarySolution>
       <FilterStateProviderSolution>
@@ -36,4 +36,4 @@ const Step05Portals = () => {
   )
 }
 
-export default Step05Portals
+export default Step11Ssr

@@ -77,7 +77,7 @@ const Filters = () => {
   )
 }
 
-const Step12SSR = () => {
+const Step12HelpfulLibraries = () => {
   const [filterQueryParams] = useFilterQueryParams()
 
   const discoverQuery = useDiscoverQuery({
@@ -105,4 +105,4 @@ const Step12SSR = () => {
   )
 }
 
-export default Step12SSR
+export default Step12HelpfulLibraries
