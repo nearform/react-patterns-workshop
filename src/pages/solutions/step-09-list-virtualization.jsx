@@ -8,14 +8,11 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
+import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplitttingSolution.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
-
-  useEffect(() => {
-    throw new Error("I'm an error")
-  }, [])
 
   if (!movieQuery.data) {
     return null
@@ -30,6 +27,7 @@ const Step09ListVirtualization = () => {
       <FilterStateProviderSolution>
         <FilterModalChallenge>
           <FilterFormSolution />
+          <CodeSplittingSolution />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderSolution>

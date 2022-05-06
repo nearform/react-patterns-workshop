@@ -9,6 +9,7 @@ import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/Er
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
+import { CodeSplittingChallenge } from '../../challenges/step-08-code-splitting/CodeSplittingChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -27,6 +28,7 @@ const Step05Portals = () => {
       <FilterStateProviderSolution>
         <FilterModalSolution>
           <FilterFormSolution />
+          <CodeSplittingChallenge />
         </FilterModalSolution>
         <MovieListContainer />
       </FilterStateProviderSolution>
