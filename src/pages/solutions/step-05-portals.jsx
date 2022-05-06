@@ -8,6 +8,7 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()

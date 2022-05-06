@@ -3,11 +3,11 @@ import {
   FilterStateProviderSolution,
   useFilterStateSolution
 } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
+import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -29,7 +29,7 @@ const Step04ErrorBoundaries = () => {
     <ErrorBoundarySolution>
       <FilterStateProviderSolution>
         <FilterModalChallenge>
-          <FilterFormSolution />
+          <FilterFormFinalChallenge />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderSolution>
