@@ -4,6 +4,7 @@ import { FilterStateProviderChallenge } from '../../challenges/step-02-context/F
 import { useFilterStateSolution } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { MovieList } from '../../components/MovieList/MovieList.jsx'
 import { useMovieQueryChallenge } from '../../challenges/step-01-server-state/useMovieQueryChallenge.js'
+import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -18,11 +19,13 @@ const MovieListContainer = () => {
 
 const Step01ServerState = () => {
   return (
-    <FilterStateProviderChallenge>
-      <SidebarLayout leftColumn={<FilterFormChallenge />}>
-        <MovieListContainer />
-      </SidebarLayout>
-    </FilterStateProviderChallenge>
+    <ErrorBoundaryChallenge>
+      <FilterStateProviderChallenge>
+        <SidebarLayout leftColumn={<FilterFormChallenge />}>
+          <MovieListContainer />
+        </SidebarLayout>
+      </FilterStateProviderChallenge>
+    </ErrorBoundaryChallenge>
   )
 }
 

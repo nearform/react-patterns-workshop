@@ -6,6 +6,7 @@ import {
 } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
+import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -20,11 +21,13 @@ const MovieListContainer = () => {
 
 const Step03UncontrolledComponents = () => {
   return (
-    <FilterStateProviderSolution>
-      <SidebarLayout leftColumn={<FilterFormSolution />}>
-        <MovieListContainer />
-      </SidebarLayout>
-    </FilterStateProviderSolution>
+    <ErrorBoundaryChallenge>
+      <FilterStateProviderSolution>
+        <SidebarLayout leftColumn={<FilterFormSolution />}>
+          <MovieListContainer />
+        </SidebarLayout>
+      </FilterStateProviderSolution>
+    </ErrorBoundaryChallenge>
   )
 }
 
