@@ -1,14 +1,14 @@
 import { SidebarLayout } from '../../components/SidebarLayout/SidebarLayout'
 import { FilterFormChallenge } from '../../challenges/step-03-uncontrolled-components/FilterFormChallenge'
 import { FilterStateProviderChallenge } from '../../challenges/step-02-context/FilterStateProviderChallenge.js'
-import { useFilterStateSolution } from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { MovieList } from '../../components/MovieList/MovieList.jsx'
-import { useMovieQueryChallenge } from '../../challenges/step-01-server-state/useMovieQueryChallenge.js'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
+import { useFilterStateChallenge } from '../../challenges/step-02-context/useFilterStateChallenge.js'
+import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 
 const MovieListContainer = () => {
-  const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQueryChallenge(filterState)
+  const filterState = useFilterStateChallenge()
+  const movieQuery = useMovieQuerySolution(filterState)
 
   if (!movieQuery.data) {
     return null

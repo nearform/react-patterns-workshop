@@ -1,7 +1,7 @@
 export const MovieList = ({ year, queryData }) => {
   return (
     <div>
-      <h1>Action movies {year && year}</h1>
+      <h1>Action movies {year && `from ${year}`}</h1>
       <ul>
         {queryData.results.map(result => (
           <li key={result.id}>

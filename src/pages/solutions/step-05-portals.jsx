@@ -1,16 +1,21 @@
 import { SidebarLayout } from '../../components/SidebarLayout/SidebarLayout'
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
+import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution'
+} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
-import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
+import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
+import { useEffect } from 'react'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
+
+  useEffect(() => {
+    throw new Error("I'm an error")
+  }, [])
 
   if (!movieQuery.data) {
     return null
@@ -19,16 +24,16 @@ const MovieListContainer = () => {
   return <MovieList year={filterState.year} queryData={movieQuery.data} />
 }
 
-const Step03UncontrolledComponents = () => {
+const Step05Portal = () => {
   return (
-    <ErrorBoundaryChallenge>
+    <ErrorBoundarySolution>
       <FilterStateProviderSolution>
         <SidebarLayout leftColumn={<FilterFormSolution />}>
           <MovieListContainer />
         </SidebarLayout>
       </FilterStateProviderSolution>
-    </ErrorBoundaryChallenge>
+    </ErrorBoundarySolution>
   )
 }
 
-export default Step03UncontrolledComponents
+export default Step04ErrorBoundaries
