@@ -8,5 +8,5 @@ export const FilterModalSolution = ({ children }) => {
       document.getElementById('modal')
     )
   }
-  return <>{children}</>
+  return null
 }

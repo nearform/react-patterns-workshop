@@ -10,10 +10,10 @@ export const MovieList = ({ year, queryData }) => {
         <div>
           <button
             onClick={() => {
-              dialog.setIsOpen(true)
+              dialog.setIsOpen(!dialog.isOpen)
             }}
           >
-            Show filters
+            {dialog.isOpen ? 'Hide filters' : 'Show filters'}
           </button>
         </div>
       </FlexContainer>

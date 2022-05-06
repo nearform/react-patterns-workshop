@@ -8,6 +8,7 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
+import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -28,9 +29,9 @@ const StepO6ForwardingRefs = () => {
   return (
     <ErrorBoundarySolution>
       <FilterStateProviderSolution>
-        <FilterModalChallenge>
+        <FilterModalSolution>
           <FilterFormSolution />
-        </FilterModalChallenge>
+        </FilterModalSolution>
         <MovieListContainer />
       </FilterStateProviderSolution>
     </ErrorBoundarySolution>

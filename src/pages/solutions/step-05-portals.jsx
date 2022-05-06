@@ -7,6 +7,7 @@ import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-compone
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge'
+import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -23,9 +24,9 @@ const Step05Portals = () => {
   return (
     <ErrorBoundarySolution>
       <FilterStateProviderSolution>
-        <FilterModalChallenge>
+        <FilterModalSolution>
           <FilterFormSolution />
-        </FilterModalChallenge>
+        </FilterModalSolution>
         <MovieListContainer />
       </FilterStateProviderSolution>
     </ErrorBoundarySolution>
