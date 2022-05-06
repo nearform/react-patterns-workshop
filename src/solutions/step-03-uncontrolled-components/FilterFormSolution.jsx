@@ -1,5 +1,6 @@
 import { useFilterStateSolution } from '../step-02-context/FilterStateContextSolution.jsx'
 import { useRef } from 'react'
+import { FancyInputSolution } from '../step-06-forwarding-refs/FancyInputSolution'
 
 export const FilterFormSolution = () => {
   const filterState = useFilterStateSolution()
@@ -14,7 +15,7 @@ export const FilterFormSolution = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Year:
-        <input type="text" ref={inputRef} />
+        <FancyInputSolution type="text" ref={inputRef} />
       </label>
       <input type="submit" value="Submit" />
     </form>
