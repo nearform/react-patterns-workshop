@@ -1,0 +1,17 @@
+.container {
+  background: #f7f9fa;
+  border-radius: 10px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  left: 50%;
+  max-width: 330px;
+  padding: 1.25em 1.5em;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.header {
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: end;
+}

@@ -1,7 +1,22 @@
+import { FlexContainer } from '../FlexContainer/FlexContainer'
+import { useDialog } from '../../providers/DialogProvider.js'
+
 export const MovieList = ({ year, queryData }) => {
+  const dialog = useDialog()
   return (
     <div>
-      <h1>Action movies {year && `from ${year}`}</h1>
+      <FlexContainer>
+        <h1>Action movies {year && `from ${year}`}</h1>
+        <div>
+          <button
+            onClick={() => {
+              dialog.setIsOpen(true)
+            }}
+          >
+            Show filters
+          </button>
+        </div>
+      </FlexContainer>
       <ul>
         {queryData.results.map(result => (
           <li key={result.id}>
