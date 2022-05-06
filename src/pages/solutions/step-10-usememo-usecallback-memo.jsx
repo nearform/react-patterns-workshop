@@ -1,4 +1,3 @@
-import { SidebarLayout } from '../../components/SidebarLayout/SidebarLayout'
 import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
@@ -8,6 +7,7 @@ import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-compone
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { useEffect } from 'react'
+import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -28,9 +28,10 @@ const Step10UseMemoUseCallbackMemo = () => {
   return (
     <ErrorBoundarySolution>
       <FilterStateProviderSolution>
-        <SidebarLayout leftColumn={<FilterFormSolution />}>
-          <MovieListContainer />
-        </SidebarLayout>
+        <FilterModalChallenge>
+          <FilterFormSolution />
+        </FilterModalChallenge>
+        <MovieListContainer />
       </FilterStateProviderSolution>
     </ErrorBoundarySolution>
   )
