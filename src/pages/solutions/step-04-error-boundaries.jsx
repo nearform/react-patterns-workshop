@@ -8,7 +8,7 @@ import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/Er
 import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
-import { CodeSplittingChallenge } from '../../challenges/step-08-code-splitting/CodeSplittingChallenge.js'
+import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -31,7 +31,7 @@ const Step04ErrorBoundaries = () => {
       <FilterStateProviderSolution>
         <FilterModalChallenge>
           <FilterFormFinalChallenge />
-          <CodeSplittingChallenge />
+          <DetailedHelpBoxChallenge />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderSolution>

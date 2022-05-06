@@ -6,8 +6,8 @@ import {
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
-import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplitttingSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -26,7 +26,7 @@ const Step08CodeSplitting = () => {
       <FilterStateProviderSolution>
         <FilterModalSolution>
           <FilterFormWithAutofocusSolution />
-          <CodeSplittingSolution />
+          <DetailedHelpBoxChallenge />
         </FilterModalSolution>
         <MovieListContainer />
       </FilterStateProviderSolution>

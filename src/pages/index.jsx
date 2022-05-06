@@ -5,6 +5,7 @@ import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/E
 import { MovieList } from '../components/MovieList/MovieList.jsx'
 import { FilterModalChallenge } from '../challenges/step-05-portals/FilterModalChallenge.js'
 import { FilterFormFinalChallenge } from '../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
+import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateChallenge()
@@ -23,6 +24,7 @@ const MovieExplorerApp = () => {
       <FilterStateProviderChallenge>
         <FilterModalChallenge>
           <FilterFormFinalChallenge />
+          <DetailedHelpBoxChallenge />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderChallenge>

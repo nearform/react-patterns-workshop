@@ -5,8 +5,7 @@ import { useFilterStateChallenge } from '../../challenges/step-02-context/useFil
 import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
-import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplitttingSolution.js'
-import { CodeSplittingChallenge } from '../../challenges/step-08-code-splitting/CodeSplittingChallenge'
+import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateChallenge()
@@ -25,7 +24,7 @@ const Step01ServerState = () => {
       <FilterStateProviderChallenge>
         <FilterModalChallenge>
           <FilterFormFinalChallenge />
-          <CodeSplittingChallenge />
+          <DetailedHelpBoxChallenge />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderChallenge>

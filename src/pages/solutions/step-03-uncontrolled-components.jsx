@@ -7,7 +7,7 @@ import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-compone
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
-import { CodeSplittingChallenge } from '../../challenges/step-08-code-splitting/CodeSplittingChallenge.js'
+import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -26,7 +26,7 @@ const Step03UncontrolledComponents = () => {
       <FilterStateProviderSolution>
         <FilterModalChallenge>
           <FilterFormSolution />
-          <CodeSplittingChallenge />
+          <DetailedHelpBoxChallenge />
         </FilterModalChallenge>
         <MovieListContainer />
       </FilterStateProviderSolution>
