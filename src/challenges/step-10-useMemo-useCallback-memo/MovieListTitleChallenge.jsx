@@ -8,5 +8,5 @@ export const MovieListTitleChallenge = memo(function MovieListTitleChallenge({
 })
 
 MovieListTitleChallenge.propTypes = {
-  year: PropTypes.string
+  year: PropTypes.number
 }
