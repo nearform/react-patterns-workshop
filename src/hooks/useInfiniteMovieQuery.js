@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 
-export const useMoviesInfiniteQuery = ({ year = 2000 }) => {
+export const useInfiniteMovieQuery = ({ year = 2000 }) => {
   const [totalPages, setTotalPages] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)

@@ -1,4 +1,3 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
@@ -9,10 +8,11 @@ import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/Er
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MoveListSolution.js'
+import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQuerySolution(filterState)
+  const movieQuery = useInfiniteMovieQuerySolution(filterState)
 
   if (!movieQuery.data) {
     return null
