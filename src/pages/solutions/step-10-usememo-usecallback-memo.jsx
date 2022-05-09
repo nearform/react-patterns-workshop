@@ -9,9 +9,13 @@ import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/Co
 import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
 import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { useDialogContext } from '../../context/DialogContext.js'
+import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
 import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
 
 const MovieListContainer = () => {
+  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useInfiniteMovieQuerySolution(filterState)
 
@@ -20,7 +24,12 @@ const MovieListContainer = () => {
   }
 
   return (
-    <MovieListWrapper year={filterState.year}>
+    <MovieListWrapper
+      title={<MovieListTitleSolution filterState={filterState} />}
+      filterButton={
+        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+      }
+    >
       <MovieListSolution
         items={movieQuery.data}
         hasNextPage={movieQuery.hasNextPage}
@@ -32,6 +41,7 @@ const MovieListContainer = () => {
 }
 
 const Step10UseMemoUseCallbackMemo = () => {
+  // TODO currently the dialog provider solution doesn't contrib to actual solution
   return (
     <DialogProviderSolution>
       <ErrorBoundarySolution>

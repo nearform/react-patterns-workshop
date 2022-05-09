@@ -7,7 +7,13 @@ export const FilterFormSolution = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    inputRef.current.value && filterState.setYear(inputRef.current.value)
+    if (!inputRef.current.value) {
+      return
+    }
+    const parsed = Number(inputRef.current.value)
+    if (Number.isInteger(parsed)) {
+      filterState.setYear(parsed)
+    }
   }
 
   return (

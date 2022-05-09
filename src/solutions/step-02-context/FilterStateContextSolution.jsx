@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 const FilterStateContext = React.createContext(null)
 
 export const FilterStateProviderSolution = ({ children }) => {
-  const [state, setState] = useState({ year: 2019 })
+  const [state, setState] = useState({ year: 1981 })
 
   const value = {
     year: state.year,

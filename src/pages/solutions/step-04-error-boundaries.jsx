@@ -11,8 +11,12 @@ import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-l
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
 import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.jsx'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { useDialogContext } from '../../context/DialogContext.js'
 
 const MovieListContainer = () => {
+  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
 
@@ -25,7 +29,12 @@ const MovieListContainer = () => {
   }
 
   return (
-    <MovieListWrapper year={filterState.year}>
+    <MovieListWrapper
+      title={<MovieListTitleChallenge filterState={filterState} />}
+      filterButton={
+        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+      }
+    >
       <MovieListChallenge
         items={movieQuery.data}
         hasNextPage={movieQuery.hasNextPage}

@@ -10,8 +10,12 @@ import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModal
 import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
 import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
 import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge'
+import { useDialogContext } from '../../context/DialogContext.js'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 
 const MovieListContainer = () => {
+  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useInfiniteMovieQuerySolution(filterState)
 
@@ -20,7 +24,12 @@ const MovieListContainer = () => {
   }
 
   return (
-    <MovieListWrapper year={filterState.year}>
+    <MovieListWrapper
+      title={<MovieListTitleChallenge filterState={filterState} />}
+      filterButton={
+        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+      }
+    >
       <MovieListSolution
         items={movieQuery.data}
         hasNextPage={movieQuery.hasNextPage}
