@@ -1,7 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const useMovieQuerySolution = ({ year = 2000 }) => {
-  const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
   const [movieData, setMovieData] = useState()
 
@@ -15,7 +14,7 @@ export const useMovieQuerySolution = ({ year = 2000 }) => {
       setMovieData(response.results)
     }
     fetchData()
-  }, [currentPage, movieData, year])
+  }, [movieData, year])
 
   return {
     data: movieData,
