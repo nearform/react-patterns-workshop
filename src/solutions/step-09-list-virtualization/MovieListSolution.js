@@ -1,6 +1,6 @@
 import InfiniteLoader from 'react-window-infinite-loader'
 import { FixedSizeList } from 'react-window'
-import { FlexContainer } from '../../components/FlexContainer/FlexContainer.jsx'
+import { Flex } from '../../components/Flex/Flex.jsx'
 import { Card } from '../../components/Card/Card.jsx'
 import AutoSizer from 'react-virtualized-auto-sizer'
 
@@ -42,10 +42,10 @@ export const MovieListSolution = ({
       const item = items[index]
       content = (
         <Card>
-          <FlexContainer>
+          <Flex>
             <img src={item.image} alt={item.title} width={100} height={100} />
             <h3>{item.title}</h3>
-          </FlexContainer>
+          </Flex>
         </Card>
       )
     }

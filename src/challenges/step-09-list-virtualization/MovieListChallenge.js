@@ -1,4 +1,4 @@
-import { FlexContainer } from '../../components/FlexContainer/FlexContainer.jsx'
+import { Flex } from '../../components/Flex/Flex.jsx'
 import { Card } from '../../components/Card/Card.jsx'
 import { memo } from 'react'
 
@@ -15,7 +15,7 @@ export const MovieListChallenge = memo(function MovieListChallenge({
     <div>
       {items.map(result => (
         <Card key={result.id}>
-          <FlexContainer>
+          <Flex>
             <img
               src={result.image}
               alt={result.title}
@@ -23,7 +23,7 @@ export const MovieListChallenge = memo(function MovieListChallenge({
               height={100}
             />
             <h3>{result.title}</h3>
-          </FlexContainer>
+          </Flex>
         </Card>
       ))}
     </div>

@@ -1,14 +1,14 @@
-import { FlexContainer } from '../FlexContainer/FlexContainer.jsx'
+import { Flex } from '../Flex/Flex.jsx'
 import styles from './MovieListWrapper.module.css'
 import PropTypes from 'prop-types'
 
 export function MovieListWrapper({ title, children, filterButton }) {
   return (
     <div className={styles.container}>
-      <FlexContainer>
+      <Flex>
         {title}
         {filterButton}
-      </FlexContainer>
+      </Flex>
       {children}
     </div>
   )
