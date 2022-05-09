@@ -1,14 +1,22 @@
 const BASE_URL = 'https://api.themoviedb.org/3/'
 
-const makeRequest = (path, searchParams = []) => {
+const makeRequest = async (path, searchParams = []) => {
   const searchParamsAsString = searchParams
     .concat([['api_key', process.env.MOVIE_DB_API_KEY]])
     .map(([k, v]) => `${k}=${v}`)
     .join('&')
 
-  return fetch(`${BASE_URL}${path}?${searchParamsAsString}`).then(response =>
-    response.json()
-  )
+  const movieData = await fetch(
+    `${BASE_URL}${path}?${searchParamsAsString}`
+  ).then(response => response.json())
+
+  return {
+    ...movieData,
+    results: movieData.results.map(result => ({
+      ...result,
+      image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+    }))
+  }
 }
 
 const genres = async () => {

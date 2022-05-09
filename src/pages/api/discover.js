@@ -11,6 +11,7 @@ const handler = async (req, res) => {
     page,
     year
   })
+
   const withFriendlyImages = {
     ...response,
     results: response.results.map(result => ({

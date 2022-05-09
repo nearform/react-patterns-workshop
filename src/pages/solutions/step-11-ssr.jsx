@@ -1,4 +1,3 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
@@ -6,42 +5,72 @@ import {
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { useEffect } from 'react'
-import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
+import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
+import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { useDialogContext } from '../../context/DialogContext.js'
+import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
+import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
+import { movieDbApi } from '../../backend/movieDbApi.js'
 
-const MovieListContainer = () => {
+const MovieListContainer = ({ preloadedFirstPage }) => {
+  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQuerySolution(filterState)
-
-  useEffect(() => {
-    throw new Error("I'm an error")
-  }, [])
+  const movieQuery = useInfiniteMovieQuerySolution(
+    filterState,
+    preloadedFirstPage
+  )
 
   if (!movieQuery.data) {
     return null
   }
 
   return (
-    <MovieListWrapper year={filterState.year} queryData={movieQuery.data} />
+    <MovieListWrapper
+      title={<MovieListTitleSolution filterState={filterState} />}
+      filterButton={
+        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+      }
+    >
+      <MovieListSolution
+        items={movieQuery.data}
+        hasNextPage={movieQuery.hasNextPage}
+        isNextPageLoading={movieQuery.isLoading}
+        loadNextPage={movieQuery.loadNextPage}
+      />
+    </MovieListWrapper>
   )
 }
 
-const Step11Ssr = () => {
+const Step11Ssr = ({ preloadedFirstPage }) => {
+  // TODO currently the dialog provider solution doesn't contrib to actual solution
   return (
-    <DialogProviderChallenge>
+    <DialogProviderSolution>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
-          <FilterModalChallenge>
+          <FilterModalSolution>
             <FilterFormSolution />
             <CodeSplittingSolution />
-          </FilterModalChallenge>
-          <MovieListContainer />
+          </FilterModalSolution>
+          <MovieListContainer preloadedFirstPage={preloadedFirstPage} />
         </FilterStateProviderSolution>
       </ErrorBoundarySolution>
-    </DialogProviderChallenge>
+    </DialogProviderSolution>
   )
+}
+
+export async function getServerSideProps() {
+  // Prefetch initial data
+  // TODO this doesn't factor in the current year (which is in context)
+  const movieData = await movieDbApi.discover({ page: 1 })
+
+  return {
+    props: {
+      preloadedFirstPage: movieData.results
+    }
+  }
 }
 
 export default Step11Ssr

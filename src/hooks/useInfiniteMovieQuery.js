@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 
-export const useInfiniteMovieQuery = ({ year = 2000 }) => {
+export const useInfiniteMovieQuery = ({ year = 2000 }, preloadedFirstPage) => {
   const [totalPages, setTotalPages] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
-  const [movieData, setMovieData] = useState({})
+  const [movieData, setMovieData] = useState({
+    [year]: preloadedFirstPage ? { 1: preloadedFirstPage } : null
+  })
 
   useEffect(() => {
     const fetchData = async () => {
