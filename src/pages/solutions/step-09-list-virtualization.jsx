@@ -8,7 +8,7 @@ import { MovieListWrapper } from '../../components/MovieListContainer/MovieListW
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
-import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MoveListSolution.js'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -20,7 +20,7 @@ const MovieListContainer = () => {
 
   return (
     <MovieListWrapper year={filterState.year}>
-      <MovieListChallenge
+      <MovieListSolution
         items={movieQuery.data}
         hasNextPage={movieQuery.hasNextPage}
         isNextPageLoading={movieQuery.isLoading}

@@ -1,7 +1,10 @@
 import InfiniteLoader from 'react-window-infinite-loader'
 import { FixedSizeList } from 'react-window'
+import { FlexContainer } from '../../components/FlexContainer/FlexContainer.jsx'
+import { Card } from '../../components/Card/Card.jsx'
+import AutoSizer from 'react-virtualized-auto-sizer'
 
-export const MovieListSolution = (
+export const MovieListSolution = ({
   // Are there more items to load?
   // (This information comes from the most recent API request.)
   hasNextPage,
@@ -15,7 +18,11 @@ export const MovieListSolution = (
 
   // Callback function responsible for loading the next page of items.
   loadNextPage
-) => {
+}) => {
+  if (!items) {
+    return null
+  }
+
   // If there are more items to be loaded then add an extra row to hold a loading indicator.
   const itemCount = hasNextPage ? items.length + 1 : items.length
 
@@ -32,7 +39,15 @@ export const MovieListSolution = (
     if (!isItemLoaded(index)) {
       content = 'Loading...'
     } else {
-      content = items[index].name
+      const item = items[index]
+      content = (
+        <Card>
+          <FlexContainer>
+            <img src={item.image} alt={item.title} width={100} height={100} />
+            <h3>{item.title}</h3>
+          </FlexContainer>
+        </Card>
+      )
     }
 
     return <div style={style}>{content}</div>
@@ -45,14 +60,20 @@ export const MovieListSolution = (
       loadMoreItems={loadMoreItems}
     >
       {({ onItemsRendered, ref }) => (
-        <FixedSizeList
-          itemCount={itemCount}
-          onItemsRendered={onItemsRendered}
-          ref={ref}
-          {...props}
-        >
-          {Item}
-        </FixedSizeList>
+        <AutoSizer>
+          {({ height, width }) => (
+            <FixedSizeList
+              itemCount={itemCount}
+              onItemsRendered={onItemsRendered}
+              ref={ref}
+              height={height}
+              width={width}
+              itemSize={140}
+            >
+              {Item}
+            </FixedSizeList>
+          )}
+        </AutoSizer>
       )}
     </InfiniteLoader>
   )
