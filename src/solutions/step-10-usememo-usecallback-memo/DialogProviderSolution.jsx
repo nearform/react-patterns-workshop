@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { DialogContext } from '../../context/DialogContext.js'
 
 export const DialogProviderSolution = ({ children }) => {
-  const [isOpen, setIsOpen] = useState({})
+  const [isOpen, setIsOpen] = useState(false)
 
   const value = {
     isOpen,
