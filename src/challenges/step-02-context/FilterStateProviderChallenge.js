@@ -4,3 +4,10 @@ import React from 'react'
 export const FilterStateProviderChallenge = ({ children }) => {
   return <>{children}</>
 }
+
+export const useFilterStateChallenge = () => {
+  return {
+    year: 2020,
+    setYear: () => {}
+  }
+}

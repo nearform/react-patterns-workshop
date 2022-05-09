@@ -1,22 +1,22 @@
 import { FlexContainer } from '../FlexContainer/FlexContainer.jsx'
-import { useDialog } from '../../providers/DialogProvider.js'
 import styles from './MovieListWrapper.module.css'
+import { useDialogContext } from '../../context/DialogContext.js'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge'
 
 export const MovieListWrapper = ({ year, children }) => {
-  const dialog = useDialog()
+  const dialog = useDialogContext()
+  console.log('Render ML wrapper')
   return (
     <div className={styles.container}>
       <FlexContainer>
-        <h1>Action movies {year && `from ${year}`}</h1>
-        <div>
-          <button
-            onClick={() => {
-              dialog.setIsOpen(!dialog.isOpen)
-            }}
-          >
-            {dialog.isOpen ? 'Hide filters' : 'Show filters'}
-          </button>
-        </div>
+        <MovieListTitleChallenge year={year} />
+        <button
+          onClick={() => {
+            dialog.toggle()
+          }}
+        >
+          {dialog.isOpen ? 'Hide filters' : 'Show filters'}
+        </button>
       </FlexContainer>
       {children}
     </div>

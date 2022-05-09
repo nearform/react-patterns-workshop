@@ -1,4 +1,3 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
@@ -6,33 +5,45 @@ import {
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
+import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MoveListSolution.js'
+import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQuerySolution(filterState)
+  const movieQuery = useInfiniteMovieQuerySolution(filterState)
 
   if (!movieQuery.data) {
     return null
   }
 
   return (
-    <MovieListWrapper year={filterState.year} queryData={movieQuery.data} />
+    <MovieListWrapper year={filterState.year}>
+      <MovieListSolution
+        items={movieQuery.data}
+        hasNextPage={movieQuery.hasNextPage}
+        isNextPageLoading={movieQuery.isLoading}
+        loadNextPage={movieQuery.loadNextPage}
+      />
+    </MovieListWrapper>
   )
 }
 
 const Step10UseMemoUseCallbackMemo = () => {
   return (
-    <ErrorBoundarySolution>
-      <FilterStateProviderSolution>
-        <FilterModalChallenge>
-          <FilterFormSolution />
-          <CodeSplittingSolution />
-        </FilterModalChallenge>
-        <MovieListContainer />
-      </FilterStateProviderSolution>
-    </ErrorBoundarySolution>
+    <DialogProviderSolution>
+      <ErrorBoundarySolution>
+        <FilterStateProviderSolution>
+          <FilterModalSolution>
+            <FilterFormSolution />
+            <CodeSplittingSolution />
+          </FilterModalSolution>
+          <MovieListContainer />
+        </FilterStateProviderSolution>
+      </ErrorBoundarySolution>
+    </DialogProviderSolution>
   )
 }
 

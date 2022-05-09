@@ -9,6 +9,7 @@ import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/Er
 import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -29,15 +30,17 @@ const MovieListContainer = () => {
 
 const Step11Ssr = () => {
   return (
-    <ErrorBoundarySolution>
-      <FilterStateProviderSolution>
-        <FilterModalChallenge>
-          <FilterFormSolution />
-          <CodeSplittingSolution />
-        </FilterModalChallenge>
-        <MovieListContainer />
-      </FilterStateProviderSolution>
-    </ErrorBoundarySolution>
+    <DialogProviderChallenge>
+      <ErrorBoundarySolution>
+        <FilterStateProviderSolution>
+          <FilterModalChallenge>
+            <FilterFormSolution />
+            <CodeSplittingSolution />
+          </FilterModalChallenge>
+          <MovieListContainer />
+        </FilterStateProviderSolution>
+      </ErrorBoundarySolution>
+    </DialogProviderChallenge>
   )
 }
 

@@ -9,6 +9,7 @@ import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/Co
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MoveListSolution.js'
 import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -32,15 +33,17 @@ const MovieListContainer = () => {
 
 const Step09ListVirtualization = () => {
   return (
-    <ErrorBoundarySolution>
-      <FilterStateProviderSolution>
-        <FilterModalSolution>
-          <FilterFormSolution />
-          <CodeSplittingSolution />
-        </FilterModalSolution>
-        <MovieListContainer />
-      </FilterStateProviderSolution>
-    </ErrorBoundarySolution>
+    <DialogProviderChallenge>
+      <ErrorBoundarySolution>
+        <FilterStateProviderSolution>
+          <FilterModalSolution>
+            <FilterFormSolution />
+            <CodeSplittingSolution />
+          </FilterModalSolution>
+          <MovieListContainer />
+        </FilterStateProviderSolution>
+      </ErrorBoundarySolution>
+    </DialogProviderChallenge>
   )
 }
 
