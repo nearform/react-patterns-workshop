@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 export const useMovieQuerySolution = ({ year = 2000 }) => {
-  const [totalPages, setTotalPages] = useState()
   const [currentPage, setCurrentPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
   const [movieData, setMovieData] = useState()
@@ -10,24 +9,16 @@ export const useMovieQuerySolution = ({ year = 2000 }) => {
     const fetchData = async () => {
       setIsLoading(true)
       const response = await fetch(
-        `/api/discover?page=${currentPage}&year=${year}&genre=Action`
+        `/api/discover?page=1&year=${year}&genre=Action`
       ).then(response => response.json())
       setIsLoading(false)
-      setMovieData(curr =>
-        curr ? [...curr, ...response.results] : response.results
-      )
-      setTotalPages(response.total_pages)
+      setMovieData(response.results)
     }
     fetchData()
-  }, [currentPage, year])
+  }, [currentPage, movieData, year])
 
   return {
     data: movieData,
-    isLoading,
-    hasNextPage: totalPages > currentPage,
-    loadNextPage: () => {
-      console.log('Load next page')
-      setCurrentPage(curr => curr + 1)
-    }
+    isLoading
   }
 }
