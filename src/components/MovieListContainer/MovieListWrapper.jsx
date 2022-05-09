@@ -5,7 +5,7 @@ import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCal
 
 export const MovieListWrapper = ({ year, children }) => {
   const dialog = useDialogContext()
-  console.log('Render ML wrapper')
+
   return (
     <div className={styles.container}>
       <FlexContainer>

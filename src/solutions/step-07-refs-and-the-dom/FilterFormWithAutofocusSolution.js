@@ -28,7 +28,6 @@ export const FilterFormWithAutofocusSolution = () => {
   }
 
   useEffect(() => {
-    console.log(inputRef, 'input')
     inputRef.current?.focus()
   }, [])
 

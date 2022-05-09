@@ -37,7 +37,7 @@ export const MovieListSolution = ({
   const Item = ({ index, style }) => {
     let content
     if (!isItemLoaded(index)) {
-      content = 'Loading...'
+      content = <div>Loading...</div>
     } else {
       const item = items[index]
       content = (
@@ -54,14 +54,14 @@ export const MovieListSolution = ({
   }
 
   return (
-    <InfiniteLoader
-      isItemLoaded={isItemLoaded}
-      itemCount={itemCount}
-      loadMoreItems={loadMoreItems}
-    >
-      {({ onItemsRendered, ref }) => (
-        <AutoSizer>
-          {({ height, width }) => (
+    <AutoSizer>
+      {({ height, width }) => (
+        <InfiniteLoader
+          isItemLoaded={isItemLoaded}
+          itemCount={itemCount}
+          loadMoreItems={loadMoreItems}
+        >
+          {({ onItemsRendered, ref }) => (
             <FixedSizeList
               itemCount={itemCount}
               onItemsRendered={onItemsRendered}
@@ -73,8 +73,8 @@ export const MovieListSolution = ({
               {Item}
             </FixedSizeList>
           )}
-        </AutoSizer>
+        </InfiniteLoader>
       )}
-    </InfiniteLoader>
+    </AutoSizer>
   )
 }

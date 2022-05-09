@@ -14,7 +14,7 @@ export const useMovieQuerySolution = ({ year = 2000 }) => {
       setMovieData(response.results)
     }
     fetchData()
-  }, [movieData, year])
+  }, [year])
 
   return {
     data: movieData,

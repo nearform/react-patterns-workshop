@@ -7,7 +7,7 @@ import { MovieListWrapper } from '../../components/MovieListContainer/MovieListW
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
 import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
-import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MoveListSolution.js'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
 

@@ -1,12 +1,13 @@
 import { FlexContainer } from '../../components/FlexContainer/FlexContainer.jsx'
 import { Card } from '../../components/Card/Card.jsx'
+import { memo } from 'react'
 
-export const MovieListChallenge = ({
+export const MovieListChallenge = memo(function MovieListChallenge({
   hasNextPage,
   isNextPageLoading,
   items,
   loadNextPage
-}) => {
+}) {
   if (!items) {
     return null
   }
@@ -27,4 +28,4 @@ export const MovieListChallenge = ({
       ))}
     </div>
   )
-}
+})
