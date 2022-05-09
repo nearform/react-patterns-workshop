@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 
 export const MovieListTitleChallenge = ({ filterState }) => {
-  console.log('render title')
   return <h1>Action movies {filterState.year && `from ${filterState.year}`}</h1>
 }
 
