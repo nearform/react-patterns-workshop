@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 export const MovieListTitleChallenge = ({ filterState }) => {
-  return <h1>Action movies {filterState.year && `from ${filterState.year}`}</h1>
+  return <h1>Movies {filterState.year && `from ${filterState.year}`}</h1>
 }
 
 MovieListTitleChallenge.propTypes = {

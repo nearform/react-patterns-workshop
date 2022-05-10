@@ -3,14 +3,13 @@ import {
   FilterStateProviderSolution,
   useFilterStateSolution
 } from '../../solutions/step-02-context/FilterStateContextSolution'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper'
+import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge'
-import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge'
+import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
+import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
 
@@ -24,19 +23,13 @@ const MovieListContainer = () => {
   }
 
   return (
-    <MovieListWrapper
+    <MovieList
+      items={movieQuery.data}
       title={<MovieListTitleChallenge filterState={filterState} />}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
-    >
-      <MovieListChallenge
-        items={movieQuery.data}
-        hasNextPage={movieQuery.hasNextPage}
-        isNextPageLoading={movieQuery.isLoading}
-        loadNextPage={movieQuery.loadNextPage}
-      />
-    </MovieListWrapper>
+    />
   )
 }
 
