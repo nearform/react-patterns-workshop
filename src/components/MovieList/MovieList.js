@@ -10,6 +10,7 @@ export function MovieList({ title, filterButton, items }) {
         {title}
         {filterButton}
       </Flex>
+      {}
       <div>
         {items.map(result => (
           <Card key={result.id}>

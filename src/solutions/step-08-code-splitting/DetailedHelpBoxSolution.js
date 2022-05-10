@@ -4,7 +4,7 @@ const DetailedHelpBox = React.lazy(() =>
   import('../../components/DetailedHelpBox/DetailedHelpBox')
 )
 
-export const CodeSplittingSolution = () => {
+export const DetailedHelpBoxSolution = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <DetailedHelpBox />

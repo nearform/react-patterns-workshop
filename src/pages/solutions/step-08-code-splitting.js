@@ -7,11 +7,11 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
-import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
 import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
+import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/DetailedHelpBoxSolution'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -40,7 +40,7 @@ const Step08CodeSplitting = () => {
         <FilterStateProviderSolution>
           <FilterModalSolution>
             <FilterFormWithAutofocusSolution />
-            <DetailedHelpBoxChallenge />
+            <DetailedHelpBoxSolution />
           </FilterModalSolution>
           <MovieListContainer />
         </FilterStateProviderSolution>

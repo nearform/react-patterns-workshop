@@ -4,7 +4,7 @@ import {
 } from '../../solutions/step-02-context/FilterStateContextSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution'
+import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/DetailedHelpBoxSolution'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
@@ -41,7 +41,7 @@ const Step09UsememoUsecallbackMemo = () => {
         <FilterStateProviderSolution>
           <FilterModalSolution>
             <FilterFormWithAutofocusSolution />
-            <CodeSplittingSolution />
+            <DetailedHelpBoxSolution />
           </FilterModalSolution>
           <MovieListContainer />
         </FilterStateProviderSolution>

@@ -1,6 +1,8 @@
 export const DetailedHelpBox = () => {
   return (
     <div style={{ height: '100px', overflowY: 'auto', padding: '10px' }}>
+      <h3>Lazy loading demo</h3>
+      <p>Component with a lot of content to demo lazy loading.</p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc porta
         ultricies tincidunt. Vivamus volutpat tincidunt metus, vel pellentesque
