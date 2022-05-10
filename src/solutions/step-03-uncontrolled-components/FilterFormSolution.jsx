@@ -6,6 +6,7 @@ export const FilterFormSolution = () => {
   const inputRef = useRef()
 
   const handleSubmit = event => {
+    // TODO: consider using FormData
     event.preventDefault()
     if (!inputRef.current.value) {
       return
@@ -20,7 +21,7 @@ export const FilterFormSolution = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Year:
-        <input type="text" ref={inputRef} />
+        <input name="year" type="text" />
       </label>
       <input type="submit" value="Submit" />
     </form>

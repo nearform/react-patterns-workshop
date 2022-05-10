@@ -1,7 +1,7 @@
 import {
   FilterStateProviderChallenge,
   useFilterStateChallenge
-} from '../../challenges/step-02-context/FilterStateProviderChallenge.js'
+} from '../../challenges/step-02-context/FilterStateProviderChallenge.jsx'
 import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'

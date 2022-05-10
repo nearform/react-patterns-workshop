@@ -14,7 +14,7 @@ import { useDialogContext } from '../../context/DialogContext.js'
 import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
 import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
 import { movieDbApi } from '../../backend/movieDbApi.js'
-import { DEFAULT_GENRE_ID, DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants.js'
 
 const MovieListContainer = ({ preloadedFirstPage }) => {
   const dialog = useDialogContext()
@@ -67,8 +67,7 @@ export async function getServerSideProps() {
   // TODO this doesn't factor in the current year (which is in context)
   const movieData = await movieDbApi.discover({
     page: 1,
-    year: DEFAULT_YEAR,
-    genres: [DEFAULT_GENRE_ID]
+    year: DEFAULT_YEAR
   })
 
   return {

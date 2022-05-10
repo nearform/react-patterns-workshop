@@ -2,7 +2,7 @@ import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useM
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution'
+} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
 import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
 import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'

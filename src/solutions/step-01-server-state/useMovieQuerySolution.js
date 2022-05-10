@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DEFAULT_GENRE_ID, DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants.js'
 
 export const useMovieQuerySolution = ({ year = DEFAULT_YEAR }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -8,12 +8,16 @@ export const useMovieQuerySolution = ({ year = DEFAULT_YEAR }) => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true)
-      const response = await fetch(
-        `/api/discover?page=1&year=${year}&genre=${DEFAULT_GENRE_ID}`
-      ).then(response => response.json())
-      setIsLoading(false)
-      setMovieData(response.results)
+
+      try {
+        const response = await fetch(`/api/discover?page=1&year=${year}`)
+        const data = await response.json()
+        setMovieData(data.results)
+      } finally {
+        setIsLoading(false)
+      }
     }
+
     fetchData()
   }, [year])
 

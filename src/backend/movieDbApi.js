@@ -1,14 +1,15 @@
 const BASE_URL = 'https://api.themoviedb.org/3/'
 
 const makeRequest = async (path, searchParams = []) => {
+  // TODO: use better way to do this
   const searchParamsAsString = searchParams
     .concat([['api_key', process.env.MOVIE_DB_API_KEY]])
     .map(([k, v]) => `${k}=${v}`)
     .join('&')
 
-  const movieData = await fetch(
-    `${BASE_URL}${path}?${searchParamsAsString}`
-  ).then(response => response.json())
+  const movieData = await fetch(`${BASE_URL}${path}?${searchParamsAsString}`)
+    // TODO: avoid mixing async await with promise native methods
+    .then(response => response.json())
 
   if (movieData.results) {
     return {
@@ -23,21 +24,15 @@ const makeRequest = async (path, searchParams = []) => {
   return movieData
 }
 
-const genres = async () => {
-  return makeRequest('genre/movie/list')
-}
-
-const discover = async ({ page = 1, year, genres = [] }) => {
+const discover = async ({ page = 1, year }) => {
   return makeRequest('discover/movie', [
     ['sort_by', 'popularity.desc'],
     ['include_video', false],
     ['page', page],
-    ...genres.map(genre => ['with_genres', genre]),
     ['year', year]
   ])
 }
 
 export const movieDbApi = {
-  genres,
   discover
 }
