@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
+import { DEFAULT_YEAR } from '../../constants.js'
 
 const FilterStateContext = React.createContext(null)
 
 export const FilterStateProviderSolution = ({ children }) => {
-  const [state, setState] = useState({ year: 1981 })
+  const [state, setState] = useState({ year: DEFAULT_YEAR })
 
   const value = {
     year: state.year,

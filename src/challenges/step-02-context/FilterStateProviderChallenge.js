@@ -1,4 +1,5 @@
 import React from 'react'
+import { DEFAULT_YEAR } from '../../constants.js'
 
 // TODO: add code here
 export const FilterStateProviderChallenge = ({ children }) => {
@@ -7,7 +8,7 @@ export const FilterStateProviderChallenge = ({ children }) => {
 
 export const useFilterStateChallenge = () => {
   return {
-    year: 2020,
+    year: DEFAULT_YEAR,
     setYear: () => {}
   }
 }

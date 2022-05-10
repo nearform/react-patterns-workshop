@@ -10,13 +10,17 @@ const makeRequest = async (path, searchParams = []) => {
     `${BASE_URL}${path}?${searchParamsAsString}`
   ).then(response => response.json())
 
-  return {
-    ...movieData,
-    results: movieData.results.map(result => ({
-      ...result,
-      image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
-    }))
+  if (movieData.results) {
+    return {
+      ...movieData,
+      results: movieData.results.map(result => ({
+        ...result,
+        image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+      }))
+    }
   }
+
+  return movieData
 }
 
 const genres = async () => {
