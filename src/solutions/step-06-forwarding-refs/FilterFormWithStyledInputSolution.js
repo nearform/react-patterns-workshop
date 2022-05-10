@@ -1,7 +1,7 @@
 import { forwardRef, useRef } from 'react'
 import { useFilterStateSolution } from '../step-02-context/FilterStateContextSolution'
 
-const FancyInput = forwardRef((props, ref) => {
+const FancyInput = forwardRef(function FancyInput(props, ref) {
   return (
     <input
       {...props}
@@ -15,8 +15,6 @@ const FancyInput = forwardRef((props, ref) => {
     />
   )
 })
-
-FancyInput.displayName = 'FancyInput'
 
 export const FilterFormWithStyledInputSolution = () => {
   const filterState = useFilterStateSolution()

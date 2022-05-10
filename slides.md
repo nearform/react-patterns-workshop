@@ -310,6 +310,46 @@ export const ErrorBoundarySolution = ({ children }) => {
 
 ---
 
+# Step 5: Solution /1
+
+```jsx
+export const FilterFormSolution = () => {
+  const filterState = useFilterStateSolution()
+  const inputRef = useRef()
+
+  const handleSubmit = event => {
+    // TODO: consider using FormData
+    event.preventDefault()
+    if (!inputRef.current.value) {
+      return
+    }
+    const parsed = Number(inputRef.current.value)
+    if (Number.isInteger(parsed)) {
+      filterState.setYear(parsed)
+    }
+  }
+```
+
+---
+
+# Step 5: Solution /2  
+
+```jsx
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Year:
+        <input name="year" type="text" ref={inputRef} />
+      </label>
+      <input type="submit" value="Submit" />
+    </form>
+  )
+}
+```
+
+---
+
 # Step 5: Trying it out
 - Click on the "Show filters" button
 - Type a year into the text box
@@ -328,7 +368,7 @@ export const ErrorBoundarySolution = ({ children }) => {
 
 # Step 6: Before you start
 - This step builds upon the form you created in the last step
-- Copy and paste the code from the form into the form component in `FilterFormWithStyledInputChallenge.js` 
+- Copy and paste the code from the form component in `FilterFormChallenge.js` into the form component in `FilterFormWithStyledInput.js`
 - If you didn't manage to complete the last step please copy and paste the code from  `FilterFormSolution.js` in `src/solutions/step-05-uncontrolled-components`
 
 ---
@@ -341,12 +381,112 @@ export const ErrorBoundarySolution = ({ children }) => {
 
 ---
 
+# Step 6: Solution
+
+```jsx
+const FancyInput = forwardRef(function FancyInput (props, ref) {
+  return (
+    <input
+      {...props}
+      ref={ref}
+      style={{
+        padding: '16px',
+        fontWeight: 'bold',
+        border: '1px solid azure',
+        fontSize: '24px'
+      }}
+    />
+  )
+})
+```
+
+
 # Step 6: Trying it out
 - Click on the "Show filters" button
 - You will see the input component now has a custom styling
 - But also allows access to the underlying dom element
 
 ---
+
+# Step 7: Refs and the DOM
+
+<div class="dense">
+- TODO info about refs and the DOM
+</div>
+
+---
+
+# Step 7: Before you start
+- This step builds upon the form you created in the last step
+- Copy and paste the code from the form component in `FilterFormWithStyledInputChallenge.js`  into the form component in `FilterFormWithAutofocusChallenge.js`
+- If you didn't manage to complete the last step please copy and paste the code from  `FilterFormWithStyledInputSolution.js` in `src/solutions/step-06-forwarding-refs`
+
+---
+
+# Step 7: Exercise 💻
+- Open the file `FilterFormWithAutofocusChallenge.js` in `src/challenges/step-06-refs-and-the-dom`
+- Make the year input element autofocus when it appears
+- 💡 You will need to use `useEffect` along with the input ref created in a previous step
+- 💡 An input element can be focussed by calling the `.focus()` method
+
+---
+
+# Step 7: Solution
+
+```jsx
+useEffect(() => {
+  inputRef.current?.focus()
+}, [])
+
+```
+
+---
+
+# Step 7: Trying it out
+- Click on the "Show filters" button
+- The year input element will autofocus when it appears
+
+---
+
+# Step 8: Code splitting
+
+<div class="dense">
+- TODO info about code splitting
+</div>
+
+---
+
+# Step 8: Exercise 💻
+- Open the file `DetailedHelpBoxChallenge.js` in `src/challenges/step-08-code-splitting`
+- Instead of directly importing the `HelpBox` component lazy load it by using the React `lazy` HOC
+- Add a `Suspense` boundary and add a placeholder component with a "Loading..." message
+
+---
+
+# Step 8: Solution
+
+```jsx
+const DetailedHelpBox = React.lazy(() =>
+  import('../../components/DetailedHelpBox/DetailedHelpBox')
+)
+
+export const DetailedHelpBoxSolution = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DetailedHelpBox />
+    </Suspense>
+  )
+}
+```
+
+---
+
+# Step 8: Trying it out
+- Click on the "Show filters" button
+- The year input element will autofocus when it appears
+
+---
+
 
 # Thanks For Having Us!
 

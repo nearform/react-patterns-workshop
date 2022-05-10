@@ -21,7 +21,7 @@ export const FilterFormSolution = () => {
     <form onSubmit={handleSubmit}>
       <label>
         Year:
-        <input name="year" type="text" />
+        <input name="year" type="text" ref={inputRef} />
       </label>
       <input type="submit" value="Submit" />
     </form>
