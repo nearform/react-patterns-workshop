@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants'
 
 const FilterStateContext = React.createContext(null)
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { DialogContext } from '../../context/DialogContext.js'
+import { DialogContext } from '../../context/DialogContext'
 
 export const DialogProviderChallenge = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)

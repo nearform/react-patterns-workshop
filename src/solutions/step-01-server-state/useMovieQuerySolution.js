@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants'
 
 export const useMovieQuerySolution = ({ year = DEFAULT_YEAR }) => {
   const [isLoading, setIsLoading] = useState(true)

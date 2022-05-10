@@ -1,18 +1,18 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
+import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.js'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
+} from '../../solutions/step-02-context/FilterStateContextSolution'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { FilterFormWithStyledInputSolution } from '../../solutions/step-06-forwarding-refs/FilterFormWithStyledInputSolution'
-import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
-import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.js'
-import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.js'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
-import { useDialogContext } from '../../context/DialogContext.js'
+import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
+import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
+import { useDialogContext } from '../../context/DialogContext'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants'
 
 // TODO: add code here
 export const FilterStateProviderChallenge = ({ children }) => {

@@ -1,4 +1,4 @@
-import { DEFAULT_YEAR } from '../../constants.js'
+import { DEFAULT_YEAR } from '../../constants'
 
 export const useMovieQueryChallenge = ({ year = DEFAULT_YEAR }) => {
   return {

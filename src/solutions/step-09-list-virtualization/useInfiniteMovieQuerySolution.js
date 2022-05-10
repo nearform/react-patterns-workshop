@@ -1,4 +1,4 @@
-import { useInfiniteMovieQuery } from '../../hooks/useInfiniteMovieQuery.js'
+import { useInfiniteMovieQuery } from '../../hooks/useInfiniteMovieQuery'
 
 export const useInfiniteMovieQuerySolution = (
   filterState,

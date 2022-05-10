@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { DialogContext } from '../../context/DialogContext.js'
+import { DialogContext } from '../../context/DialogContext'
 
 export const DialogProviderSolution = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)

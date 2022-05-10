@@ -1,5 +1,5 @@
-import { Flex } from '../../components/Flex/Flex.js'
-import { Card } from '../../components/Card/Card.js'
+import { Flex } from '../../components/Flex/Flex'
+import { Card } from '../../components/Card/Card'
 import { memo } from 'react'
 
 export const MovieListChallenge = memo(function MovieListChallenge({

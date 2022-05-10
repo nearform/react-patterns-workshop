@@ -1,20 +1,20 @@
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.js'
-import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution.js'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
+} from '../../solutions/step-02-context/FilterStateContextSolution'
+import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
-import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
-import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
+import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution'
+import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
-import { useDialogContext } from '../../context/DialogContext.js'
-import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution.js'
-import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution.js'
-import { movieDbApi } from '../../backend/movieDbApi.js'
-import { DEFAULT_YEAR } from '../../constants.js'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
+import { useDialogContext } from '../../context/DialogContext'
+import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
+import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
+import { movieDbApi } from '../../backend/movieDbApi'
+import { DEFAULT_YEAR } from '../../constants'
 
 const MovieListContainer = ({ preloadedFirstPage }) => {
   const dialog = useDialogContext()

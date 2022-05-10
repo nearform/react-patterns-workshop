@@ -1,18 +1,18 @@
-import { MovieListWrapper } from '../components/MovieListContainer/MovieListWrapper.js'
-import { MovieListTitleChallenge } from '../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.js'
-import { ToggleFiltersButton } from '../components/ToggleFiltersButton/ToggleFiltersButton.js'
-import { MovieListChallenge } from '../challenges/step-09-list-virtualization/MovieListChallenge.js'
-import { DialogProviderChallenge } from '../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.js'
-import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge.js'
+import { MovieListWrapper } from '../components/MovieListContainer/MovieListWrapper'
+import { MovieListTitleChallenge } from '../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge'
+import { ToggleFiltersButton } from '../components/ToggleFiltersButton/ToggleFiltersButton'
+import { MovieListChallenge } from '../challenges/step-09-list-virtualization/MovieListChallenge'
+import { DialogProviderChallenge } from '../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge'
+import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import {
   FilterStateProviderChallenge,
   useFilterStateChallenge
-} from '../challenges/step-02-context/FilterStateProviderChallenge.js'
-import { FilterModalChallenge } from '../challenges/step-05-portals/FilterModalChallenge.js'
-import { FilterFormFinalChallenge } from '../challenges/step-12-third-party-libs/FilterFormFinalChallenge.js'
-import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
-import { useDialogContext } from '../context/DialogContext.js'
-import { useMovieQueryChallenge } from '../challenges/step-01-server-state/useMovieQueryChallenge.js'
+} from '../challenges/step-02-context/FilterStateProviderChallenge'
+import { FilterModalChallenge } from '../challenges/step-05-portals/FilterModalChallenge'
+import { FilterFormFinalChallenge } from '../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
+import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
+import { useDialogContext } from '../context/DialogContext'
+import { useMovieQueryChallenge } from '../challenges/step-01-server-state/useMovieQueryChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()

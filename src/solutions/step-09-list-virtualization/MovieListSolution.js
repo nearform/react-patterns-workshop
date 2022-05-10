@@ -1,7 +1,7 @@
 import InfiniteLoader from 'react-window-infinite-loader'
 import { FixedSizeList } from 'react-window'
-import { Flex } from '../../components/Flex/Flex.js'
-import { Card } from '../../components/Card/Card.js'
+import { Flex } from '../../components/Flex/Flex'
+import { Card } from '../../components/Card/Card'
 import AutoSizer from 'react-virtualized-auto-sizer'
 
 export const MovieListSolution = ({

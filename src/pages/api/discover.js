@@ -1,5 +1,5 @@
-import { movieDbApi } from '../../backend/movieDbApi.js'
-import { ensureIsArray } from '../../utils/ensureIsArray.js'
+import { movieDbApi } from '../../backend/movieDbApi'
+import { ensureIsArray } from '../../utils/ensureIsArray'
 
 const handler = async (req, res) => {
   const {
