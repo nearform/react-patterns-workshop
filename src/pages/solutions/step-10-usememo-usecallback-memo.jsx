@@ -13,6 +13,7 @@ import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/Toggle
 import { useDialogContext } from '../../context/DialogContext.js'
 import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
 import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -43,7 +44,7 @@ const MovieListContainer = () => {
 const Step10UseMemoUseCallbackMemo = () => {
   // TODO currently the dialog provider solution doesn't contrib to actual solution
   return (
-    <DialogProviderSolution>
+    <DialogProviderChallenge>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
@@ -53,7 +54,7 @@ const Step10UseMemoUseCallbackMemo = () => {
           <MovieListContainer />
         </FilterStateProviderSolution>
       </ErrorBoundarySolution>
-    </DialogProviderSolution>
+    </DialogProviderChallenge>
   )
 }
 

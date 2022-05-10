@@ -1,29 +1,46 @@
+import { MovieListWrapper } from '../components/MovieListContainer/MovieListWrapper.jsx'
+import { MovieListTitleChallenge } from '../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.jsx'
+import { ToggleFiltersButton } from '../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { MovieListChallenge } from '../challenges/step-09-list-virtualization/MovieListChallenge.js'
+import { DialogProviderChallenge } from '../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
+import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge.js'
 import {
   FilterStateProviderChallenge,
   useFilterStateChallenge
 } from '../challenges/step-02-context/FilterStateProviderChallenge.jsx'
-import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
-import { MovieListWrapper } from '../components/MovieListContainer/MovieListWrapper.jsx'
 import { FilterModalChallenge } from '../challenges/step-05-portals/FilterModalChallenge.js'
-import { FilterFormFinalChallenge } from '../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
+import { FilterFormFinalChallenge } from '../challenges/step-12-third-party-libs/FilterFormFinalChallenge.js'
 import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
-import { useInfiniteMovieQueryChallenge } from '../challenges/step-09-list-virtualization/useInfiniteMovieQueryChallenge.js'
-import { DialogProviderChallenge } from '../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
+import { useDialogContext } from '../context/DialogContext.js'
+import { useMovieQueryChallenge } from '../challenges/step-01-server-state/useMovieQueryChallenge.js'
 
 const MovieListContainer = () => {
+  const dialog = useDialogContext()
   const filterState = useFilterStateChallenge()
-  const movieQuery = useInfiniteMovieQueryChallenge(filterState)
+  const movieQuery = useMovieQueryChallenge(filterState)
 
   if (!movieQuery.data) {
     return null
   }
 
   return (
-    <MovieListWrapper year={filterState.year} queryData={movieQuery.data} />
+    <MovieListWrapper
+      title={<MovieListTitleChallenge filterState={filterState} />}
+      filterButton={
+        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+      }
+    >
+      <MovieListChallenge
+        items={movieQuery.data}
+        hasNextPage={movieQuery.hasNextPage}
+        isNextPageLoading={movieQuery.isLoading}
+        loadNextPage={movieQuery.loadNextPage}
+      />
+    </MovieListWrapper>
   )
 }
 
-const MovieExplorerApp = () => {
+const Step01ServerState = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundaryChallenge>
@@ -39,4 +56,4 @@ const MovieExplorerApp = () => {
   )
 }
 
-export default MovieExplorerApp
+export default Step01ServerState
