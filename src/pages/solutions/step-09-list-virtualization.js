@@ -1,23 +1,23 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
+} from '../../solutions/step-02-context/FilterStateContextSolution.js'
+import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution.js'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
+import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
-import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
-import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
-import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.jsx'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
+import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.js'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.js'
 import { useDialogContext } from '../../context/DialogContext.js'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQuerySolution(filterState)
+  const movieQuery = useInfiniteMovieQuerySolution(filterState)
 
   if (!movieQuery.data) {
     return null
@@ -30,7 +30,7 @@ const MovieListContainer = () => {
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
     >
-      <MovieListChallenge
+      <MovieListSolution
         items={movieQuery.data}
         hasNextPage={movieQuery.hasNextPage}
         isNextPageLoading={movieQuery.isLoading}
@@ -40,14 +40,14 @@ const MovieListContainer = () => {
   )
 }
 
-const Step08CodeSplitting = () => {
+const Step09ListVirtualization = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
-            <FilterFormWithAutofocusSolution />
-            <DetailedHelpBoxChallenge />
+            <FilterFormSolution />
+            <CodeSplittingSolution />
           </FilterModalSolution>
           <MovieListContainer />
         </FilterStateProviderSolution>
@@ -56,4 +56,4 @@ const Step08CodeSplitting = () => {
   )
 }
 
-export default Step08CodeSplitting
+export default Step09ListVirtualization

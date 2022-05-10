@@ -1,4 +1,4 @@
-import DetailedHelpBox from '../../components/DetailedHelpBox/DetailedHelpBox.jsx'
+import DetailedHelpBox from '../../components/DetailedHelpBox/DetailedHelpBox.js'
 
 export const DetailedHelpBoxChallenge = () => {
   return <DetailedHelpBox />

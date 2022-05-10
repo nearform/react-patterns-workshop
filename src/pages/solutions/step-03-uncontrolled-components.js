@@ -1,17 +1,17 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution.js'
+import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
+} from '../../solutions/step-02-context/FilterStateContextSolution.js'
+import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution.js'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
-import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge.js'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
-import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.jsx'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.js'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.js'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
 import { useDialogContext } from '../../context/DialogContext.js'
 
 const MovieListContainer = () => {
@@ -40,13 +40,13 @@ const MovieListContainer = () => {
   )
 }
 
-const Step02Context = () => {
+const Step03UncontrolledComponents = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundaryChallenge>
         <FilterStateProviderSolution>
           <FilterModalChallenge>
-            <FilterFormFinalChallenge />
+            <FilterFormSolution />
             <DetailedHelpBoxChallenge />
           </FilterModalChallenge>
           <MovieListContainer />
@@ -56,4 +56,4 @@ const Step02Context = () => {
   )
 }
 
-export default Step02Context
+export default Step03UncontrolledComponents

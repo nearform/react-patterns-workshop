@@ -1,19 +1,18 @@
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
+} from '../../solutions/step-02-context/FilterStateContextSolution.js'
+import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution.js'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { CodeSplittingSolution } from '../../solutions/step-08-code-splitting/CodeSplittingSolution.js'
 import { useInfiniteMovieQuerySolution } from '../../solutions/step-09-list-virtualization/useInfiniteMovieQuerySolution.js'
 import { MovieListSolution } from '../../solutions/step-09-list-virtualization/MovieListSolution.js'
 import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
 import { useDialogContext } from '../../context/DialogContext.js'
-import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution'
-import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge'
+import { MovieListTitleSolution } from '../../solutions/step-10-usememo-usecallback-memo/MovieListTitleSolution.js'
+import { DialogProviderSolution } from '../../solutions/step-10-usememo-usecallback-memo/DialogProviderSolution.js'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -41,10 +40,10 @@ const MovieListContainer = () => {
   )
 }
 
-const Step10UseMemoUseCallbackMemo = () => {
+const Step10UsememoUsecallbackMemo = () => {
   // TODO currently the dialog provider solution doesn't contrib to actual solution
   return (
-    <DialogProviderChallenge>
+    <DialogProviderSolution>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
@@ -54,8 +53,8 @@ const Step10UseMemoUseCallbackMemo = () => {
           <MovieListContainer />
         </FilterStateProviderSolution>
       </ErrorBoundarySolution>
-    </DialogProviderChallenge>
+    </DialogProviderSolution>
   )
 }
 
-export default Step10UseMemoUseCallbackMemo
+export default Step10UsememoUsecallbackMemo

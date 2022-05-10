@@ -84,7 +84,7 @@ npm run build
 - Read through the source code (includes helpful comments throughout)
 
 #### For example
-The first solution can be viewed here: `src/pages/solutions/step-01-server-state.jsx`
+The first solution can be viewed here: `src/pages/solutions/step-01-server-state.js`
 
 ---
 

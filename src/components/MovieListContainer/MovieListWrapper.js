@@ -1,4 +1,4 @@
-import { Flex } from '../Flex/Flex.jsx'
+import { Flex } from '../Flex/Flex.js'
 import styles from './MovieListWrapper.module.css'
 import PropTypes from 'prop-types'
 

@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 
 const DetailedHelpBox = React.lazy(() =>
-  import('../../components/DetailedHelpBox/DetailedHelpBox.jsx')
+  import('../../components/DetailedHelpBox/DetailedHelpBox.js')
 )
 
 export const CodeSplittingSolution = () => {

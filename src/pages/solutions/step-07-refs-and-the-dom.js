@@ -2,27 +2,22 @@ import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useM
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution.jsx'
-import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.jsx'
+} from '../../solutions/step-02-context/FilterStateContextSolution.js'
+import { MovieListWrapper } from '../../components/MovieListContainer/MovieListWrapper.js'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { useEffect } from 'react'
-import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge.js'
-import { FilterFormFinalChallenge } from '../../challenges/step-12-third-party-libs/FilterFormFinalChallenge'
+import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution.js'
+import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge.js'
 import { MovieListChallenge } from '../../challenges/step-09-list-virtualization/MovieListChallenge.js'
-import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.jsx'
-import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.jsx'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.jsx'
+import { DialogProviderChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/DialogProviderChallenge.js'
+import { MovieListTitleChallenge } from '../../challenges/step-10-useMemo-useCallback-memo/MovieListTitleChallenge.js'
+import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton.js'
 import { useDialogContext } from '../../context/DialogContext.js'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
-
-  useEffect(() => {
-    throw new Error("I'm an error")
-  }, [])
 
   if (!movieQuery.data) {
     return null
@@ -45,15 +40,15 @@ const MovieListContainer = () => {
   )
 }
 
-const Step04ErrorBoundaries = () => {
+const Step07RefsAndTheDom = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
-          <FilterModalChallenge>
-            <FilterFormFinalChallenge />
+          <FilterModalSolution>
+            <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxChallenge />
-          </FilterModalChallenge>
+          </FilterModalSolution>
           <MovieListContainer />
         </FilterStateProviderSolution>
       </ErrorBoundarySolution>
@@ -61,4 +56,4 @@ const Step04ErrorBoundaries = () => {
   )
 }
 
-export default Step04ErrorBoundaries
+export default Step07RefsAndTheDom
