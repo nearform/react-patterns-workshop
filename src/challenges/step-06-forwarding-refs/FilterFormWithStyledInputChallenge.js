@@ -1,4 +1,4 @@
-import { FilterFormChallenge } from '../step-03-uncontrolled-components/FilterFormChallenge'
+import { FilterFormChallenge } from '../step-05-uncontrolled-components/FilterFormChallenge'
 
 // Initially this will trigger an error. We will fix it in this step by forwarding
 // refs.

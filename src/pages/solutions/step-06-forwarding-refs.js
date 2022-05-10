@@ -5,7 +5,7 @@ import {
 } from '../../solutions/step-02-context/FilterStateContextSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { FilterFormWithStyledInputSolution } from '../../solutions/step-06-forwarding-refs/FilterFormWithStyledInputSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'

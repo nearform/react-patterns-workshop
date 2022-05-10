@@ -3,10 +3,10 @@ import {
   FilterStateProviderSolution,
   useFilterStateSolution
 } from '../../solutions/step-02-context/FilterStateContextSolution'
-import { FilterFormSolution } from '../../solutions/step-03-uncontrolled-components/FilterFormSolution'
+import { FilterFormSolution } from '../../solutions/step-05-uncontrolled-components/FilterFormSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { FilterModalSolution } from '../../solutions/step-05-portals/FilterModalSolution'
+import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
 import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
@@ -33,7 +33,7 @@ const MovieListContainer = () => {
   )
 }
 
-const Step05Portals = () => {
+const Step03Portals = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundarySolution>
@@ -49,4 +49,4 @@ const Step05Portals = () => {
   )
 }
 
-export default Step05Portals
+export default Step03Portals

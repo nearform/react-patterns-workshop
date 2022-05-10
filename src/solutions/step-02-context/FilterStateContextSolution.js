@@ -17,6 +17,7 @@ export const FilterStateProviderSolution = ({ children }) => {
     </FilterStateContext.Provider>
   )
 }
+
 export const useFilterStateSolution = () => {
   return useContext(FilterStateContext)
 }

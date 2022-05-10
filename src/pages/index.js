@@ -7,7 +7,7 @@ import {
   FilterStateProviderChallenge,
   useFilterStateChallenge
 } from '../challenges/step-02-context/FilterStateProviderChallenge'
-import { FilterModalChallenge } from '../challenges/step-05-portals/FilterModalChallenge'
+import { FilterModalChallenge } from '../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useDialogContext } from '../context/DialogContext'
 import { useMovieQueryChallenge } from '../challenges/step-01-server-state/useMovieQueryChallenge'

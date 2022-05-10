@@ -1,21 +1,21 @@
+import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
 import {
-  FilterStateProviderChallenge,
-  useFilterStateChallenge
-} from '../../challenges/step-02-context/FilterStateProviderChallenge'
+  FilterStateProviderSolution,
+  useFilterStateSolution
+} from '../../solutions/step-02-context/FilterStateContextSolution'
+import { FilterFormSolution } from '../../solutions/step-05-uncontrolled-components/FilterFormSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
-import { FilterModalChallenge } from '../../challenges/step-05-portals/FilterModalChallenge'
+import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
 import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
-import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
-  const filterState = useFilterStateChallenge()
+  const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
 
   if (!movieQuery.data) {
@@ -33,20 +33,20 @@ const MovieListContainer = () => {
   )
 }
 
-const Step01ServerState = () => {
+const Step05UncontrolledComponents = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundaryChallenge>
-        <FilterStateProviderChallenge>
+        <FilterStateProviderSolution>
           <FilterModalChallenge>
-            <FilterFormWithAutofocusChallenge />
+            <FilterFormSolution />
             <DetailedHelpBoxChallenge />
           </FilterModalChallenge>
           <MovieListContainer />
-        </FilterStateProviderChallenge>
+        </FilterStateProviderSolution>
       </ErrorBoundaryChallenge>
     </DialogProviderChallenge>
   )
 }
 
-export default Step01ServerState
+export default Step05UncontrolledComponents

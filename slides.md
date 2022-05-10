@@ -45,7 +45,6 @@ lineNumbers: false
 #### Requirements
 
 - Node LTS
-- npm >= 7
 
 #### Setup
 
@@ -68,7 +67,7 @@ npm run build
 - This workshop is made of multiple, incremental modules
 - Each module builds on top of the previous one
 - At each step you are asked to add features and solve problems
-- You will find the solution to each step in the `src/pages/solutions/step-{n}-{name}.js` file
+- You will find the solution to each step in the `src/solutions/step-{n}-{name}` folder
 - When the project is running you can visit these pages at `http://localhost:3000/solutions/step-{n}-{name}`
 - The 🏆 icon indicates bonus features
 - The 💡 icon indicates hints
@@ -79,22 +78,20 @@ npm run build
 
 # Viewing the solutions
 
-- Open `src/pages/solutions/step-{n}-{name}.js`
+- Open the `src/solutions/step-{n}-{name}` directory
 
 - Read through the source code (includes helpful comments throughout)
 
 #### For example
-The first solution can be viewed here: `src/pages/solutions/step-01-server-state.js`
+The first solution can be viewed here: `src/pages/solutions/step-01-custom-hook.js`
 
 ---
 
-# Step 1: Server state
+# Step 1: Custom hooks
 
 <div class="dense">
 
-- A common concern in developing modern React apps is managing server state
-- A good approach to this is to use a tool designed for the job
-- A good example of this is (react-query)[https://react-query.tanstack.com/]
+- TODO add intro about using a custom hook
 
 </div>
 
@@ -104,51 +101,45 @@ The first solution can be viewed here: `src/pages/solutions/step-01-server-state
 
 <div class="dense">
 
-Use react query to fetch the most popular action movies from 2022
+Write a custom hook to query the most popular action movies from 2022
 
-- The url to call is "/api/discover?year=2022&genre=28&order_by=popularity.desc&page=1"
-- The hook to use is useQuery and this takes an identifier key and an async function
-- List the titles of the movies in a list
-- Bonus: show an image of each movie
+- Open the file `useMovieQueryChallenge.js` in `src/challenges/step-01-server-state`
+- Use the fetch api to call "/api/discover?year=2022&page=1"
+- You will need to use `useState` and `useEffect` 
+- The hook should accept the current year as an argument and return: 
+  - The list of movies
+  - The loading status of the request
 
 </div>
 
 ---
 
-# Step 1: Solution /1
+# Step 1: Solution
 
 ```jsx
-// 01-server-state.jsx
-const Step1ServerState = () => {
-  const discoverQuery = useQuery(['discovery'], () =>
-    fetch('/api/discover?page=1&year=2020&genre=Action').then(response =>
-      response.json()
-    )
-  )
+const [isLoading, setIsLoading] = useState(true)
+const [movieData, setMovieData] = useState()
 
-  if (!discoverQuery.data) {
-    return null
+useEffect(() => {
+  const fetchData = async () => {
+    setIsLoading(true)
+    try {
+      const response = await fetch(
+        `/api/movies?year=${year}`
+      )
+      const data = await response.json()
+      setMovieData(data.results)
+    } finally {
+      setIsLoading(false)
+    }
   }
-```
+  fetchData()
+}, [year])
 
----
-
-
-# Step 1: Solution /2
-
-```jsx
-  return (
-  <ul>
-    {discoverQuery.data.results.map(result => (
-      <li key={result.id}>
-        <h3>{result.title}</h3>
-        <img src={result.image} alt={result.title} width={100} height={100}/>
-      </li>
-    ))}
-  </ul>
-)
+return {
+  data: movieData,
+  isLoading
 }
-export default Step01ServerState
 ```
 
 ---
@@ -162,24 +153,198 @@ export default Step01ServerState
 
 ---
 
-# Step 2: Global state with query params
+# Step 2: Context
 
 <div class="dense">
-
-- Often developers reach for redux or the React context api to manage global state
-- Sometimes there are more suitable options that can be overlooked
-- Here we will explore using url query parameters to share state between components
-
+- TODO info about the context api
 </div>
 
 ---
 
+# Step 2: Exercise 💻
+- Open the file `FilterStateProviderChallenge.js` in `src/challenges/step-02-context`
+- Use the `createContext` function from React to create a context for the filter state
+- In the provider component setup a value that has the `year` and a `setYear` function
+- In the hook, use the `useContext` hook to replace the hardcoded values
+
+---
+
+# Step 2: Solution
+
+```jsx
+const FilterStateContext = React.createContext(null)
+
+export const FilterStateProviderSolution = ({ children }) => {
+  const [state, setState] = useState({ year: DEFAULT_YEAR })
+
+  const value = {
+    year: state.year,
+    setYear: year => setState({ year })
+  }
+
+  return (
+    <FilterStateContext.Provider value={value}>
+      {children}
+    </FilterStateContext.Provider>
+  )
+}
+
+export const useFilterStateSolution = () => {
+  return useContext(FilterStateContext)
+}
+```
+---
+
 # Step 2: Trying it out
 
-- Run `npm run dev` in your terminal
-- Go to `http://localhost:3000?year=1985` in your web browser
+- Change the default year that's being setup in state
+- Observe that the list of movies updates to reflect these changes
+- This demonstrates that the filter data is being propogated throughout the app
 
-<img src="/images/screenshot-step-01.png" />
+---
+
+# Step 3: Portals
+
+<div class="dense">
+- TODO info about portals and when to use
+</div>
+
+---
+
+# Step 3: Exercise 💻
+- Open the file `FilterModalChallenge.js` in `src/challenges/step-03-portals`
+- Instead of directly returning the `ModalContainer` surround it in the `createPortal` HOC
+- A div with the id `modal` has been setup already to be used as target dom element for the modal
+
+---
+
+# Step 3: Solution
+
+```jsx
+export const FilterModalChallenge = ({ children }) => {
+  if (typeof window !== 'undefined') {
+    return createPortal(
+      <ModalContainer>{children}</ModalContainer>,
+      document.getElementById('modal')
+    )
+  }
+  return null
+}
+```
+
+---
+
+# Step 3: Trying it out
+- Click on the "Show filters" button
+- Observe that the modal now shows correctly above all other page content
+
+---
+
+# Step 4: Error boundary
+
+<div class="dense">
+- TODO info about error boundaries
+</div>
+
+---
+
+# Step 4: Exercise 💻
+- Open the file `ErrorBoundariesChallenge.js` in `src/challenges/step-04-error-boundaries`
+- Create an error boundary class component by copying and pasting the boilerplate code from https://reactjs.org/docs/error-boundaries.html 
+- Create a custom message to show when an error occurs
+- Use this to surround the `children` in `ErrorBoundaryChallenge`
+
+---
+
+# Step 4: Solution
+
+```jsx
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { hasError: false }
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+  componentDidCatch(error, errorInfo) {
+    console.error(error, errorInfo)
+  }
+  render() {
+    if (this.state.hasError) {
+      return <h1>Something went wrong!!!</h1>
+    }
+    return this.props.children
+  }
+}
+
+export const ErrorBoundarySolution = ({ children }) => {
+  return <ErrorBoundary>{children}</ErrorBoundary>
+}
+```
+
+---
+
+# Step 4: Trying it out
+- Add `ExampleComponentWithError` as a sibling of `children` in the `ErrorBoundaryChallenge` component
+- Load the page
+- Observe that the error is now caught and will display your custom component if this happens
+- Remove the `ExampleComponentWithError` before proceeding to allow the app to run as normal
+---
+
+# Step 5: Uncontrolled components
+
+<div class="dense">
+- TODO info about uncontrolled components
+</div>
+
+---
+
+# Step 5: Exercise 💻
+- Open the file `FilterFormChallenge.js` in `src/challenges/step-05-uncontrolled-components`
+- Create a form input of type text with name `year`
+- Create a ref using `useRef`
+- Add an event handler to the form for the `onSubmit` event
+- In this read the current value from the year input ref
+- Use this value to update the filter state using the hook from the previous step
+
+---
+
+# Step 5: Trying it out
+- Click on the "Show filters" button
+- Type a year into the text box
+- Click submit
+- The list of movies should change to show movies from the year you entered
+
+---
+
+# Step 6: Forwarding refs
+
+<div class="dense">
+- TODO info about uncontrolled components
+</div>
+
+---
+
+# Step 6: Before you start
+- This step builds upon the form you created in the last step
+- Copy and paste the code from the form into the form component in `FilterFormWithStyledInputChallenge.js` 
+- If you didn't manage to complete the last step please copy and paste the code from  `FilterFormSolution.js` in `src/solutions/step-05-uncontrolled-components`
+
+---
+
+# Step 6: Exercise 💻
+- Open the file `FilterFormWithStyledInputChallenge.js` in `src/challenges/step-06-forwarding-refs`
+- Replace the year input component with the `FancyInput` component
+- Fix the error output by React by wrapping your `FancyInput` component in the `forwardRef` component
+- Refer to the React docs for the exact api: https://reactjs.org/docs/forwarding-refs.html 
+
+---
+
+# Step 6: Trying it out
+- Click on the "Show filters" button
+- You will see the input component now has a custom styling
+- But also allows access to the underlying dom element
 
 ---
 
