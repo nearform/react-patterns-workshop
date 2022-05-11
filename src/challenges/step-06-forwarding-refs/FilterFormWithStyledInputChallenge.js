@@ -17,7 +17,7 @@ const FancyInput = props => {
 }
 
 export const FilterFormWithStyledInputChallenge = () => {
-  // To get started copy and paste the code from step 3 and paste in here
+  // To get started copy and paste the code from the previous step
   // and amend it to use our `FancyInput` instead of the plain input
   return <FilterFormChallenge />
 }

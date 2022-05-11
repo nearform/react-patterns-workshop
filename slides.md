@@ -101,43 +101,16 @@ Write a custom hook to query the most popular action movies from the current yea
 
 - Implement filters for the list of movies
 - Use the `createContext` function from React to create a context for the filter state
-- In the provider component, setup a value that has a `year` numeric value and a `setYear` function
+- In the provider component, setup a value that has a `year` numeric value and a `setYear` function and wrap the children in the context provider
 - In the hook, use the `useContext` hook to replace the hardcoded values
-
----
-
-# Step 2: Solution
-
-```jsx
-const FilterStateContext = React.createContext(null)
-
-export const FilterStateProviderSolution = ({ children }) => {
-  const [state, setState] = useState({ year: DEFAULT_YEAR })
-
-  const value = {
-    year: state.year,
-    setYear: year => setState({ year })
-  }
-
-  return (
-    <FilterStateContext.Provider value={value}>
-      {children}
-    </FilterStateContext.Provider>
-  )
-}
-
-export const useFilterStateSolution = () => {
-  return useContext(FilterStateContext)
-}
-```
 
 ---
 
 # Step 2: Trying it out
 
-- Change the default year that's being setup in state
+- Change the default year that's being setup in state in the JS code
 - Observe that the list of movies updates to reflect these changes
-- This demonstrates that the filter data is being propogated throughout the app
+- This demonstrates that the filter data is being propagated throughout the app
 
 ---
 
@@ -146,8 +119,8 @@ export const useFilterStateSolution = () => {
 <div class="dense">
 
 - Components are usually rendered by React as children of other components with a shared parent in the DOM
-- It is sometimes necessary to render components outisde of this hierarchy (e.g. for alert dialogues)
-- `Portals` make it possible to render components inside different parent components in the DOM
+- It is sometimes necessary to render components outside of this hierarchy (e.g. for message dialogs)
+- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components inside different parent components in the DOM
 
 </div>
 
@@ -155,42 +128,25 @@ export const useFilterStateSolution = () => {
 
 # Step 3: Exercise 💻
 
-- Open the file `FilterModalChallenge.js` in `src/challenges/step-03-portals`
-- Instead of directly returning the `ModalContainer` surround it in the `createPortal` HOC
-- A div with the id `modal` has been setup already to be used as target dom element for the modal
-
----
-
-# Step 3: Solution
-
-```jsx
-export const FilterModalChallenge = ({ children }) => {
-  if (typeof window !== 'undefined') {
-    return createPortal(
-      <ModalContainer>{children}</ModalContainer>,
-      document.getElementById('modal')
-    )
-  }
-  return null
-}
-```
+- Instead of directly returning the `ModalContainer` component, surround it in the `createPortal` built-in Higher Order Component (HOC)
+- A div with the id `modal` has been setup already to be used as target DOM element for the modal. Check it out in `src/pages/_document.js`
 
 ---
 
 # Step 3: Trying it out
 
 - Click on the "Show filters" button
-- Observe that the modal now shows correctly above all other page content
+- Observe that the modal shows correctly above all other page content
 
 ---
 
-# Step 4: Error boundary
+# Step 4: Error boundaries
 
 <div class="dense">
 
 - Errors in a React component can cause the whole application to break
 - We can improve the user experience by catching the error early, and showing an error state when a component in our application encounters a problem
-- In React this can be achieved using `error boundaries`
+- In React this can be achieved using [error boundaries](https://reactjs.org/docs/error-boundaries.html)
 
 </div>
 
@@ -198,39 +154,9 @@ export const FilterModalChallenge = ({ children }) => {
 
 # Step 4: Exercise 💻
 
-- Open the file `ErrorBoundariesChallenge.js` in `src/challenges/step-04-error-boundaries`
-- Create an error boundary class component by copying and pasting the boilerplate code from https://reactjs.org/docs/error-boundaries.html
+- Create an error boundary class component by copying and pasting the boilerplate code from [error boundaries](https://reactjs.org/docs/error-boundaries.html)
 - Create a custom message to show when an error occurs
 - Use this to surround the `children` in `ErrorBoundaryChallenge`
-
----
-
-# Step 4: Solution
-
-```jsx
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-  static getDerivedStateFromError() {
-    return { hasError: true }
-  }
-  componentDidCatch(error, errorInfo) {
-    console.error(error, errorInfo)
-  }
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong!!!</h1>
-    }
-    return this.props.children
-  }
-}
-
-export const ErrorBoundarySolution = ({ children }) => {
-  return <ErrorBoundary>{children}</ErrorBoundary>
-}
-```
 
 ---
 
@@ -251,7 +177,7 @@ export const ErrorBoundarySolution = ({ children }) => {
 - In controlled components, React manages the form data
 - This is not always desirable or possible (e.g. for file input data)
 - Instead, we can create uncontrolled components
-- The form's data is then managed by the DOM and can be accessed using `refs`
+- The form's data is then managed by the DOM and can be accessed using React [refs](https://reactjs.org/docs/refs-and-the-dom.html)
 
 </div>
 
@@ -259,52 +185,11 @@ export const ErrorBoundarySolution = ({ children }) => {
 
 # Step 5: Exercise 💻
 
-- Open the file `FilterFormChallenge.js` in `src/challenges/step-05-uncontrolled-components`
-- Create a form input of type text with name `year`
-- Create a ref using `useRef`
+- Create a form containing a text input field with name `year`
+- Create a ref using `useRef` and assign it to the input field
 - Add an event handler to the form for the `onSubmit` event
 - In this read the current value from the year input ref
-- Use this value to update the filter state using the hook from the previous step
-
----
-
-# Step 5: Solution /1
-
-```jsx
-export const FilterFormSolution = () => {
-  const filterState = useFilterStateSolution()
-  const inputRef = useRef()
-
-  const handleSubmit = event => {
-    // TODO: consider using FormData
-    event.preventDefault()
-    if (!inputRef.current.value) {
-      return
-    }
-    const parsed = Number(inputRef.current.value)
-    if (Number.isInteger(parsed)) {
-      filterState.setYear(parsed)
-    }
-  }
-```
-
----
-
-# Step 5: Solution /2
-
-```jsx
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Year:
-        <input name="year" type="text" ref={inputRef} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  )
-}
-```
+- Use this value to update the filter state using the `useFilterStateChallenge` hook from the previous steps
 
 ---
 
@@ -314,6 +199,7 @@ export const FilterFormSolution = () => {
 - Type a year into the text box
 - Click submit
 - The list of movies should change to show movies from the year you entered
+- Notice that the component doesn't rerender when typing in the input box
 
 ---
 
@@ -321,10 +207,10 @@ export const FilterFormSolution = () => {
 
 <div class="dense">
 
-- We've previously used `refs` to access form data in an uncontrolled component
+- We've previously used `refs` to access the value of an uncontrolled component
 - It is sometimes useful for a parent component to define a ref and pass it to a child component
 - This gives the parent access to the ref that is assigned to a child component
-- React provides `forwardRef` to help achieve this
+- React provides [forwardRef](https://reactjs.org/docs/forwarding-refs.html) to help achieve this
 
 </div>
 
@@ -334,37 +220,14 @@ export const FilterFormSolution = () => {
 
 - This step builds upon the form you created in the last step
 - Copy and paste the code from the form component in `FilterFormChallenge.js` into the form component in `FilterFormWithStyledInput.js`
-- If you didn't manage to complete the last step please copy and paste the code from `FilterFormSolution.js` in `src/solutions/step-05-uncontrolled-components`
+- If you didn't manage to complete the last step you can copy and paste the code from `FilterFormSolution.js` instead
 
 ---
 
 # Step 6: Exercise 💻
 
-- Open the file `FilterFormWithStyledInputChallenge.js` in `src/challenges/step-06-forwarding-refs`
 - Replace the year input component with the `FancyInput` component
 - Fix the error output by React by wrapping your `FancyInput` component in the `forwardRef` component
-- Refer to the React docs for the exact api: https://reactjs.org/docs/forwarding-refs.html
-
----
-
-# Step 6: Solution
-
-```jsx
-const FancyInput = forwardRef(function FancyInput(props, ref) {
-  return (
-    <input
-      {...props}
-      ref={ref}
-      style={{
-        padding: '16px',
-        fontWeight: 'bold',
-        border: '1px solid azure',
-        fontSize: '24px'
-      }}
-    />
-  )
-})
-```
 
 ---
 
@@ -372,7 +235,7 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
 
 - Click on the "Show filters" button
 - You will see the input component now has a custom styling
-- But also allows access to the underlying dom element
+- But also allows access to the underlying DOM element
 
 ---
 
@@ -392,26 +255,15 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
 
 - This step builds upon the form you created in the last step
 - Copy and paste the code from the form component in `FilterFormWithStyledInputChallenge.js` into the form component in `FilterFormWithAutofocusChallenge.js`
-- If you didn't manage to complete the last step please copy and paste the code from `FilterFormWithStyledInputSolution.js` in `src/solutions/step-06-forwarding-refs`
+- If you didn't manage to complete the last step you can copy and paste the code from `FilterFormWithStyledInputSolution.js` instead
 
 ---
 
 # Step 7: Exercise 💻
 
-- Open the file `FilterFormWithAutofocusChallenge.js` in `src/challenges/step-06-refs-and-the-dom`
 - Make the year input element autofocus when it appears
-- 💡 You will need to use `useEffect` along with the input ref created in a previous step
-- 💡 An input element can be focussed by calling the `.focus()` method
-
----
-
-# Step 7: Solution
-
-```jsx
-useEffect(() => {
-  inputRef.current?.focus()
-}, [])
-```
+- 💡 You will need to use `useEffect` along with the input ref created in the previous step
+- 💡 An input element can be focused by calling the `.focus()` method on it
 
 ---
 
@@ -426,7 +278,7 @@ useEffect(() => {
 
 <div class="dense">
 
-- Code splitting allows us to optimise the initial bundle size of our app
+- Code splitting allows us to optimize the initial bundle size of our app
 - Using `React.lazy` and `Suspense` we can delay modules from loading until they are needed by our app
 
 </div>

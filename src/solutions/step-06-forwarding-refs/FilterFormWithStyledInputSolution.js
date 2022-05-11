@@ -22,7 +22,9 @@ export const FilterFormWithStyledInputSolution = () => {
 
   const handleSubmit = event => {
     event.preventDefault()
+
     const parsed = Number(inputRef.current.value)
+
     if (Number.isInteger(parsed)) {
       filterState.setYear(parsed)
     }

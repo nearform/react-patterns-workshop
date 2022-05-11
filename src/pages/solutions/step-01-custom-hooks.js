@@ -33,7 +33,7 @@ const MovieListContainer = () => {
   )
 }
 
-const Step01CustomHook = () => {
+const Step01CustomHooks = () => {
   return (
     <DialogProviderChallenge>
       <ErrorBoundaryChallenge>
@@ -49,4 +49,4 @@ const Step01CustomHook = () => {
   )
 }
 
-export default Step01CustomHook
+export default Step01CustomHooks

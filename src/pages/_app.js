@@ -1,4 +1,5 @@
 import 'modern-normalize/modern-normalize.css'
+import './index.css'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import { NextQueryParamProvider } from 'next-query-params'
 

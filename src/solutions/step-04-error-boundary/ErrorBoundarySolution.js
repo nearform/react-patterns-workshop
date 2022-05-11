@@ -1,6 +1,5 @@
-// Basic code structure can be found here https://reactjs.org/docs/error-boundaries.html
 import React from 'react'
-import { ExampleComponentWithErrror } from '../../components/ExampleComponentWithError/ExampleComponentWithError'
+import { ExampleComponentWithError } from '../../components/ExampleComponentWithError/ExampleComponentWithError'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -32,7 +31,7 @@ export const ErrorBoundarySolution = ({ children }) => {
   return (
     <ErrorBoundary>
       {/* Uncomment below to trigger error */}
-      {/*<ExampleComponentWithErrror />*/}
+      {/*<ExampleComponentWithError />*/}
       {children}
     </ErrorBoundary>
   )

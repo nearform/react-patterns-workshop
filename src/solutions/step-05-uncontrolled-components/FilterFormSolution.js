@@ -6,12 +6,14 @@ export const FilterFormSolution = () => {
   const inputRef = useRef()
 
   const handleSubmit = event => {
-    // TODO: consider using FormData
     event.preventDefault()
+
     if (!inputRef.current.value) {
       return
     }
+
     const parsed = Number(inputRef.current.value)
+
     if (Number.isInteger(parsed)) {
       filterState.setYear(parsed)
     }
