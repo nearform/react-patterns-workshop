@@ -399,7 +399,7 @@ const FancyInput = forwardRef(function FancyInput (props, ref) {
   )
 })
 ```
-
+---
 
 # Step 6: Trying it out
 - Click on the "Show filters" button
