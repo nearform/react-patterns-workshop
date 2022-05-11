@@ -1,0 +1,28 @@
+.button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  font-weight: bold;
+  border-radius: 9999px;
+}
+
+.primary {
+  padding: 0.5rem 2rem;
+  background: yellowgreen;
+  font-size: 1.1em;
+  color: black;
+}
+
+.secondary {
+  padding: 0.25rem 1rem;
+  border: 2px solid yellowgreen;
+  color: darkgreen;
+  background: white;
+}
+
+.ghost {
+  opacity: 0.75;
+  font-size: 0.8em;
+}

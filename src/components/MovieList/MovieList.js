@@ -13,9 +13,9 @@ export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
     <div className={clsx(styles.container, isDarkMode && styles.darkMode)}>
       <Flex>
         <h1>Movies {year && `from ${year}`}</h1>
-        <div>
+        <Flex>
           {toggleDarkModeButton} {filterButton}
-        </div>
+        </Flex>
       </Flex>
       <Stack>
         {items.map(result => (

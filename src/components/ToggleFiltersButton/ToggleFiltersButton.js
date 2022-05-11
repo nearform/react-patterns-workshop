@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
+import { Button } from '../Button/Button'
 
 export const ToggleFiltersButton = ({ onToggle, isOpen }) => {
   return (
-    <button onClick={onToggle}>
+    <Button variant="primary" onClick={onToggle}>
       {isOpen ? 'Hide filters' : 'Show filters'}
-    </button>
+    </Button>
   )
 }
 
