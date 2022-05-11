@@ -7,10 +7,9 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
       {...props}
       ref={ref}
       style={{
-        padding: '16px',
+        padding: 8,
         fontWeight: 'bold',
-        border: '1px solid azure',
-        fontSize: '24px'
+        border: '1px solid grey'
       }}
     />
   )
