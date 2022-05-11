@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { Card } from '../Card/Card'
 import clsx from 'clsx'
 import { useTheme } from '../../context/ThemeContext'
+import { Stack } from '../Stack/Stack'
 
 export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
   const { isDarkMode } = useTheme()
@@ -16,8 +17,7 @@ export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
           {toggleDarkModeButton} {filterButton}
         </div>
       </Flex>
-      {}
-      <div>
+      <Stack>
         {items.map(result => (
           <Card key={result.id}>
             <Flex>
@@ -31,7 +31,7 @@ export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
             </Flex>
           </Card>
         ))}
-      </div>
+      </Stack>
       )
     </div>
   )
