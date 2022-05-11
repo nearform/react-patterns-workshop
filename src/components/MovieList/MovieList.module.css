@@ -4,3 +4,8 @@
   flex-direction: column;
   position: relative;
 }
+
+.darkMode {
+  color: #f7f9fa;
+  background: #000000;
+}

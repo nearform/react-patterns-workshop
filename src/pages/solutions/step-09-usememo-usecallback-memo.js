@@ -12,6 +12,8 @@ import { MovieListTitleSolution } from '../../solutions/step-09-usememo-usecallb
 import { DialogProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/DialogProviderSolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
+import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
+import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -29,6 +31,7 @@ const MovieListContainer = () => {
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
+      toggleDarkModeButton={<DarkModeButtonSolution />}
     />
   )
 }
@@ -43,7 +46,9 @@ const Step09UsememoUsecallbackMemo = () => {
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <MovieListContainer />
+          <ThemeProviderSolution>
+            <MovieListContainer />
+          </ThemeProviderSolution>
         </FilterStateProviderSolution>
       </ErrorBoundarySolution>
     </DialogProviderSolution>

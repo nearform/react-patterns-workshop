@@ -2,13 +2,24 @@ import { Flex } from '../Flex/Flex'
 import styles from './MovieList.module.css'
 import PropTypes from 'prop-types'
 import { Card } from '../Card/Card'
+import clsx from 'clsx'
+import { useTheme } from '../../context/ThemeContext'
 
-export function MovieList({ title, filterButton, items }) {
+export function MovieList({
+  title,
+  filterButton,
+  toggleDarkModeButton,
+  items
+}) {
+  const { isDarkMode } = useTheme()
+
   return (
-    <div className={styles.container}>
+    <div className={clsx(styles.container, isDarkMode && styles.darkMode)}>
       <Flex>
         {title}
-        {filterButton}
+        <div>
+          {toggleDarkModeButton} {filterButton}
+        </div>
       </Flex>
       {}
       <div>

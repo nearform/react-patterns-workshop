@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import { DEFAULT_YEAR } from '../../constants'
 
 const FilterStateContext = React.createContext(null)
@@ -6,10 +6,13 @@ const FilterStateContext = React.createContext(null)
 export const FilterStateProviderSolution = ({ children }) => {
   const [state, setState] = useState({ year: DEFAULT_YEAR })
 
-  const value = {
-    year: state.year,
-    setYear: year => setState({ year })
-  }
+  const value = useMemo(
+    () => ({
+      year: state.year,
+      setYear: year => setState({ year })
+    }),
+    [state.year]
+  )
 
   return (
     <FilterStateContext.Provider value={value}>
