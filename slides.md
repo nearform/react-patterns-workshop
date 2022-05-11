@@ -482,8 +482,18 @@ export const DetailedHelpBoxSolution = () => {
 ---
 
 # Step 8: Trying it out
-- Click on the "Show filters" button
-- The year input element will autofocus when it appears
+- To see the effect of loading the component lazily it's best to simulate a slow connection
+- It can be set in the Network tab of the dev tools in Chrome (screenshot in next slide)
+- You will now briefly see a loading message when you open the modal
+- You can also see the request for the javascript file in the network tab
+
+---
+
+<div class="dense">
+
+# Step 8: The network tab in Chrome dev tools
+<img src="/images/simulate-slow-network.png" style="width: 100%;">
+</div>
 
 ---
 
