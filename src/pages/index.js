@@ -1,7 +1,5 @@
 import { MovieList } from '../components/MovieList/MovieList'
-import { MovieListTitleChallenge } from '../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../components/ToggleFiltersButton/ToggleFiltersButton'
-import { DialogProviderChallenge } from '../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
 import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import {
   FilterStateProviderChallenge,
@@ -12,6 +10,8 @@ import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/D
 import { useDialogContext } from '../context/DialogContext'
 import { useMovieQueryChallenge } from '../challenges/step-01-custom-hooks/useMovieQueryChallenge'
 import { FilterFormWithAutofocusChallenge } from '../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
+import { ThemeProviderChallenge } from '../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
+import { ModalBg } from '../components/ModalBg/ModalBg'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -24,7 +24,7 @@ const MovieListContainer = () => {
 
   return (
     <MovieList
-      title={<MovieListTitleChallenge filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
@@ -33,9 +33,10 @@ const MovieListContainer = () => {
   )
 }
 
-const Step01ServerState = () => {
+const MovieFinderApp = () => {
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderChallenge>
+    <ThemeProviderChallenge>
       <ErrorBoundaryChallenge>
         <FilterStateProviderChallenge>
           <FilterModalChallenge>
@@ -44,9 +45,10 @@ const Step01ServerState = () => {
           </FilterModalChallenge>
           <MovieListContainer />
         </FilterStateProviderChallenge>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundaryChallenge>
-    </DialogProviderChallenge>
+    </ThemeProviderChallenge>
   )
 }
 
-export default Step01ServerState
+export default MovieFinderApp

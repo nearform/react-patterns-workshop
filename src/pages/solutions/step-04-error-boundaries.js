@@ -5,14 +5,14 @@ import {
 } from '../../solutions/step-02-context/FilterStateProviderSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
-import { useEffect } from 'react'
 import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
-import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
 import { FilterFormSolution } from '../../solutions/step-05-uncontrolled-components/FilterFormSolution'
+import { ModalBg } from '../../components/ModalBg/ModalBg'
+import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
+import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -26,17 +26,19 @@ const MovieListContainer = () => {
   return (
     <MovieList
       items={movieQuery.data}
-      title={<MovieListTitleChallenge filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
+      toggleDarkModeButton={<DarkModeButtonChallenge />}
     />
   )
 }
 
 const Step04ErrorBoundaries = () => {
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderChallenge>
+    <ThemeProviderChallenge>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalChallenge>
@@ -45,8 +47,9 @@ const Step04ErrorBoundaries = () => {
           </FilterModalChallenge>
           <MovieListContainer />
         </FilterStateProviderSolution>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>
-    </DialogProviderChallenge>
+    </ThemeProviderChallenge>
   )
 }
 

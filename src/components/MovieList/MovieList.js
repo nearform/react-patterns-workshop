@@ -5,18 +5,13 @@ import { Card } from '../Card/Card'
 import clsx from 'clsx'
 import { useTheme } from '../../context/ThemeContext'
 
-export function MovieList({
-  title,
-  filterButton,
-  toggleDarkModeButton,
-  items
-}) {
+export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
   const { isDarkMode } = useTheme()
 
   return (
     <div className={clsx(styles.container, isDarkMode && styles.darkMode)}>
       <Flex>
-        {title}
+        <h1>Movies {year && `from ${year}`}</h1>
         <div>
           {toggleDarkModeButton} {filterButton}
         </div>
@@ -43,8 +38,8 @@ export function MovieList({
 }
 
 MovieList.propTypes = {
-  title: PropTypes.node,
   filterButton: PropTypes.node,
+  year: PropTypes.number,
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number,

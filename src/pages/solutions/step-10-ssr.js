@@ -8,12 +8,13 @@ import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
-import { MovieListTitleSolution } from '../../solutions/step-09-usememo-usecallback-memo/MovieListTitleSolution'
-import { DialogProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/DialogProviderSolution'
 import { movieDbApi } from '../../backend/movieDbApi'
 import { DEFAULT_YEAR } from '../../constants'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
+import { ModalBg } from '../../components/ModalBg/ModalBg'
+import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
+import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
 
 const MovieListContainer = ({ preloadedFirstPage }) => {
   const dialog = useDialogContext()
@@ -28,18 +29,19 @@ const MovieListContainer = ({ preloadedFirstPage }) => {
   return (
     <MovieList
       items={movieQuery.data}
-      title={<MovieListTitleSolution filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
+      toggleDarkModeButton={<DarkModeButtonSolution />}
     />
   )
 }
 
 const Step10Ssr = ({ preloadedFirstPage }) => {
-  // TODO currently the dialog provider solution doesn't contrib to actual solution
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderSolution>
+    <ThemeProviderSolution>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
@@ -48,8 +50,9 @@ const Step10Ssr = ({ preloadedFirstPage }) => {
           </FilterModalSolution>
           <MovieListContainer preloadedFirstPage={preloadedFirstPage} />
         </FilterStateProviderSolution>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>
-    </DialogProviderSolution>
+    </ThemeProviderSolution>
   )
 }
 

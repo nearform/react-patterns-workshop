@@ -7,11 +7,12 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
-import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
 import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
+import { ModalBg } from '../../components/ModalBg/ModalBg'
+import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
+import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -25,17 +26,19 @@ const MovieListContainer = () => {
   return (
     <MovieList
       items={movieQuery.data}
-      title={<MovieListTitleChallenge filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
+      toggleDarkModeButton={<DarkModeButtonChallenge />}
     />
   )
 }
 
 const Step02Context = () => {
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderChallenge>
+    <ThemeProviderChallenge>
       <ErrorBoundaryChallenge>
         <FilterStateProviderSolution>
           <FilterModalChallenge>
@@ -44,8 +47,9 @@ const Step02Context = () => {
           </FilterModalChallenge>
           <MovieListContainer />
         </FilterStateProviderSolution>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundaryChallenge>
-    </DialogProviderChallenge>
+    </ThemeProviderChallenge>
   )
 }
 

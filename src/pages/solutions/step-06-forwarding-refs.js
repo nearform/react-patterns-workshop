@@ -8,10 +8,11 @@ import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/Er
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { FilterFormWithStyledInputSolution } from '../../solutions/step-06-forwarding-refs/FilterFormWithStyledInputSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { DialogProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DialogProviderChallenge'
-import { MovieListTitleChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/MovieListTitleChallenge'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
+import { ModalBg } from '../../components/ModalBg/ModalBg'
+import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
+import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -25,17 +26,19 @@ const MovieListContainer = () => {
   return (
     <MovieList
       items={movieQuery.data}
-      title={<MovieListTitleChallenge filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
+      toggleDarkModeButton={<DarkModeButtonChallenge />}
     />
   )
 }
 
 const StepO6ForwardingRefs = () => {
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderChallenge>
+    <ThemeProviderChallenge>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
@@ -44,8 +47,9 @@ const StepO6ForwardingRefs = () => {
           </FilterModalSolution>
           <MovieListContainer />
         </FilterStateProviderSolution>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>
-    </DialogProviderChallenge>
+    </ThemeProviderChallenge>
   )
 }
 

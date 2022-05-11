@@ -8,12 +8,11 @@ import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
-import { MovieListTitleSolution } from '../../solutions/step-09-usememo-usecallback-memo/MovieListTitleSolution'
-import { DialogProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/DialogProviderSolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
 import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
 import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
+import { ModalBg } from '../../components/ModalBg/ModalBg'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -27,7 +26,7 @@ const MovieListContainer = () => {
   return (
     <MovieList
       items={movieQuery.data}
-      title={<MovieListTitleSolution filterState={filterState} />}
+      year={filterState.year}
       filterButton={
         <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
@@ -37,21 +36,20 @@ const MovieListContainer = () => {
 }
 
 const Step09UsememoUsecallbackMemo = () => {
-  // TODO currently the dialog provider solution doesn't contrib to actual solution
+  const dialogContext = useDialogContext()
   return (
-    <DialogProviderSolution>
+    <ThemeProviderSolution>
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <ThemeProviderSolution>
-            <MovieListContainer />
-          </ThemeProviderSolution>
+          <MovieListContainer />
         </FilterStateProviderSolution>
+        {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>
-    </DialogProviderSolution>
+    </ThemeProviderSolution>
   )
 }
 
