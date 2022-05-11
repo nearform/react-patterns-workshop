@@ -13,6 +13,7 @@ import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
+import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -35,6 +36,10 @@ const MovieListContainer = () => {
   )
 }
 
+MovieListContainer.propTypes = {
+  preloadedMoviesForDefaultYear: PropTypes.array
+}
+
 const Step08CodeSplitting = () => {
   const dialogContext = useDialogContext()
   return (
@@ -45,7 +50,7 @@ const Step08CodeSplitting = () => {
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <MovieListContainer />
+          <MovieListContainer preloadedMoviesForDefaultYear={[]} />
         </FilterStateProviderSolution>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>

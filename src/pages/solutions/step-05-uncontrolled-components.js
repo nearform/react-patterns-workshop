@@ -13,6 +13,7 @@ import { useDialogContext } from '../../context/DialogContext'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
+import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -35,6 +36,10 @@ const MovieListContainer = () => {
   )
 }
 
+MovieListContainer.propTypes = {
+  preloadedMoviesForDefaultYear: PropTypes.array
+}
+
 const Step05UncontrolledComponents = () => {
   const dialogContext = useDialogContext()
   return (
@@ -45,7 +50,7 @@ const Step05UncontrolledComponents = () => {
             <FilterFormSolution />
             <DetailedHelpBoxChallenge />
           </FilterModalChallenge>
-          <MovieListContainer />
+          <MovieListContainer preloadedMoviesForDefaultYear={[]} />
         </FilterStateProviderSolution>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundaryChallenge>

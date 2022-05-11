@@ -11,16 +11,19 @@ import { useDialogContext } from '../../context/DialogContext'
 import { movieDbApi } from '../../backend/movieDbApi'
 import { DEFAULT_YEAR } from '../../constants'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
-import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
 import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
+import { useMovieQueryWithPreloadedDataSolution } from '../../solutions/step-10-ssr/useMoveQueryWithPreloadedDataSolution'
+import PropTypes from 'prop-types'
 
-const MovieListContainer = ({ preloadedFirstPage }) => {
+const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
-  // TODO this is not working correctly
-  const movieQuery = useMovieQuerySolution(filterState, preloadedFirstPage)
+  const movieQuery = useMovieQueryWithPreloadedDataSolution(
+    filterState,
+    preloadedMoviesForDefaultYear
+  )
 
   if (!movieQuery.data) {
     return null
@@ -38,6 +41,10 @@ const MovieListContainer = ({ preloadedFirstPage }) => {
   )
 }
 
+MovieListContainer.propTypes = {
+  preloadedMoviesForDefaultYear: PropTypes.array
+}
+
 const Step10Ssr = ({ preloadedFirstPage }) => {
   const dialogContext = useDialogContext()
   return (
@@ -48,7 +55,9 @@ const Step10Ssr = ({ preloadedFirstPage }) => {
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <MovieListContainer preloadedFirstPage={preloadedFirstPage} />
+          <MovieListContainer
+            preloadedMoviesForDefaultYear={preloadedFirstPage}
+          />
         </FilterStateProviderSolution>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>

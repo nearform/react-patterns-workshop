@@ -13,6 +13,7 @@ import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useM
 import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
 import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
+import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
@@ -35,6 +36,10 @@ const MovieListContainer = () => {
   )
 }
 
+MovieListContainer.propTypes = {
+  preloadedMoviesForDefaultYear: PropTypes.array
+}
+
 const Step09UsememoUsecallbackMemo = () => {
   const dialogContext = useDialogContext()
   return (
@@ -45,7 +50,7 @@ const Step09UsememoUsecallbackMemo = () => {
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <MovieListContainer />
+          <MovieListContainer preloadedMoviesForDefaultYear={[]} />
         </FilterStateProviderSolution>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>

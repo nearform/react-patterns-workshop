@@ -8,15 +8,19 @@ import {
 import { FilterModalChallenge } from '../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useDialogContext } from '../context/DialogContext'
-import { useMovieQueryChallenge } from '../challenges/step-01-custom-hooks/useMovieQueryChallenge'
 import { FilterFormWithAutofocusChallenge } from '../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 import { ThemeProviderChallenge } from '../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { ModalBg } from '../components/ModalBg/ModalBg'
+import { useMovieQueryWithPreloadedDataChallenge } from '../challenges/step-10-ssr/useMoveQueryWithPreloadingChallenge'
+import PropTypes from 'prop-types'
 
-const MovieListContainer = () => {
+const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const dialog = useDialogContext()
   const filterState = useFilterStateChallenge()
-  const movieQuery = useMovieQueryChallenge(filterState)
+  const movieQuery = useMovieQueryWithPreloadedDataChallenge(
+    filterState,
+    preloadedMoviesForDefaultYear
+  )
 
   if (!movieQuery.data) {
     return null
@@ -33,6 +37,10 @@ const MovieListContainer = () => {
   )
 }
 
+MovieListContainer.propTypes = {
+  preloadedMoviesForDefaultYear: PropTypes.array
+}
+
 const MovieFinderApp = () => {
   const dialogContext = useDialogContext()
   return (
@@ -43,7 +51,7 @@ const MovieFinderApp = () => {
             <FilterFormWithAutofocusChallenge />
             <DetailedHelpBoxChallenge />
           </FilterModalChallenge>
-          <MovieListContainer />
+          <MovieListContainer preloadedMoviesForDefaultYear={[]} />
         </FilterStateProviderChallenge>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundaryChallenge>
