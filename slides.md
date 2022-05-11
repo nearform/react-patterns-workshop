@@ -18,26 +18,6 @@ lineNumbers: false
 </div>
 ---
 
-# Introduction: React patterns 
-
-<div class="dense">
-
-- Solve common problems
-
-- Etc.
-
-</div>
-
----
-
-# Introduction: Why React patterns
-
-<div class="dense">
-- No need to reinvent the wheel
-</div>
-
----
-
 # Getting setup
 
 <div class="dense">
@@ -91,7 +71,9 @@ The first solution can be viewed here: `src/pages/solutions/step-01-custom-hook.
 
 <div class="dense">
 
-- TODO add intro about using a custom hook
+- React provides `hooks` to "hook" into the lifecycle of the React runtime
+- These hooks can be abstracted into custom hooks to allow easier sharing of stateful and effectful logic 
+- We'll use this exercise to get familiar with the code base and create a custom hook to fetch from our sample movies API
 
 </div>
 
@@ -156,7 +138,12 @@ return {
 # Step 2: Context
 
 <div class="dense">
-- TODO info about the context api
+
+- Hooks are a great way to share logic, but the data returned by each call to a hook is isolated
+- This means two different components that call the same hook do not necessarily have access to the same data
+- To give multiple components access to the same data, we could pass the data as props from a shared parent
+- React also provides `context`, which can be used to manage state across many components
+ 
 </div>
 
 ---
@@ -206,7 +193,11 @@ export const useFilterStateSolution = () => {
 # Step 3: Portals
 
 <div class="dense">
-- TODO info about portals and when to use
+
+- Components are usually rendered by React as children of other components with a shared parent in the DOM
+- It is sometimes necessary to render components outisde of this hierarchy (e.g. for alert dialogues)
+- `Portals` make it possible to render components inside different parent components in the DOM
+
 </div>
 
 ---
@@ -243,7 +234,11 @@ export const FilterModalChallenge = ({ children }) => {
 # Step 4: Error boundary
 
 <div class="dense">
-- TODO info about error boundaries
+
+- Errors in a React component can cause the whole application to break
+- We can improve the user experience by catching the error early, and showing an error state when a component in our application encounters a problem
+- In React this can be achieved using `error boundaries`
+
 </div>
 
 ---
@@ -295,7 +290,13 @@ export const ErrorBoundarySolution = ({ children }) => {
 # Step 5: Uncontrolled components
 
 <div class="dense">
-- TODO info about uncontrolled components
+
+- It's normal to use controlled components to implement forms with React
+- In controlled components, React manages the form data
+- This is not always desirable or possible (e.g. for file input data)
+- Instead, we can create uncontrolled components
+- The form's data is then managed by the DOM and can be accessed using `refs`
+
 </div>
 
 ---
@@ -361,7 +362,12 @@ export const FilterFormSolution = () => {
 # Step 6: Forwarding refs
 
 <div class="dense">
-- TODO info about uncontrolled components
+
+- We've previously used `refs` to access form data in an uncontrolled component
+- It is sometimes useful for a parent component to define a ref and pass it to a child component
+- This gives the parent access to the ref that is assigned to a child component
+- React provides `forwardRef` to help achieve this
+
 </div>
 
 ---
@@ -411,7 +417,11 @@ const FancyInput = forwardRef(function FancyInput (props, ref) {
 # Step 7: Refs and the DOM
 
 <div class="dense">
-- TODO info about refs and the DOM
+
+- `refs` provide access to the DOM node for a component after it has been rendered
+- After accessing the DOM node, we can interact with it
+- In this example, we'll ensure a form input receives the browser's focus after it has been rendered
+
 </div>
 
 ---
@@ -451,7 +461,10 @@ useEffect(() => {
 # Step 8: Code splitting
 
 <div class="dense">
-- TODO info about code splitting
+
+- Code splitting allows us to optimise the initial bundle size of our app
+- Using `React.lazy` and `Suspense` we can delay modules from loading until they are needed by our app
+
 </div>
 
 ---
@@ -497,6 +510,29 @@ export const DetailedHelpBoxSolution = () => {
 
 ---
 
+# Step 9: Optimizing re-renders using useMemo and memo
+
+<div class="dense">
+
+- Our applications performance can be affected if our code performs expensive calculations on each render
+- If we pass methods to child components, it can cause React to re-render unnecessarily
+- React provides a few hooks to help improve performance in these scenarios
+
+</div>
+
+---
+
+# Step 10: Server side rendering (SSR)
+<div class="dense">
+
+- We can improve the performance of our apps by performing an initial render on the server
+- This gives the client less work to do before it has something to display
+- React can then take over on the client side, so we still benefit from our client side code
+- Nextjs provides functionality to perform server side renders, but the principles apply regardless of the framework you use
+
+</div>
+
+---
 
 # Thanks For Having Us!
 
