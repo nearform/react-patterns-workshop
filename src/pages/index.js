@@ -1,5 +1,5 @@
 import { MovieList } from '../components/MovieList/MovieList'
-import { ToggleFiltersButton } from '../components/ToggleFiltersButton/ToggleFiltersButton'
+import { ToggleModalChallenge } from '../challenges/step-03-portals/ToggleModalChallenge'
 import { ErrorBoundaryChallenge } from '../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import {
   FilterStateProviderChallenge,
@@ -27,7 +27,7 @@ const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
     <MovieList
       year={filterState.year}
       filterButton={
-        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+        <ToggleModalChallenge isOpen={dialog.isOpen} onToggle={dialog.toggle} />
       }
       items={movieQuery.data}
     />

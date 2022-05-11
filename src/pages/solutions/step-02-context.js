@@ -7,7 +7,7 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
+import { ToggleModalChallenge } from '../../challenges/step-03-portals/ToggleModalChallenge'
 import { useDialogContext } from '../../context/DialogContext'
 import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
@@ -16,7 +16,6 @@ import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCal
 import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {
-  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
 
@@ -29,7 +28,10 @@ const MovieListContainer = () => {
       items={movieQuery.data}
       year={filterState.year}
       filterButton={
-        <ToggleFiltersButton isOpen={dialog.isOpen} onToggle={dialog.toggle} />
+        <ToggleModalChallenge
+          onChangeYear={filterState.setYear}
+          year={filterState.year}
+        />
       }
       toggleDarkModeButton={<DarkModeButtonChallenge />}
     />
