@@ -1,0 +1,19 @@
+.main {
+}
+
+.base {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.leftCol {
+  flex-grow: 0;
+  width: 200px;
+  padding: 20px;
+}
+
+.mainCol {
+  flex-grow: 1;
+  padding: 20px;
+}
