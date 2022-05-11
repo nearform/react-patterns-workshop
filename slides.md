@@ -16,27 +16,6 @@ lineNumbers: false
 © Copyright 2022 NearForm Ltd. All Rights Reserved.
 
 </div>
----
-
-# Getting setup
-
-<div class="dense">
-
-#### Requirements
-
-- Node LTS
-
-#### Setup
-
-```bash
-git clone https://github.com/nearform/react-patterns-workshop
-npm i
-
-# make sure you're all set
-npm run build
-```
-
-</div>
 
 ---
 
@@ -47,8 +26,8 @@ npm run build
 - This workshop is made of multiple, incremental modules
 - Each module builds on top of the previous one
 - At each step you are asked to add features and solve problems
-- You will find the solution to each step in the `src/solutions/step-{n}-{name}` folder
-- When the project is running you can visit these pages at `http://localhost:3000/solutions/step-{n}-{name}`
+- The `src/challenges` folder is where you should write your code
+- The `src/solutions` folder contains the solutions to the challenges
 - The 🏆 icon indicates bonus features
 - The 💡 icon indicates hints
 
@@ -56,14 +35,14 @@ npm run build
 
 ---
 
+# Addressing the challenges
+
+- Start the application and browse to `http://localhost:3000` to see your code running
+
 # Viewing the solutions
 
-- Open the `src/solutions/step-{n}-{name}` directory
-
-- Read through the source code (includes helpful comments throughout)
-
-#### For example
-The first solution can be viewed here: `src/pages/solutions/step-01-custom-hook.js`
+- Read the code in the `src/solutions/step-{n}-{name}` folder
+- Visit the solution pages at `http://localhost:3000/solutions/step-{n}-{name}`
 
 ---
 
@@ -72,7 +51,7 @@ The first solution can be viewed here: `src/pages/solutions/step-01-custom-hook.
 <div class="dense">
 
 - React provides `hooks` to "hook" into the lifecycle of the React runtime
-- These hooks can be abstracted into custom hooks to allow easier sharing of stateful and effectful logic 
+- These hooks can be abstracted into custom hooks to allow easier sharing of stateful and effectful logic
 - We'll use this exercise to get familiar with the code base and create a custom hook to fetch from our sample movies API
 
 </div>
@@ -83,46 +62,17 @@ The first solution can be viewed here: `src/pages/solutions/step-01-custom-hook.
 
 <div class="dense">
 
-Write a custom hook to query the most popular action movies from 2022
+Write a custom hook to query the most popular action movies from the current year from the [TMDB](https://www.themoviedb.org/) API.
 
-- Open the file `useMovieQueryChallenge.js` in `src/challenges/step-01-server-state`
-- Use the fetch api to call "/api/discover?year=2022&page=1"
-- You will need to use `useState` and `useEffect` 
-- The hook should accept the current year as an argument and return: 
+- A local version of the API is provided
+- Use the [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to request `/api/discover?year=2022`
+- You will need to use the built-in `useState` and `useEffect` hooks
+- The hook should accept the `year` as an argument, defaulting to the current year, and return:
   - The list of movies
   - The loading status of the request
+- Whenever the `year` changes, a new request should be made
 
 </div>
-
----
-
-# Step 1: Solution
-
-```jsx
-const [isLoading, setIsLoading] = useState(true)
-const [movieData, setMovieData] = useState()
-
-useEffect(() => {
-  const fetchData = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch(
-        `/api/movies?year=${year}`
-      )
-      const data = await response.json()
-      setMovieData(data.results)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-  fetchData()
-}, [year])
-
-return {
-  data: movieData,
-  isLoading
-}
-```
 
 ---
 
@@ -130,8 +80,7 @@ return {
 
 - Run `npm run dev` in your terminal
 - Go to `http://localhost:3000` in your web browser
-
-<img src="/images/screenshot-step-01.png" />
+- See the list of movies appearing on the page
 
 ---
 
@@ -142,16 +91,17 @@ return {
 - Hooks are a great way to share logic, but the data returned by each call to a hook is isolated
 - This means two different components that call the same hook do not necessarily have access to the same data
 - To give multiple components access to the same data, we could pass the data as props from a shared parent
-- React also provides `context`, which can be used to manage state across many components
- 
+- React also provides [context](https://reactjs.org/docs/context.html), which can be used to manage state across component trees
+
 </div>
 
 ---
 
 # Step 2: Exercise 💻
-- Open the file `FilterStateProviderChallenge.js` in `src/challenges/step-02-context`
+
+- Implement filters for the list of movies
 - Use the `createContext` function from React to create a context for the filter state
-- In the provider component setup a value that has the `year` and a `setYear` function
+- In the provider component, setup a value that has a `year` numeric value and a `setYear` function
 - In the hook, use the `useContext` hook to replace the hardcoded values
 
 ---
@@ -180,6 +130,7 @@ export const useFilterStateSolution = () => {
   return useContext(FilterStateContext)
 }
 ```
+
 ---
 
 # Step 2: Trying it out
@@ -203,6 +154,7 @@ export const useFilterStateSolution = () => {
 ---
 
 # Step 3: Exercise 💻
+
 - Open the file `FilterModalChallenge.js` in `src/challenges/step-03-portals`
 - Instead of directly returning the `ModalContainer` surround it in the `createPortal` HOC
 - A div with the id `modal` has been setup already to be used as target dom element for the modal
@@ -226,6 +178,7 @@ export const FilterModalChallenge = ({ children }) => {
 ---
 
 # Step 3: Trying it out
+
 - Click on the "Show filters" button
 - Observe that the modal now shows correctly above all other page content
 
@@ -244,8 +197,9 @@ export const FilterModalChallenge = ({ children }) => {
 ---
 
 # Step 4: Exercise 💻
+
 - Open the file `ErrorBoundariesChallenge.js` in `src/challenges/step-04-error-boundaries`
-- Create an error boundary class component by copying and pasting the boilerplate code from https://reactjs.org/docs/error-boundaries.html 
+- Create an error boundary class component by copying and pasting the boilerplate code from https://reactjs.org/docs/error-boundaries.html
 - Create a custom message to show when an error occurs
 - Use this to surround the `children` in `ErrorBoundaryChallenge`
 
@@ -281,10 +235,12 @@ export const ErrorBoundarySolution = ({ children }) => {
 ---
 
 # Step 4: Trying it out
+
 - Add `ExampleComponentWithError` as a sibling of `children` in the `ErrorBoundaryChallenge` component
 - Load the page
 - Observe that the error is now caught and will display your custom component if this happens
 - Remove the `ExampleComponentWithError` before proceeding to allow the app to run as normal
+
 ---
 
 # Step 5: Uncontrolled components
@@ -302,6 +258,7 @@ export const ErrorBoundarySolution = ({ children }) => {
 ---
 
 # Step 5: Exercise 💻
+
 - Open the file `FilterFormChallenge.js` in `src/challenges/step-05-uncontrolled-components`
 - Create a form input of type text with name `year`
 - Create a ref using `useRef`
@@ -333,7 +290,7 @@ export const FilterFormSolution = () => {
 
 ---
 
-# Step 5: Solution /2  
+# Step 5: Solution /2
 
 ```jsx
 
@@ -352,6 +309,7 @@ export const FilterFormSolution = () => {
 ---
 
 # Step 5: Trying it out
+
 - Click on the "Show filters" button
 - Type a year into the text box
 - Click submit
@@ -373,24 +331,26 @@ export const FilterFormSolution = () => {
 ---
 
 # Step 6: Before you start
+
 - This step builds upon the form you created in the last step
 - Copy and paste the code from the form component in `FilterFormChallenge.js` into the form component in `FilterFormWithStyledInput.js`
-- If you didn't manage to complete the last step please copy and paste the code from  `FilterFormSolution.js` in `src/solutions/step-05-uncontrolled-components`
+- If you didn't manage to complete the last step please copy and paste the code from `FilterFormSolution.js` in `src/solutions/step-05-uncontrolled-components`
 
 ---
 
 # Step 6: Exercise 💻
+
 - Open the file `FilterFormWithStyledInputChallenge.js` in `src/challenges/step-06-forwarding-refs`
 - Replace the year input component with the `FancyInput` component
 - Fix the error output by React by wrapping your `FancyInput` component in the `forwardRef` component
-- Refer to the React docs for the exact api: https://reactjs.org/docs/forwarding-refs.html 
+- Refer to the React docs for the exact api: https://reactjs.org/docs/forwarding-refs.html
 
 ---
 
 # Step 6: Solution
 
 ```jsx
-const FancyInput = forwardRef(function FancyInput (props, ref) {
+const FancyInput = forwardRef(function FancyInput(props, ref) {
   return (
     <input
       {...props}
@@ -405,9 +365,11 @@ const FancyInput = forwardRef(function FancyInput (props, ref) {
   )
 })
 ```
+
 ---
 
 # Step 6: Trying it out
+
 - Click on the "Show filters" button
 - You will see the input component now has a custom styling
 - But also allows access to the underlying dom element
@@ -427,13 +389,15 @@ const FancyInput = forwardRef(function FancyInput (props, ref) {
 ---
 
 # Step 7: Before you start
+
 - This step builds upon the form you created in the last step
-- Copy and paste the code from the form component in `FilterFormWithStyledInputChallenge.js`  into the form component in `FilterFormWithAutofocusChallenge.js`
-- If you didn't manage to complete the last step please copy and paste the code from  `FilterFormWithStyledInputSolution.js` in `src/solutions/step-06-forwarding-refs`
+- Copy and paste the code from the form component in `FilterFormWithStyledInputChallenge.js` into the form component in `FilterFormWithAutofocusChallenge.js`
+- If you didn't manage to complete the last step please copy and paste the code from `FilterFormWithStyledInputSolution.js` in `src/solutions/step-06-forwarding-refs`
 
 ---
 
 # Step 7: Exercise 💻
+
 - Open the file `FilterFormWithAutofocusChallenge.js` in `src/challenges/step-06-refs-and-the-dom`
 - Make the year input element autofocus when it appears
 - 💡 You will need to use `useEffect` along with the input ref created in a previous step
@@ -447,12 +411,12 @@ const FancyInput = forwardRef(function FancyInput (props, ref) {
 useEffect(() => {
   inputRef.current?.focus()
 }, [])
-
 ```
 
 ---
 
 # Step 7: Trying it out
+
 - Click on the "Show filters" button
 - The year input element will autofocus when it appears
 
@@ -470,6 +434,7 @@ useEffect(() => {
 ---
 
 # Step 8: Exercise 💻
+
 - Open the file `DetailedHelpBoxChallenge.js` in `src/challenges/step-08-code-splitting`
 - Instead of directly importing the `HelpBox` component lazy load it by using the React `lazy` HOC
 - Add a `Suspense` boundary and add a placeholder component with a "Loading..." message
@@ -495,6 +460,7 @@ export const DetailedHelpBoxSolution = () => {
 ---
 
 # Step 8: Trying it out
+
 - To see the effect of loading the component lazily it's best to simulate a slow connection
 - It can be set in the Network tab of the dev tools in Chrome (screenshot in next slide)
 - You will now briefly see a loading message when you open the modal
@@ -505,6 +471,7 @@ export const DetailedHelpBoxSolution = () => {
 <div class="dense">
 
 # Step 8: The network tab in Chrome dev tools
+
 <img src="/images/simulate-slow-network.png" style="width: 100%;">
 </div>
 
@@ -523,6 +490,7 @@ export const DetailedHelpBoxSolution = () => {
 ---
 
 # Step 10: Server side rendering (SSR)
+
 <div class="dense">
 
 - We can improve the performance of our apps by performing an initial render on the server

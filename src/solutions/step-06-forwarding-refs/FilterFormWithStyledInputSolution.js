@@ -1,5 +1,5 @@
 import { forwardRef, useRef } from 'react'
-import { useFilterStateSolution } from '../step-02-context/FilterStateContextSolution'
+import { useFilterStateSolution } from '../step-02-context/FilterStateProviderSolution'
 
 const FancyInput = forwardRef(function FancyInput(props, ref) {
   return (

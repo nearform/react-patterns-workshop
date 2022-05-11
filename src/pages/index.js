@@ -10,7 +10,7 @@ import {
 import { FilterModalChallenge } from '../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useDialogContext } from '../context/DialogContext'
-import { useMovieQueryChallenge } from '../challenges/step-01-server-state/useMovieQueryChallenge'
+import { useMovieQueryChallenge } from '../challenges/step-01-custom-hooks/useMovieQueryChallenge'
 import { FilterFormWithAutofocusChallenge } from '../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 
 const MovieListContainer = () => {

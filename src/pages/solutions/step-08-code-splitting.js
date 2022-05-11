@@ -1,8 +1,8 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
+import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution'
+} from '../../solutions/step-02-context/FilterStateProviderSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'

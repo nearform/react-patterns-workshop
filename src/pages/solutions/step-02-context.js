@@ -1,8 +1,8 @@
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
+import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution'
+} from '../../solutions/step-02-context/FilterStateProviderSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'

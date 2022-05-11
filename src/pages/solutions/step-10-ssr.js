@@ -1,7 +1,7 @@
 import {
   FilterStateProviderSolution,
   useFilterStateSolution
-} from '../../solutions/step-02-context/FilterStateContextSolution'
+} from '../../solutions/step-02-context/FilterStateProviderSolution'
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/DetailedHelpBoxSolution'
@@ -13,7 +13,7 @@ import { DialogProviderSolution } from '../../solutions/step-09-usememo-usecallb
 import { movieDbApi } from '../../backend/movieDbApi'
 import { DEFAULT_YEAR } from '../../constants'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
-import { useMovieQuerySolution } from '../../solutions/step-01-server-state/useMovieQuerySolution'
+import { useMovieQuerySolution } from '../../solutions/step-01-custom-hooks/useMovieQuerySolution'
 
 const MovieListContainer = ({ preloadedFirstPage }) => {
   const dialog = useDialogContext()

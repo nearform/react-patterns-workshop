@@ -1,4 +1,4 @@
-import { useFilterStateSolution } from '../step-02-context/FilterStateContextSolution'
+import { useFilterStateSolution } from '../step-02-context/FilterStateProviderSolution'
 import { useRef } from 'react'
 
 export const FilterFormSolution = () => {

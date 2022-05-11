@@ -1,8 +1,17 @@
-![CI](https://github.com/nearform/bench-template/actions/workflows/ci.yml/badge.svg?event=push)
+![CI](https://github.com/nearform/react-patterns-workshop/actions/workflows/ci.yml/badge.svg?event=push)
 
 # React patterns workshop
-Work in progress React patterns workshop
 
-## When you have already a repo
+A workshop about React patterns
 
-If you already created a repo and you want to add some of the features above to it, you can have a look at [NearForm MRM Preset](https://github.com/nearform/mrm-preset-nearform).
+## Requirements
+
+- Node LTS
+
+## Setup
+
+- clone this repository
+- `npm i`
+- `cp .env.example .env.local` and populate the environment variable
+- `npm run dev` to start the application
+- `npm run slides:start` to start the slide deck

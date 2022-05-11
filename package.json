@@ -1,7 +1,7 @@
 {
   "name": "react-patterns-workshop",
   "version": "1.0.0",
-  "description": "Template to start a new repository on the bench",
+  "description": "React Patterns Workshop",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -11,21 +11,21 @@
     "lint": "next lint",
     "test": "echo \"Error: no test specified\" && exit 0",
     "prepare": "husky install",
-    "slides-build": "slidev build",
-    "slides-start": "slidev --open",
-    "slides-export": "slidev export"
+    "slides:start": "slidev --open",
+    "slides:build": "slidev build",
+    "slides:export": "slidev export"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nearform/bench-template.git"
+    "url": "git+https://github.com/nearform/react-patterns-workshop.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nearform/bench-template/issues"
+    "url": "https://github.com/nearform/react-patterns-workshop/issues"
   },
-  "homepage": "https://github.com/nearform/bench-template#readme",
+  "homepage": "https://github.com/nearform/react-patterns-workshop#readme",
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
