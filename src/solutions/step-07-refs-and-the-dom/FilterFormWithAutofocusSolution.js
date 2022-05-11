@@ -1,5 +1,7 @@
 import { forwardRef, useEffect, useRef } from 'react'
 import { useFilterStateSolution } from '../step-02-context/FilterStateProviderSolution'
+import { Stack } from '../../components/Stack/Stack'
+import { Flex } from '../../components/Flex/Flex'
 
 const FancyInput = forwardRef((props, ref) => {
   return (
@@ -37,11 +39,13 @@ export const FilterFormWithAutofocusSolution = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Year:
-        <FancyInput type="text" ref={inputRef} />
-      </label>
-      <input type="submit" value="Submit" />
+      <Stack>
+        <Flex>
+          <label htmlFor="year">Year:</label>
+          <FancyInput id="year" type="text" ref={inputRef} />
+        </Flex>
+        <input type="submit" value="Submit" />
+      </Stack>
     </form>
   )
 }

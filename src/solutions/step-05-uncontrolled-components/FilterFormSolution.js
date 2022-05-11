@@ -1,5 +1,7 @@
 import { useFilterStateSolution } from '../step-02-context/FilterStateProviderSolution'
 import { useRef } from 'react'
+import { Stack } from '../../components/Stack/Stack'
+import { Flex } from '../../components/Flex/Flex'
 
 export const FilterFormSolution = () => {
   const filterState = useFilterStateSolution()
@@ -21,11 +23,13 @@ export const FilterFormSolution = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Year:
-        <input name="year" type="text" ref={inputRef} />
-      </label>
-      <input type="submit" value="Submit" />
+      <Stack>
+        <Flex>
+          <label>Year:</label>
+          <input name="year" type="text" ref={inputRef} />
+        </Flex>
+        <input type="submit" value="Submit" />
+      </Stack>
     </form>
   )
 }
