@@ -39,6 +39,8 @@ lineNumbers: false
 
 - Start the application and browse to `http://localhost:3000` to see your code running
 
+---
+
 # Viewing the solutions
 
 - Read the code in the `src/solutions/step-{n}-{name}` folder
@@ -293,24 +295,6 @@ Write a custom hook to query the most popular action movies from the current yea
 
 ---
 
-# Step 8: Solution
-
-```jsx
-const DetailedHelpBox = React.lazy(() =>
-  import('../../components/DetailedHelpBox/DetailedHelpBox')
-)
-
-export const DetailedHelpBoxSolution = () => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <DetailedHelpBox />
-    </Suspense>
-  )
-}
-```
-
----
-
 # Step 8: Trying it out
 
 - To see the effect of loading the component lazily it's best to simulate a slow connection
@@ -341,6 +325,29 @@ export const DetailedHelpBoxSolution = () => {
 
 ---
 
+# Step 9: Before you start
+- We will be optimizing the rerendering of `DarkModeButtonChallenge` so we need to know when it renders
+- A simple way to do this is to add a console log to the component. E.g. `console.log("dark mode button rendered")`
+- Another way would be to use the React dev tools chrome extension
+- Initially clicking the "Show filters" button will cause a re-render of the Dark mode button as a side effect
+
+---
+
+# Step 9: Exercise
+- Wrap the `DarkModeButtonChallenge` button in the `memo` HOC to make sure the component only renders when the props change
+- Use the `useMemo` hook to optimize the 'ThemeProviderChallenge' context
+
+---
+
+# Step 9: Trying it out
+- Click the "Dark mode" button
+- Notice that the dark mode button logs a rendered message
+- Now click the "Show filters" button
+- The dark mode button no longer logs a rendered message 
+- This shows that it has been optimized and doesn't render unnecessarily
+
+---
+
 # Step 10: Server side rendering (SSR)
 
 <div class="dense">
@@ -351,8 +358,35 @@ export const DetailedHelpBoxSolution = () => {
 - Nextjs provides functionality to perform server side renders, but the principles apply regardless of the framework you use
 
 </div>
+---
+
+# Step 10: Before you start
+- Please note in this step you will need to update the code in "src/pages/index.js" to enable SSR functionality so open this file to get started
+- Look for the `useMovieQueryChallenge` hook and replace it with a call to `useMovieQueryWithPreloadedData` passing the same first parameter but also including `preloadedMoviesForDefaultYear` as a second parameter
 
 ---
+
+# Step 10: Exercise
+- In `src/pages/index.js` add a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function 
+- Return an object with a `props` property that has a nested `preloadedMovies` property with the movies data from `movieResultsFromDefaultYear()`. E.g.
+
+```js
+{
+  props: { 
+    preloadedMovies: dataFromFunctionCall
+  }
+}
+```
+---
+
+# Step 10: Trying it out
+
+<div class="dense">
+- Open the network tab of chrome dev tools (or equivalent in your browser of choice) 
+- Refresh the page
+- Notice that the `movies?year=2022` is no longer called 
+- The endpoint will only be called if you change the year in the filters
+</div>
 
 # Thanks For Having Us!
 

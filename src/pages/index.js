@@ -11,16 +11,13 @@ import { useDialogContext } from '../context/DialogContext'
 import { FilterFormWithAutofocusChallenge } from '../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 import { ThemeProviderChallenge } from '../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { ModalBg } from '../components/ModalBg/ModalBg'
-import { useMovieQueryWithPreloadedDataChallenge } from '../challenges/step-10-ssr/useMoveQueryWithPreloadingChallenge'
 import PropTypes from 'prop-types'
+import { useMovieQueryChallenge } from '../challenges/step-01-custom-hooks/useMovieQueryChallenge'
 
 const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const dialog = useDialogContext()
   const filterState = useFilterStateChallenge()
-  const movieQuery = useMovieQueryWithPreloadedDataChallenge(
-    filterState,
-    preloadedMoviesForDefaultYear
-  )
+  const movieQuery = useMovieQueryChallenge(filterState)
 
   if (!movieQuery.data) {
     return null

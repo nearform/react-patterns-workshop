@@ -8,19 +8,18 @@ import { DetailedHelpBoxSolution } from '../../solutions/step-08-code-splitting/
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { ToggleFiltersButton } from '../../components/ToggleFiltersButton/ToggleFiltersButton'
 import { useDialogContext } from '../../context/DialogContext'
-import { movieDbApi } from '../../backend/movieDbApi'
-import { DEFAULT_YEAR } from '../../constants'
 import { FilterFormWithAutofocusSolution } from '../../solutions/step-07-refs-and-the-dom/FilterFormWithAutofocusSolution'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderSolution } from '../../solutions/step-09-usememo-usecallback-memo/ThemeProviderSolution'
 import { DarkModeButtonSolution } from '../../solutions/step-09-usememo-usecallback-memo/DarkModeButtonSolution'
-import { useMovieQueryWithPreloadedDataSolution } from '../../solutions/step-10-ssr/useMoveQueryWithPreloadedDataSolution'
+import { useMovieQueryWithPreloadedData } from '../../hooks/useMovieQueryWithPreloadedData'
 import PropTypes from 'prop-types'
+import { movieResultsFromDefaultYear } from '../../backend/helpers/movieResultsFromDefaultYear'
 
 const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
-  const movieQuery = useMovieQueryWithPreloadedDataSolution(
+  const movieQuery = useMovieQueryWithPreloadedData(
     filterState,
     preloadedMoviesForDefaultYear
   )
@@ -45,7 +44,7 @@ MovieListContainer.propTypes = {
   preloadedMoviesForDefaultYear: PropTypes.array
 }
 
-const Step10Ssr = ({ preloadedFirstPage }) => {
+const Step10Ssr = ({ preloadedMovies }) => {
   const dialogContext = useDialogContext()
   return (
     <ThemeProviderSolution>
@@ -55,9 +54,7 @@ const Step10Ssr = ({ preloadedFirstPage }) => {
             <FilterFormWithAutofocusSolution />
             <DetailedHelpBoxSolution />
           </FilterModalSolution>
-          <MovieListContainer
-            preloadedMoviesForDefaultYear={preloadedFirstPage}
-          />
+          <MovieListContainer preloadedMoviesForDefaultYear={preloadedMovies} />
         </FilterStateProviderSolution>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundarySolution>
@@ -67,15 +64,11 @@ const Step10Ssr = ({ preloadedFirstPage }) => {
 
 export async function getServerSideProps() {
   // Prefetch initial data
-  // TODO this doesn't factor in the current year (which is in context)
-  const movieData = await movieDbApi.discover({
-    page: 1,
-    year: DEFAULT_YEAR
-  })
+  const preloadedMovies = await movieResultsFromDefaultYear()
 
   return {
     props: {
-      preloadedFirstPage: movieData.results
+      preloadedMovies
     }
   }
 }

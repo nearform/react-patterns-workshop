@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { DEFAULT_YEAR } from '../../constants'
+import { DEFAULT_YEAR } from '../constants'
 
-export const useMovieQueryWithPreloadedDataSolution = (
+export const useMovieQueryWithPreloadedData = (
   { year = DEFAULT_YEAR },
   preloadedDataForDefaultYear
 ) => {

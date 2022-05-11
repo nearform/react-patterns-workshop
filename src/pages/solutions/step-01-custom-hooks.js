@@ -12,13 +12,13 @@ import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
-import { useMovieQueryWithPreloadedDataSolution } from '../../solutions/step-10-ssr/useMoveQueryWithPreloadedDataSolution'
+import { useMovieQueryWithPreloadedData } from '../../hooks/useMovieQueryWithPreloadedData'
 import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {
   const dialog = useDialogContext()
   const filterState = useFilterStateChallenge()
-  const movieQuery = useMovieQueryWithPreloadedDataSolution(filterState)
+  const movieQuery = useMovieQueryWithPreloadedData(filterState)
 
   if (!movieQuery.data) {
     return null
