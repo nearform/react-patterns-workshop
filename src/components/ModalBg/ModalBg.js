@@ -3,7 +3,7 @@ export const ModalBg = () => {
     <div
       style={{
         background: 'black',
-        opacity: '0.5',
+        opacity: '0.25',
         position: 'fixed',
         top: 0,
         left: 0,

@@ -1,5 +1,8 @@
 import { forwardRef, useRef } from 'react'
 import { useFilterStateSolution } from '../step-02-context/FilterStateProviderSolution'
+import { Stack } from '../../components/Stack/Stack'
+import { Flex } from '../../components/Flex/Flex'
+import { Button } from '../../components/Button/Button'
 
 const FancyInput = forwardRef(function FancyInput(props, ref) {
   return (
@@ -31,11 +34,15 @@ export const FilterFormWithStyledInputSolution = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>
-        Year:
-        <FancyInput type="text" ref={inputRef} />
-      </label>
-      <input type="submit" value="Submit" />
+      <Stack>
+        <Flex>
+          <label htmlFor="year">Year:</label>
+          <FancyInput type="text" id="year" ref={inputRef} />
+        </Flex>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Stack>
     </form>
   )
 }

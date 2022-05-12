@@ -9,7 +9,9 @@ export const FilterStateProviderSolution = ({ children }) => {
   const value = useMemo(
     () => ({
       year: state.year,
-      setYear: year => setState({ year })
+      setYear: year => {
+        setState({ year })
+      }
     }),
     [state.year]
   )

@@ -1,12 +1,12 @@
 import 'modern-normalize/modern-normalize.css'
 import './index.css'
-import { DialogProvider } from '../context/DialogContext'
+import { ModalProvider } from '../context/ModalContext'
 
 const MovieExplorerApp = ({ Component, pageProps }) => {
   return (
-    <DialogProvider>
+    <ModalProvider>
       <Component {...pageProps} />
-    </DialogProvider>
+    </ModalProvider>
   )
 }
 

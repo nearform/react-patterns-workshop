@@ -1,7 +1,5 @@
 import { FilterFormChallenge } from '../step-05-uncontrolled-components/FilterFormChallenge'
 
-// Initially this will trigger an error. We will fix it in this step by forwarding
-// refs.
 const FancyInput = props => {
   return (
     <input

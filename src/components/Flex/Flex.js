@@ -2,7 +2,7 @@ import styles from './Flex.module.css'
 import PropTypes from 'prop-types'
 
 export const Flex = ({ children }) => {
-  return <div className={styles.base}>{children}</div>
+  return <div className={styles.flex}>{children}</div>
 }
 
 Flex.propTypes = {

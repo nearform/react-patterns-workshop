@@ -1,6 +1,6 @@
-.base {
+.flex {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 1rem;
   justify-content: space-between;
 }
