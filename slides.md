@@ -66,7 +66,7 @@ lineNumbers: false
 Write a custom hook to query the most popular action movies from the current year from the [TMDB](https://www.themoviedb.org/) API.
 
 - A local version of the API is provided
-- Use the [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to request `/api/discover?year=2022`
+- Use the [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to request `/api/movies?year=2022`
 - You will need to use the built-in `useState` and `useEffect` hooks
 - The hook should accept the `year` as an argument, defaulting to the current year, and return:
   - The list of movies
