@@ -1,5 +1,5 @@
-import { useTheme } from '../../context/ThemeContext'
 import { memo } from 'react'
+import { useTheme } from '../../context/ThemeContext'
 import { Button } from '../../components/Button/Button'
 
 export const DarkModeButtonSolution = memo(function DarkModeSolution() {
