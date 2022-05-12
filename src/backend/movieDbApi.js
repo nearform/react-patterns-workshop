@@ -1,36 +1,31 @@
 const BASE_URL = 'https://api.themoviedb.org/3/'
 
-const makeRequest = async (path, searchParams = []) => {
-  // TODO: use better way to do this
-  const searchParamsAsString = searchParams
-    .concat([['api_key', process.env.MOVIE_DB_API_KEY]])
-    .map(([k, v]) => `${k}=${v}`)
-    .join('&')
+const makeRequest = async (path, searchParams = new URLSearchParams()) => {
+  searchParams.append('api_key', process.env.MOVIE_DB_API_KEY)
 
-  const movieData = await fetch(`${BASE_URL}${path}?${searchParamsAsString}`)
-    // TODO: avoid mixing async await with promise native methods
-    .then(response => response.json())
+  const url = new URL(`${path}?${searchParams.toString()}`, BASE_URL)
 
-  if (movieData.results) {
-    return {
-      ...movieData,
-      results: movieData.results.map(result => ({
-        ...result,
-        image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
-      }))
-    }
+  const response = await fetch(url.toString())
+  const movieData = await response.json()
+
+  return {
+    ...movieData,
+    results: movieData.results.map(result => ({
+      ...result,
+      image: `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+    }))
   }
-
-  return movieData
 }
 
 const discover = async ({ page = 1, year }) => {
-  return makeRequest('discover/movie', [
+  const searchParams = new URLSearchParams([
     ['sort_by', 'popularity.desc'],
     ['include_video', false],
     ['page', page],
     ['year', year]
   ])
+
+  return makeRequest('discover/movie', searchParams)
 }
 
 export const movieDbApi = {
