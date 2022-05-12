@@ -1,4 +1,5 @@
 ![CI](https://github.com/nearform/react-patterns-workshop/actions/workflows/ci.yml/badge.svg?event=push)
+[![Deploy](https://github.com/nearform/react-patterns-workshop/actions/workflows/deploy.yml/badge.svg)](https://github.com/nearform/react-patterns-workshop/actions/workflows/deploy.yml)
 
 # React patterns workshop
 
