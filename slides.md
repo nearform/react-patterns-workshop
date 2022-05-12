@@ -281,8 +281,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows to optimize the initial bundle size of the app
-- Using `React.lazy` and `Suspense` modules can be delayed from loading until they are needed by the application
+- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows you to optimize the initial bundle size of the app
+- Using `React.lazy` and `Suspense`, modules can be delayed from loading until they are needed by the application
 
 </div>
 
