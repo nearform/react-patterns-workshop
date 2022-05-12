@@ -28,7 +28,6 @@ lineNumbers: false
 - At each step you are asked to add features and solve problems
 - The `src/challenges` folder is where you should write your code
 - The `src/solutions` folder contains the solutions to the challenges
-- The 🏆 icon indicates bonus features
 - The 💡 icon indicates hints
 
 </div>
@@ -37,7 +36,7 @@ lineNumbers: false
 
 # Addressing the challenges
 
-- Start the application and browse to `http://localhost:3000` to see your code running
+- Start the application (`npm run dev`) and browse to `http://localhost:3000` to see your code running
 
 ---
 
@@ -110,7 +109,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 2: Trying it out
 
-- Change the default year that's being setup in state in the JS code
+- Change the year in the top right of the app interface
 - Observe that the list of movies updates to reflect these changes
 - This demonstrates that the filter data is being propagated throughout the app
 
@@ -122,7 +121,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 - Components are usually rendered by React as children of other components with a shared parent in the DOM
 - It is sometimes necessary to render components outside of this hierarchy (e.g. for message dialogs)
-- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components inside different parent components in the DOM
+- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components outside of the current DOM tree while still allowing access to props inside of React's component tree
 
 </div>
 
@@ -282,8 +281,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows to optimize the initial bundle size of the app
-- Using `React.lazy` and `Suspense` modules can be delayed from loading until they are needed by the application
+- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows you to optimize the initial bundle size of the app
+- Using `React.lazy` and `Suspense`, modules can be delayed from loading until they are needed by the application
 
 </div>
 
@@ -377,7 +376,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 10: Exercise
 
-- In `src/pages/index.js` add a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function
+- In `src/pages/index.js` export a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function
 - Return an object with a `props` property that has a nested `preloadedMovies` property with the movies data from `movieResultsFromDefaultYear()`. E.g.
 
 ```js
