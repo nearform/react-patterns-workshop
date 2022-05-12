@@ -282,8 +282,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Code splitting allows us to optimize the initial bundle size of our app
-- Using `React.lazy` and `Suspense` we can delay modules from loading until they are needed by our app
+- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows to optimize the initial bundle size of the app
+- Using `React.lazy` and `Suspense` modules can be delayed from loading until they are needed by the application
 
 </div>
 
@@ -291,9 +291,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 8: Exercise 💻
 
-- Open the file `DetailedHelpBoxChallenge.js` in `src/challenges/step-08-code-splitting`
-- Instead of directly importing the `HelpBox` component lazy load it by using the React `lazy` HOC
-- Add a `Suspense` boundary and add a placeholder component with a "Loading..." message
+- Instead of directly importing the `HelpBox` component, lazy load it by using the React `lazy` HOC
+- Add a `Suspense` container and display a placeholder component with a "Loading..." message
 
 ---
 
@@ -306,17 +305,18 @@ Write a custom hook to query the most popular action movies from the current yea
 
 ---
 
-
 # Step 8: The network tab in Chrome dev tools
+
 <img src="/images/simulate-slow-network.png" style="width: 100%;">
+
 ---
 
-# Step 9: Optimizing re-renders using useMemo and memo
+# Step 9: Optimizing re-renders using `useMemo` and `memo`
 
 <div class="dense">
 
-- Our applications performance can be affected if our code performs expensive calculations on each render
-- If we pass methods to child components, it can cause React to re-render unnecessarily
+- Application performance can be affected if the code performs expensive calculations on each render
+- Passing functions to child components can cause React to re-render them unnecessarily
 - React provides a few hooks to help improve performance in these scenarios
 
 </div>
@@ -324,29 +324,32 @@ Write a custom hook to query the most popular action movies from the current yea
 ---
 
 # Step 9: Before you start
+
 - We will be optimizing the rerendering of `DarkModeButtonChallenge` so we need to know when it renders
 - A simple way to do this is to add a console log to the component. E.g. `console.log("dark mode button rendered")`
 - Another way would be to use the React dev tools chrome extension (see next slide)
 - Initially clicking the "Show filters" button will cause a re-render of the Dark mode button as a side effect
-- 
----
+- ***
 
 # Step 9: Show component rerenders in React dev tools
+
 <img src="/images/react-dev-tools.png" style="width: 100%;">
 
 ---
 
 # Step 9: Exercise
+
 - Wrap the `DarkModeButtonChallenge` button in the `memo` HOC to make sure the component only renders when the props change
 - Use the `useMemo` hook to optimize the 'ThemeProviderChallenge' context
 
 ---
 
 # Step 9: Trying it out
+
 - Click the "Dark mode" button
 - Notice that the dark mode button logs a rendered message
 - Now click the "Show filters" button
-- The dark mode button no longer logs a rendered message 
+- The dark mode button no longer logs a rendered message
 - This shows that it has been optimized and doesn't render unnecessarily
 
 ---
@@ -358,28 +361,32 @@ Write a custom hook to query the most popular action movies from the current yea
 - We can improve the performance of our apps by performing an initial render on the server
 - This gives the client less work to do before it has something to display
 - React can then take over on the client side, so we still benefit from our client side code
-- Nextjs provides functionality to perform server side renders, but the principles apply regardless of the framework you use
+- [Next.js](https://nextjs.org/) provides functionality to perform server side renders, but the principles apply regardless of the framework you use
 
 </div>
+
 ---
 
 # Step 10: Before you start
+
 - Please note in this step you will need to update the code in "src/pages/index.js" to enable SSR functionality so open this file to get started
 - Look for the `useMovieQueryChallenge` hook and replace it with a call to `useMovieQueryWithPreloadedData` passing the same first parameter but also including `preloadedMoviesForDefaultYear` as a second parameter
 
 ---
 
 # Step 10: Exercise
-- In `src/pages/index.js` add a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function 
+
+- In `src/pages/index.js` add a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function
 - Return an object with a `props` property that has a nested `preloadedMovies` property with the movies data from `movieResultsFromDefaultYear()`. E.g.
 
 ```js
 {
-  props: { 
+  props: {
     preloadedMovies: dataFromFunctionCall
   }
 }
 ```
+
 ---
 
 # Step 10: Trying it out
