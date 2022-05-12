@@ -109,7 +109,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 2: Trying it out
 
-- Change the default year that's being setup in state in the JS code
+- Change the year in the top right of the app interface
 - Observe that the list of movies updates to reflect these changes
 - This demonstrates that the filter data is being propagated throughout the app
 
