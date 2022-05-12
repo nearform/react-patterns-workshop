@@ -2,7 +2,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { memo } from 'react'
 import { Button } from '../../components/Button/Button'
 
-export const DarkModeButtonSolution = memo(function DarkModeSolution() {
+export const DarkModeButtonSolution = memo(() => {
   const { toggleDarkMode, isDarkMode } = useTheme()
 
   return (
@@ -11,3 +11,5 @@ export const DarkModeButtonSolution = memo(function DarkModeSolution() {
     </Button>
   )
 })
+
+DarkModeButtonSolution.displayName = 'DarkModeButtonSolution'

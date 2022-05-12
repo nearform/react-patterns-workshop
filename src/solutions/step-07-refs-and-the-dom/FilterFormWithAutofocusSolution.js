@@ -29,10 +29,8 @@ export const FilterFormWithAutofocusSolution = () => {
   const handleSubmit = event => {
     event.preventDefault()
 
-    const parsed = Number(inputRef.current.value)
-
-    if (Number.isInteger(parsed)) {
-      filterState.setYear(parsed)
+    if (inputRef.current.value) {
+      filterState.setYear(inputRef.current.valueAsNumber)
     }
   }
 
@@ -45,7 +43,7 @@ export const FilterFormWithAutofocusSolution = () => {
       <Stack>
         <Flex>
           <label htmlFor="year">Year:</label>
-          <FancyInput id="year" type="text" ref={inputRef} />
+          <FancyInput id="year" type="number" ref={inputRef} />
         </Flex>
         <Button variant="primary" type="submit">
           Submit

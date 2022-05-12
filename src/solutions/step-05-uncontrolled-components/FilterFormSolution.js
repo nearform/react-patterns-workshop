@@ -13,14 +13,8 @@ export const FilterFormSolution = () => {
   const handleSubmit = event => {
     event.preventDefault()
 
-    if (!inputRef.current.value) {
-      return
-    }
-
-    const parsed = Number(inputRef.current.value)
-
-    if (Number.isInteger(parsed)) {
-      filterState.setYear(parsed)
+    if (inputRef.current.value) {
+      filterState.setYear(inputRef.current.valueAsNumber)
     }
   }
 
@@ -29,7 +23,7 @@ export const FilterFormSolution = () => {
       <Stack>
         <Flex>
           <label>Year:</label>
-          <input name="year" type="text" ref={inputRef} />
+          <input name="year" type="number" ref={inputRef} />
         </Flex>
         <Button variant="primary" type="submit">
           Submit
