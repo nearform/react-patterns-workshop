@@ -1,9 +1,12 @@
-.container {
+.movieList {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   position: relative;
   padding: 1rem;
+}
+
+.innerContainer {
   max-width: 750px;
   margin: 0 auto;
 }

@@ -7,16 +7,15 @@ import { FilterFormSolution } from '../../solutions/step-05-uncontrolled-compone
 import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundaries/ErrorBoundaryChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { ToggleModalChallenge } from '../../challenges/step-03-portals/ToggleModalChallenge'
-import { useDialogContext } from '../../context/DialogContext'
+import { useModal } from '../../context/ModalContext'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
 import PropTypes from 'prop-types'
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
+import { ToggleModalSolution } from '../../solutions/step-03-portals/ToggleModalSolution'
 
 const MovieListContainer = () => {
-  const dialog = useDialogContext()
   const filterState = useFilterStateSolution()
   const movieQuery = useMovieQuerySolution(filterState)
 
@@ -28,9 +27,7 @@ const MovieListContainer = () => {
     <MovieList
       items={movieQuery.data}
       year={filterState.year}
-      filterButton={
-        <ToggleModalChallenge isOpen={dialog.isOpen} onToggle={dialog.toggle} />
-      }
+      filterButton={<ToggleModalSolution />}
       toggleDarkModeButton={<DarkModeButtonChallenge />}
     />
   )
@@ -41,7 +38,7 @@ MovieListContainer.propTypes = {
 }
 
 const Step05UncontrolledComponents = () => {
-  const dialogContext = useDialogContext()
+  const dialogContext = useModal()
   return (
     <ThemeProviderChallenge>
       <ErrorBoundaryChallenge>

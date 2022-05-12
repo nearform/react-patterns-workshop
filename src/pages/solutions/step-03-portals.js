@@ -8,7 +8,7 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
-import { useDialogContext } from '../../context/DialogContext'
+import { useModal } from '../../context/ModalContext'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/DarkModeButtonChallenge'
@@ -38,7 +38,7 @@ MovieListContainer.propTypes = {
 }
 
 const Step03Portals = () => {
-  const dialogContext = useDialogContext()
+  const dialogContext = useModal()
   return (
     <ThemeProviderChallenge>
       <ErrorBoundarySolution>

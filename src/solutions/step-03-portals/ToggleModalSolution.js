@@ -1,8 +1,8 @@
 import { Button } from '../../components/Button/Button'
-import { useDialogContext } from '../../context/DialogContext'
+import { useModal } from '../../context/ModalContext'
 
 export const ToggleModalSolution = () => {
-  const dialog = useDialogContext()
+  const dialog = useModal()
   return (
     <Button variant="primary" onClick={dialog.toggle}>
       {dialog.isOpen ? 'Hide filters' : 'Show filters'}

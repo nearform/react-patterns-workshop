@@ -8,7 +8,7 @@ import { ErrorBoundaryChallenge } from '../../challenges/step-04-error-boundarie
 import { FilterModalChallenge } from '../../challenges/step-03-portals/FilterModalChallenge'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { ToggleModalChallenge } from '../../challenges/step-03-portals/ToggleModalChallenge'
-import { useDialogContext } from '../../context/DialogContext'
+import { useModal } from '../../context/ModalContext'
 import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-useCallback-memo/ThemeProviderChallenge'
@@ -43,7 +43,7 @@ MovieListContainer.propTypes = {
 }
 
 const Step02Context = () => {
-  const dialogContext = useDialogContext()
+  const dialogContext = useModal()
   return (
     <ThemeProviderChallenge>
       <ErrorBoundaryChallenge>

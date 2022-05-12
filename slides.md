@@ -130,6 +130,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 3: Exercise 💻
 
+- Replace the form in the `ToggleModalChallenge` with a button that triggers the modal
+- 💡 You will need to import the `useModal` hook and call it's `toggle` method to open the dialog
 - Instead of directly returning the `ModalContainer` component, surround it in the `createPortal` built-in Higher Order Component (HOC)
 - A div with the id `modal` has been setup already to be used as target DOM element for the modal. Check it out in `src/pages/_document.js`
 
@@ -304,13 +306,9 @@ Write a custom hook to query the most popular action movies from the current yea
 
 ---
 
-<div class="dense">
 
 # Step 8: The network tab in Chrome dev tools
-
 <img src="/images/simulate-slow-network.png" style="width: 100%;">
-</div>
-
 ---
 
 # Step 9: Optimizing re-renders using useMemo and memo
@@ -328,8 +326,13 @@ Write a custom hook to query the most popular action movies from the current yea
 # Step 9: Before you start
 - We will be optimizing the rerendering of `DarkModeButtonChallenge` so we need to know when it renders
 - A simple way to do this is to add a console log to the component. E.g. `console.log("dark mode button rendered")`
-- Another way would be to use the React dev tools chrome extension
+- Another way would be to use the React dev tools chrome extension (see next slide)
 - Initially clicking the "Show filters" button will cause a re-render of the Dark mode button as a side effect
+- 
+---
+
+# Step 9: Show component rerenders in React dev tools
+<img src="/images/react-dev-tools.png" style="width: 100%;">
 
 ---
 

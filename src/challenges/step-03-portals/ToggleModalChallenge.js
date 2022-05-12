@@ -5,11 +5,12 @@ import { useState } from 'react'
 
 export const ToggleModalChallenge = ({ year, onChangeYear }) => {
   const [updatedYear, setUpdatedYear] = useState(year)
+
   return (
     <form
       onSubmit={evt => {
         evt.preventDefault()
-        onChangeYear(year)
+        onChangeYear(updatedYear)
       }}
     >
       <Card>
@@ -17,7 +18,7 @@ export const ToggleModalChallenge = ({ year, onChangeYear }) => {
           <input
             type="number"
             onChange={evt => {
-              setUpdatedYear(evt.currentTarget.value)
+              setUpdatedYear(evt.currentTarget.valueAsNumber)
             }}
             value={updatedYear}
           />

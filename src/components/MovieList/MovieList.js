@@ -10,29 +10,30 @@ export function MovieList({ filterButton, toggleDarkModeButton, items, year }) {
   const { isDarkMode } = useTheme()
 
   return (
-    <div className={clsx(styles.container, isDarkMode && styles.darkMode)}>
-      <Flex>
-        <h1>Movies {year && `from ${year}`}</h1>
+    <div className={clsx(styles.movieList, isDarkMode && styles.darkMode)}>
+      <div className={styles.innerContainer}>
         <Flex>
-          {toggleDarkModeButton} {filterButton}
+          <h1>Movies {year && `from ${year}`}</h1>
+          <Flex>
+            {toggleDarkModeButton} {filterButton}
+          </Flex>
         </Flex>
-      </Flex>
-      <Stack>
-        {items.map(result => (
-          <Card key={result.id}>
-            <Flex>
-              <img
-                src={result.image}
-                alt={result.title}
-                width={100}
-                height={100}
-              />
-              <h3>{result.title}</h3>
-            </Flex>
-          </Card>
-        ))}
-      </Stack>
-      )
+        <Stack>
+          {items.map(result => (
+            <Card key={result.id}>
+              <Flex>
+                <img
+                  src={result.image}
+                  alt={result.title}
+                  width={100}
+                  height={100}
+                />
+                <h3>{result.title}</h3>
+              </Flex>
+            </Card>
+          ))}
+        </Stack>
+      </div>
     </div>
   )
 }
