@@ -11,8 +11,8 @@ import { ToggleModalChallenge } from '../../challenges/step-03-portals/ToggleMod
 import { useModal } from '../../context/ModalContext'
 import { FilterFormWithAutofocusChallenge } from '../../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
-import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-memo/ThemeProviderChallenge'
-import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-memo/DarkModeButtonChallenge'
+import { ThemeProviderChallenge } from '../../challenges/step-09-usememo-memo/ThemeProviderChallenge'
+import { DarkModeButtonChallenge } from '../../challenges/step-09-usememo-memo/DarkModeButtonChallenge'
 import PropTypes from 'prop-types'
 
 const MovieListContainer = () => {

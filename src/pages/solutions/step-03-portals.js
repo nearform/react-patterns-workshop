@@ -10,8 +10,8 @@ import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModal
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useModal } from '../../context/ModalContext'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
-import { ThemeProviderChallenge } from '../../challenges/step-09-useMemo-memo/ThemeProviderChallenge'
-import { DarkModeButtonChallenge } from '../../challenges/step-09-useMemo-memo/DarkModeButtonChallenge'
+import { ThemeProviderChallenge } from '../../challenges/step-09-usememo-memo/ThemeProviderChallenge'
+import { DarkModeButtonChallenge } from '../../challenges/step-09-usememo-memo/DarkModeButtonChallenge'
 import PropTypes from 'prop-types'
 import { ToggleModalSolution } from '../../solutions/step-03-portals/ToggleModalSolution'
 

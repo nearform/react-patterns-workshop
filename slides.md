@@ -329,7 +329,8 @@ Write a custom hook to query the most popular action movies from the current yea
 - A simple way to do this is to add a console log to the component. E.g. `console.log("dark mode button rendered")`
 - Another way would be to use the React dev tools chrome extension (see next slide)
 - Initially clicking the "Show filters" button will cause a re-render of the Dark mode button as a side effect
-- ***
+
+---
 
 # Step 9: Show component rerenders in React dev tools
 
@@ -392,11 +393,16 @@ Write a custom hook to query the most popular action movies from the current yea
 # Step 10: Trying it out
 
 <div class="dense">
+
 - Open the network tab of chrome dev tools (or equivalent in your browser of choice) 
 - Refresh the page
 - Notice that the `movies?year=2022` is no longer called 
 - The endpoint will only be called if you change the year in the filters
+
 </div>
+
+---
+
 
 # Thanks For Having Us!
 

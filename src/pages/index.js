@@ -9,11 +9,11 @@ import { FilterModalChallenge } from '../challenges/step-03-portals/FilterModalC
 import { DetailedHelpBoxChallenge } from '../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useModal } from '../context/ModalContext'
 import { FilterFormWithAutofocusChallenge } from '../challenges/step-07-refs-and-the-dom/FilterFormAutofocusChallenge'
-import { ThemeProviderChallenge } from '../challenges/step-09-useMemo-memo/ThemeProviderChallenge'
+import { ThemeProviderChallenge } from '../challenges/step-09-usememo-memo/ThemeProviderChallenge'
 import { ModalBg } from '../components/ModalBg/ModalBg'
 import PropTypes from 'prop-types'
 import { useMovieQueryChallenge } from '../challenges/step-01-custom-hooks/useMovieQueryChallenge'
-import { DarkModeButtonChallenge } from '../challenges/step-09-useMemo-memo/DarkModeButtonChallenge'
+import { DarkModeButtonChallenge } from '../challenges/step-09-usememo-memo/DarkModeButtonChallenge'
 
 const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const filterState = useFilterStateChallenge()
