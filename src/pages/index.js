@@ -42,7 +42,7 @@ MovieListContainer.propTypes = {
   preloadedMoviesForDefaultYear: PropTypes.array
 }
 
-const MovieFinderApp = () => {
+const MovieFinderApp = ({ preloadedMovies }) => {
   const dialogContext = useModal()
   return (
     <ThemeProviderChallenge>
@@ -52,7 +52,7 @@ const MovieFinderApp = () => {
             <FilterFormWithAutofocusChallenge />
             <DetailedHelpBoxChallenge />
           </FilterModalChallenge>
-          <MovieListContainer preloadedMoviesForDefaultYear={[]} />
+          <MovieListContainer preloadedMoviesForDefaultYear={preloadedMovies} />
         </FilterStateProviderChallenge>
         {dialogContext.isOpen && <ModalBg />}
       </ErrorBoundaryChallenge>
