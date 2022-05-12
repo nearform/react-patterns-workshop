@@ -28,7 +28,6 @@ lineNumbers: false
 - At each step you are asked to add features and solve problems
 - The `src/challenges` folder is where you should write your code
 - The `src/solutions` folder contains the solutions to the challenges
-- The 🏆 icon indicates bonus features
 - The 💡 icon indicates hints
 
 </div>
