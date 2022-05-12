@@ -375,7 +375,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 10: Exercise
 
-- In `src/pages/index.js` add a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function
+- In `src/pages/index.js` export a `getServerSideProps` async function that asynchronously calls the `movieResultsFromDefaultYear()` function
 - Return an object with a `props` property that has a nested `preloadedMovies` property with the movies data from `movieResultsFromDefaultYear()`. E.g.
 
 ```js
