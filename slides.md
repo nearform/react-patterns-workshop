@@ -37,7 +37,7 @@ lineNumbers: false
 
 # Addressing the challenges
 
-- Start the application and browse to `http://localhost:3000` to see your code running
+- Start the application (`npm run dev`) and browse to `http://localhost:3000` to see your code running
 
 ---
 
