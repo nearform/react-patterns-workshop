@@ -37,7 +37,7 @@ MovieListContainer.propTypes = {
   preloadedMoviesForDefaultYear: PropTypes.array
 }
 
-const Step09UsememoUsecallbackMemo = () => {
+const Step09UsememoMemo = () => {
   const dialogContext = useModal()
   return (
     <ThemeProviderSolution>
@@ -55,4 +55,4 @@ const Step09UsememoUsecallbackMemo = () => {
   )
 }
 
-export default Step09UsememoUsecallbackMemo
+export default Step09UsememoMemo

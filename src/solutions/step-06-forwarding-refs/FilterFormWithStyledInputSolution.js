@@ -4,7 +4,7 @@ import { Stack } from '../../components/Stack/Stack'
 import { Flex } from '../../components/Flex/Flex'
 import { Button } from '../../components/Button/Button'
 
-const FancyInput = forwardRef(function FancyInput(props, ref) {
+const FancyInput = forwardRef((props, ref) => {
   return (
     <input
       {...props}
@@ -18,17 +18,19 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
   )
 })
 
+FancyInput.displayName = 'FancyInput'
+
 export const FilterFormWithStyledInputSolution = () => {
+  // If you copy and paste this solution into your challenge file
+  // please change this hook to use `useFilterStateChallenge`
   const filterState = useFilterStateSolution()
   const inputRef = useRef()
 
   const handleSubmit = event => {
     event.preventDefault()
 
-    const parsed = Number(inputRef.current.value)
-
-    if (Number.isInteger(parsed)) {
-      filterState.setYear(parsed)
+    if (inputRef.current.value) {
+      filterState.setYear(inputRef.current.valueAsNumber)
     }
   }
 
@@ -37,7 +39,7 @@ export const FilterFormWithStyledInputSolution = () => {
       <Stack>
         <Flex>
           <label htmlFor="year">Year:</label>
-          <FancyInput type="text" id="year" ref={inputRef} />
+          <FancyInput type="number" id="year" ref={inputRef} />
         </Flex>
         <Button variant="primary" type="submit">
           Submit
