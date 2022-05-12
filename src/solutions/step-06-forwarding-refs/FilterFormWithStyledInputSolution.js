@@ -19,6 +19,8 @@ const FancyInput = forwardRef(function FancyInput(props, ref) {
 })
 
 export const FilterFormWithStyledInputSolution = () => {
+  // If you copy and paste this solution into your challenge file
+  // please change this hook to use `useFilterStateChallenge`
   const filterState = useFilterStateSolution()
   const inputRef = useRef()
 

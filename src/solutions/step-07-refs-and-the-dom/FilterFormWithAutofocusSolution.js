@@ -21,6 +21,8 @@ const FancyInput = forwardRef((props, ref) => {
 FancyInput.displayName = 'FancyInput'
 
 export const FilterFormWithAutofocusSolution = () => {
+  // If you copy and paste this solution into your challenge file
+  // please change this hook to use `useFilterStateChallenge`
   const filterState = useFilterStateSolution()
   const inputRef = useRef()
 

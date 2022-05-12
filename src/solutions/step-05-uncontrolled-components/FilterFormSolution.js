@@ -5,6 +5,8 @@ import { Flex } from '../../components/Flex/Flex'
 import { Button } from '../../components/Button/Button'
 
 export const FilterFormSolution = () => {
+  // If you copy and paste this solution into your challenge file
+  // please change this hook to use `useFilterStateChallenge`
   const filterState = useFilterStateSolution()
   const inputRef = useRef()
 
