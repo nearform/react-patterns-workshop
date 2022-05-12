@@ -121,7 +121,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 - Components are usually rendered by React as children of other components with a shared parent in the DOM
 - It is sometimes necessary to render components outside of this hierarchy (e.g. for message dialogs)
-- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components inside different parent components in the DOM
+- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components outside of the current DOM tree while still allowing access to props inside of React's component tree
 
 </div>
 
