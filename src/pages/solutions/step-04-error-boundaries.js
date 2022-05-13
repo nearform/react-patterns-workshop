@@ -7,7 +7,6 @@ import { MovieList } from '../../components/MovieList/MovieList'
 import { ErrorBoundarySolution } from '../../solutions/step-04-error-boundary/ErrorBoundarySolution'
 import { DetailedHelpBoxChallenge } from '../../challenges/step-08-code-splitting/DetailedHelpBoxChallenge'
 import { useModal } from '../../context/ModalContext'
-import { FilterFormSolution } from '../../solutions/step-05-uncontrolled-components/FilterFormSolution'
 import { ModalBg } from '../../components/ModalBg/ModalBg'
 import { ThemeProviderChallenge } from '../../challenges/step-09-usememo-memo/ThemeProviderChallenge'
 import { DarkModeButtonChallenge } from '../../challenges/step-09-usememo-memo/DarkModeButtonChallenge'
@@ -15,6 +14,7 @@ import PropTypes from 'prop-types'
 import { ToggleModalSolution } from '../../solutions/step-03-portals/ToggleModalSolution'
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
 import { FilterFormChallenge } from '../../challenges/step-05-uncontrolled-components/FilterFormChallenge'
+import { ExampleComponentWithError } from '../../components/ExampleComponentWithError/ExampleComponentWithError'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -43,6 +43,7 @@ const Step04ErrorBoundaries = () => {
   return (
     <ThemeProviderChallenge>
       <ErrorBoundarySolution>
+        <ExampleComponentWithError />
         <FilterStateProviderSolution>
           <FilterModalSolution>
             <FilterFormChallenge />

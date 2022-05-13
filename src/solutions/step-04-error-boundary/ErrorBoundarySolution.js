@@ -28,11 +28,5 @@ class ErrorBoundary extends React.Component {
 }
 
 export const ErrorBoundarySolution = ({ children }) => {
-  return (
-    <ErrorBoundary>
-      {/* Uncomment below to trigger error */}
-      {/*<ExampleComponentWithError />*/}
-      {children}
-    </ErrorBoundary>
-  )
+  return <ErrorBoundary>{children}</ErrorBoundary>
 }
