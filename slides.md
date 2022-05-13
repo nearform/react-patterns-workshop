@@ -36,14 +36,22 @@ lineNumbers: false
 
 # Addressing the challenges
 
+<div class="dense">
+
 - Start the application (`npm run dev`) and browse to `http://localhost:3000` to see your code running
+
+</div>
 
 ---
 
 # Viewing the solutions
 
+<div class="dense">
+
 - Read the code in the `src/solutions/step-{n}-{name}` folder
 - Visit the solution pages at `http://localhost:3000/solutions/step-{n}-{name}`
+
+</div>
 
 ---
 
@@ -80,9 +88,13 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 1: Trying it out
 
+<div class="dense">
+
 - Run `npm run dev` in your terminal
 - Go to `http://localhost:3000` in your web browser
 - See the list of movies appearing on the page
+
+</div>
 
 ---
 
@@ -115,9 +127,13 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 2: Trying it out
 
+<div class="dense">
+
 - Change the year in the top right of the app interface
 - Observe that the list of movies updates to reflect these changes
 - This demonstrates that the filter data is being propagated throughout the app
+
+</div>
 
 ---
 
@@ -149,8 +165,12 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 3: Trying it out
 
+<div class="dense">
+
 - Click on the "Show filters" button
 - Observe that the modal shows correctly above all other page content
+
+</div>
 
 ---
 
@@ -182,10 +202,14 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 4: Trying it out
 
+<div class="dense">
+
 - Add `ExampleComponentWithError` as a sibling of `children` in the `ErrorBoundaryChallenge` component
 - Load the page
 - Observe that the error is now caught and will display your custom component if this happens
 - Remove the `ExampleComponentWithError` before proceeding to allow the app to run as normal
+
+</div>
 
 ---
 
@@ -220,11 +244,15 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 5: Trying it out
 
+<div class="dense">
+
 - Click on the "Show filters" button
 - Type a year into the text box
 - Click submit
 - The list of movies should change to show movies from the year you entered
 - Notice that the component doesn't rerender when typing in the input box
+
+</div>
 
 ---
 
@@ -243,9 +271,13 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 6: Before you start
 
+<div class="dense">
+
 - This step builds upon the form you created in the last step
 - Copy and paste the code from the form component in `FilterFormChallenge.js` into the form component in `FilterFormWithStyledInput.js`
 - If you didn't manage to complete the last step you can copy and paste the code from `FilterFormSolution.js` instead
+
+</div>
 
 ---
 
@@ -346,10 +378,14 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 8: Trying it out
 
+<div class="dense">
+
 - To see the effect of loading the component lazily it's best to simulate a slow connection
 - It can be set in the Network tab of the dev tools in Chrome (screenshot in next slide)
 - You will now briefly see a loading message when you open the modal
 - You can also see the request for the javascript file in the network tab
+
+</div>
 
 ---
 
@@ -454,7 +490,7 @@ Write a custom hook to query the most popular action movies from the current yea
   }
 }
 ```
-- As in the other steps a preview is available http://localhost:3000/solutions/step-10-ssr. For this note that a network request for the `api/movies` endpoint (check in the network tab of your browser dev tools) isn't fired on page load as this now happens on the server.
+- As in the other steps a preview is available: http://localhost:3000/solutions/step-10-ssr. For this note that a network request for the `api/movies` endpoint (check in the network tab of your browser dev tools) isn't fired on page load as this now happens on the server.
 
 </div>
 
