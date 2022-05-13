@@ -5,5 +5,5 @@ export const FilterModalChallenge = ({ children }) => {
   if (typeof window !== 'undefined') {
     return <ModalContainer>{children}</ModalContainer>
   }
-  return children
+  return null
 }
