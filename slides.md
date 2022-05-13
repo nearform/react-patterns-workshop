@@ -155,6 +155,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 - Replace the form in the `ToggleModalChallenge` with a button that triggers the modal
 - 💡 You will need to import the `useModal` hook and call it's `toggle` method to open the dialog
+- 💡 You are replacing the filter form with a simple button - a new version of the form will be added to the modal in a later step
 - Instead of directly returning the `ModalContainer` component, surround it in the `createPortal` built-in Higher Order Component (HOC)
 - A div with the id `modal` has been setup already to be used as target DOM element for the modal. Check it out in `src/pages/_document.js`
 - You can see a preview of the working version here: http://localhost:3000/solutions/step-03-portals
