@@ -28,6 +28,7 @@ lineNumbers: false
 - At each step you are asked to add features and solve problems
 - The `src/challenges` folder is where you should write your code
 - The `src/solutions` folder contains the solutions to the challenges
+- Each challenge has a link to a page that shows the working solution, you are encouraged to view this to get a clear idea on what you are being asked to implement
 - The 💡 icon indicates hints
 
 </div>
