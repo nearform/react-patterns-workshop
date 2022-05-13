@@ -14,6 +14,7 @@ import { DarkModeButtonChallenge } from '../../challenges/step-09-usememo-memo/D
 import PropTypes from 'prop-types'
 import { ToggleModalSolution } from '../../solutions/step-03-portals/ToggleModalSolution'
 import { FilterModalSolution } from '../../solutions/step-03-portals/FilterModalSolution'
+import { FilterFormChallenge } from '../../challenges/step-05-uncontrolled-components/FilterFormChallenge'
 
 const MovieListContainer = () => {
   const filterState = useFilterStateSolution()
@@ -44,7 +45,7 @@ const Step04ErrorBoundaries = () => {
       <ErrorBoundarySolution>
         <FilterStateProviderSolution>
           <FilterModalSolution>
-            <FilterFormSolution />
+            <FilterFormChallenge />
             <DetailedHelpBoxChallenge />
           </FilterModalSolution>
           <MovieListContainer preloadedMoviesForDefaultYear={[]} />
