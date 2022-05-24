@@ -1,7 +1,7 @@
 name: Check linked issues
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, edited, reopened, synchronize]
 
 jobs:
@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Check linked issues
     steps:
-      - uses: nearform/github-action-check-linked-issues@chore/cjs
+      - uses: nearform/github-action-check-linked-issues@v1
         id: check-linked-issues
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
