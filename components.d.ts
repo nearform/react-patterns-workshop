@@ -47,6 +47,7 @@ declare module '@vue/runtime-core' {
     'Ph:cursorDuotone': typeof import('~icons/ph/cursor-duotone')['default']
     'Ph:cursorFill': typeof import('~icons/ph/cursor-fill')['default']
     PlantUml: typeof import('./node_modules/@slidev/client/builtin/PlantUml.vue')['default']
+    RenderWhen: typeof import('./node_modules/@slidev/client/builtin/RenderWhen.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SlideCurrentNo: typeof import('./node_modules/@slidev/client/builtin/SlideCurrentNo.vue')['default']

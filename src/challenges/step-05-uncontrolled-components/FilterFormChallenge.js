@@ -3,10 +3,7 @@ import { Card } from '../../components/Card/Card'
 export const FilterFormChallenge = () => {
   return (
     <form>
-      <Card>
-        <strong>TODO:</strong> add the filter form here in the FilterForm
-        challenge step.
-      </Card>
+      <Card>{/* write your code here */}</Card>
     </form>
   )
 }
