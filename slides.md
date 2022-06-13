@@ -23,23 +23,12 @@ lineNumbers: false
 
 <div class="dense">
 
-- This workshop is made of multiple, incremental modules
-- Each module builds on top of the previous one
+- This workshop is made of multiple, incremental steps
+- It's built on top of [Next.js](https://nextjs.org/), a convenient way to kickstart React applications
 - At each step you are asked to add features and solve problems
 - The `src/challenges` folder is where you should write your code
 - The `src/solutions` folder contains the solutions to the challenges
-- Each challenge has a link to a page that shows the working solution, you are encouraged to view this to get a clear idea on what you are being asked to implement
 - The 💡 icon indicates hints
-
-</div>
-
----
-
-# Addressing the challenges
-
-<div class="dense">
-
-- Start the application (`npm run dev`) and browse to `http://localhost:3000` to see your code running
 
 </div>
 
@@ -51,6 +40,15 @@ lineNumbers: false
 
 - Read the code in the `src/solutions/step-{n}-{name}` folder
 - Visit the solution pages at `http://localhost:3000/solutions/step-{n}-{name}`
+- If you are running on CodeSandbox, replace `http://localhost:3000` with the url of your sandbox
+
+</div>
+
+---
+
+<div class="slidev-layout intro">
+
+# Let's get started! 🚀
 
 </div>
 
@@ -60,9 +58,10 @@ lineNumbers: false
 
 <div class="dense">
 
-- React provides `hooks` to "hook" into the lifecycle of the React runtime
-- These hooks can be abstracted into custom hooks to allow easier sharing of stateful and effectful logic
-- We'll use this exercise to get familiar with the code base and create a custom hook to fetch from our sample movies API
+- React provides [Hooks](https://reactjs.org/docs/hooks-intro.html) to "hook" into the lifecycle of the React runtime
+- These hooks can be abstracted into custom hooks to allow easier sharing of stateful and _effectful_ logic
+- We'll use this exercise to get familiar with the codebase and create a custom hook to fetch from our sample movies API
+- 💡 You will work in `src/challenges/step-01-custom-hooks`
 
 </div>
 
@@ -72,16 +71,16 @@ lineNumbers: false
 
 <div class="dense">
 
-Write a custom hook to query the most popular action movies from the current year from the [TMDB](https://www.themoviedb.org/) API.
+Complete a custom Hook to query the most popular action movies of the current year from the [TMDB](https://www.themoviedb.org/) API.
 
-- A local version of the API is provided
-- Use the [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to request `/api/movies?year=2022`
+- A local version of the API is already provided
+- Use the native browser's [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) to request `/api/movies?year={year}`
 - You will need to use the built-in `useState` and `useEffect` hooks
 - The hook should accept the `year` as an argument, defaulting to the current year, and return:
   - The list of movies
   - The loading status of the request
 - Whenever the `year` changes, a new request should be made
-- When you complete the challenge it should look like the following: http://localhost:3000/solutions/step-01-custom-hooks
+- 💡 The list of movies is in the `results` property of the response body
 
 </div>
 
@@ -91,9 +90,30 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
+## If you are running locally
+
+<br/>
+
 - Run `npm run dev` in your terminal
 - Go to `http://localhost:3000` in your web browser
 - See the list of movies appearing on the page
+
+## If you are running on CodeSandbox
+
+<br/>
+
+- Go to your sandbox url
+- See the list of movies appearing on the page
+
+</div>
+
+---
+
+<div class="slidev-layout intro">
+ 
+# Congratulations! 🎉
+
+## You have completed the first challenge, ready to move on to the next one?
 
 </div>
 
@@ -103,10 +123,10 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Hooks are a great way to share logic, but the data returned by each call to a hook is isolated
-- This means two different components that call the same hook do not necessarily have access to the same data
+- Hooks are a great way to share logic, but the data stored inside a Hook is isolated
+- This means that two components using the same Hook are not necessarily accessing the same data
 - To give multiple components access to the same data, we could pass the data as props from a shared parent
-- React also provides [context](https://reactjs.org/docs/context.html), which can be used to manage state across component trees
+- React also provides [context](https://reactjs.org/docs/context.html), which can be used to share state across components (and Hooks)
 
 </div>
 
@@ -116,11 +136,13 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Implement filters for the list of movies
-- Use the `createContext` function from React to create a context for the filter state
-- In the provider component, setup a value that has a `year` numeric value and a `setYear` function and wrap the children in the context provider
+- Implement a year filter for the list of movies
+- Use React's [createContext](https://reactjs.org/docs/context.html#reactcreatecontext) to create a context for storing the filter state
+- In the **Provider** component, keep a local `useState` whose value is an object with a `year` property
+- Populate the context provider `value` property with an object that has a `year` numeric value and a `setYear` function, and wrap the children in the context provider
+- 💡 You can use `useMemo` for optimal performance
 - In the hook, use the `useContext` hook to replace the hardcoded values
-- A demo of a function version can be viewed here: http://localhost:3000/solutions/step-02-context
+- 💡 You can always check out the solution for each challenge in the `src/solutions` folder, and see the running solution at `{baseUrl}/solutions/{step name}`
 
 </div>
 
@@ -130,7 +152,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Change the year in the top right of the app interface
+- Change the year in the top right of the app interface and press Enter or click the GO button
 - Observe that the list of movies updates to reflect these changes
 - This demonstrates that the filter data is being propagated throughout the app
 
@@ -154,12 +176,11 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Replace the form in the `ToggleModalChallenge` with a button that triggers the modal
-- 💡 You will need to import the `useModal` hook and call it's `toggle` method to open the dialog
+- Replace the whole body of `ToggleModalChallenge` with a button labeled **Show Filters** that opens a modal dialog
+- 💡 You will need to import the `useModal` hook in `src/context/ModalContext.js` and call its `toggle` method to open the dialog
 - 💡 You are replacing the filter form with a simple button - a new version of the form will be added to the modal in a later step
-- Instead of directly returning the `ModalContainer` component, surround it in the `createPortal` built-in Higher Order Component (HOC)
+- In `FilterModalChallenge`, instead of directly returning the `ModalContainer` component, surround it with the [`createPortal`](https://reactjs.org/docs/portals.html) built-in Higher Order Component (HOC)
 - A div with the id `modal` has been setup already to be used as target DOM element for the modal. Check it out in `src/pages/_document.js`
-- You can see a preview of the working version here: http://localhost:3000/solutions/step-03-portals
 
 </div>
 
@@ -169,7 +190,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Click on the "Show filters" button
+- Click on the **Show filters** button
 - Observe that the modal shows correctly above all other page content
 
 </div>
@@ -190,13 +211,11 @@ Write a custom hook to query the most popular action movies from the current yea
 
 # Step 4: Exercise 💻
 
-
 <div class="dense">
 
-- Create an error boundary class component by copying and pasting the boilerplate code from [error boundaries](https://reactjs.org/docs/error-boundaries.html)
-- Create a custom message to show when an error occurs
-- Use this to surround the `children` in `ErrorBoundaryChallenge`
-- Take a look at a preview of this in action here: http://localhost:3000/solutions/step-04-error-boundaries
+- Create an `ErrorBoundary` class component by copying and pasting the boilerplate code from [error boundaries](https://reactjs.org/docs/error-boundaries.html)
+- `console.error` the error in `componentDidCatch`
+- Surround the `children` in `ErrorBoundaryChallenge` with this component
 
 </div>
 
@@ -206,8 +225,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Add `ExampleComponentWithError` as a sibling of `children` in the `ErrorBoundaryChallenge` component
-- Load the page
+- Render `ExampleComponentWithError` as a sibling of `children` in the `ErrorBoundaryChallenge` component
 - Observe that the error is now caught and will display your custom component if this happens
 - Remove the `ExampleComponentWithError` before proceeding to allow the app to run as normal
 
@@ -220,10 +238,10 @@ Write a custom hook to query the most popular action movies from the current yea
 <div class="dense">
 
 - It's normal to use controlled components to implement forms with React
-- In controlled components, React manages the form data
+- In controlled components, React manages the component's state
 - This is not always desirable or possible (e.g. for file input data)
 - Instead, we can create uncontrolled components
-- The form's data is then managed by the DOM and can be accessed using React [refs](https://reactjs.org/docs/refs-and-the-dom.html)
+- The component state is then managed by the DOM and can be accessed using React [refs](https://reactjs.org/docs/refs-and-the-dom.html)
 
 </div>
 
@@ -233,12 +251,13 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Create a form containing a text input field with name `year`
+- Create a form containing a **numeric** input field with name `year`
 - Create a ref using `useRef` and assign it to the input field
 - Add an event handler to the form for the `onSubmit` event
-- In this read the current value from the year input ref
+- 💡 Prevent the default behavior of the form submit event
+- Read the current value from the year input ref as a number
 - Use this value to update the filter state using the `useFilterStateChallenge` hook from the previous steps
-- Open the following page and click "Show filters" to see what you should build: http://localhost:3000/solutions/step-05-uncontrolled-components
+- 💡 Inspire from the solution code for helper components you can use
 
 </div>
 
@@ -248,11 +267,12 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Click on the "Show filters" button
+- Click on the **Show filters** button
 - Type a year into the text box
-- Click submit
+- Press Enter or click submit
 - The list of movies should change to show movies from the year you entered
-- Notice that the component doesn't rerender when typing in the input box
+- Notice that the component doesn't rerender when typing in the input box. This is thanks to the use of uncontrolled components
+- 💡 You can use React Dev Tools to visualize component rerenders. More on this later
 
 </div>
 
@@ -264,7 +284,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 - We've previously used `refs` to access the value of an uncontrolled component
 - It is sometimes useful for a parent component to define a ref and pass it to a child component
-- This gives the parent access to the ref that is assigned to a child component
+- This gives the parent access to the ref that the child component assigns to one of its children
 - React provides [forwardRef](https://reactjs.org/docs/forwarding-refs.html) to help achieve this
 
 </div>
@@ -276,7 +296,7 @@ Write a custom hook to query the most popular action movies from the current yea
 <div class="dense">
 
 - This step builds upon the form you created in the last step
-- Copy and paste the code from the form component in `FilterFormChallenge.js` into the form component in `FilterFormWithStyledInput.js`
+- **Replace** the body of the `FilterFormWithStyledInput.js` component with the code of `FilterFormChallenge.js` from the previous step
 - If you didn't manage to complete the last step you can copy and paste the code from `FilterFormSolution.js` instead
 
 </div>
@@ -287,9 +307,9 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Replace the year input component with the `FancyInput` component
-- Fix the error output by React by wrapping your `FancyInput` component in the `forwardRef` component
-- You can see a working version of our styled text input by clicking on "Show filters" on this page: http://localhost:3000/solutions/step-05-uncontrolled-components
+- Replace the original year input component with the `FancyInput` component
+- Click the **Show filters** button. This should generate a React error in the browser's console
+- Fix the error by wrapping the `FancyInput` component in the `forwardRef` HOC and making the necessary adjustments
 
 </div>
 
@@ -299,7 +319,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Click on the "Show filters" button
+- Click on the **Show filters** button
 - You will see the input component now has a custom styling
 - But also allows access to the underlying DOM element
 
@@ -324,7 +344,7 @@ Write a custom hook to query the most popular action movies from the current yea
 <div class="dense">
 
 - This step builds upon the form you created in the last step
-- Copy and paste the code from the form component in `FilterFormWithStyledInputChallenge.js` into the form component in `FilterFormWithAutofocusChallenge.js`
+- Copy and paste the code of the previous step from `FilterFormWithStyledInputChallenge.js` into `FilterFormWithAutofocusChallenge.js`
 - If you didn't manage to complete the last step you can copy and paste the code from `FilterFormWithStyledInputSolution.js` instead
 
 </div>
@@ -338,7 +358,6 @@ Write a custom hook to query the most popular action movies from the current yea
 - Make the year input element autofocus when it appears
 - 💡 You will need to use `useEffect` along with the input ref created in the previous step
 - 💡 An input element can be focused by calling the `.focus()` method on it
-- You can see a preview of this in action by clicking on "Show filters" here: http://localhost:3000/solutions/step-07-refs-and-the-dom
 
 </div>
 
@@ -348,8 +367,8 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Click on the "Show filters" button
-- The year input element will autofocus when it appears
+- Click on the **Show filters** button
+- The year input element should be automatically focused
 
 </div>
 
@@ -370,9 +389,10 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Instead of directly importing the `HelpBox` component, lazy load it by using the React `lazy` HOC
-- Add a `Suspense` container and display a placeholder component with a "Loading..." message
-- View a preview of this by opening http://localhost:3000/solutions/step-08-code-splitting, clicking on the "Show filters" button and observing the network request for a new javascript file
+- Render the `DetailedHelpBox` component provided in `src/components`
+- Instead of directly importing it, lazy load it by using the React `lazy` HOC
+- Wrap it in a `Suspense` container and display a placeholder component with a "Loading..." message
+- Click on the **Show filters** button and observe the network request for a new javascript file
 
 </div>
 
@@ -414,9 +434,9 @@ Write a custom hook to query the most popular action movies from the current yea
 <div class="dense">
 
 - We will be optimizing the rerendering of `DarkModeButtonChallenge` so we need to know when it renders
-- A simple way to do this is to add a console log to the component. E.g. `console.log("dark mode button rendered")`
+- A simple way to do this is to add a console log to the component's body. E.g. `console.log("dark mode button rendered")`
 - Another way would be to use the React dev tools chrome extension (see next slide)
-- Initially clicking the "Show filters" button will cause a re-render of the Dark mode button as a side effect
+- Clicking the **Show filters** button will cause a re-render of the Dark mode button as a side effect. This is unnecessary and we'll learn how to prevent it from happening
 
 </div>
 
@@ -432,9 +452,10 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Wrap the `DarkModeButtonChallenge` button in the `memo` HOC to make sure the component only renders when the props change
-- Use the `useMemo` hook to optimize the 'ThemeProviderChallenge' context
-- To see a preview of the working version, open http://localhost:3000/solutions/step-09-usememo-memo in your browser and click on "Show Filters" and note how "Dark mode button rendered" isn't triggered in the console output
+- Wrap the `DarkModeButtonChallenge` button in the `memo` HOC to make sure the component only renders when its props change. This will prevent the component from rendering unless its props have changed
+- 💡 Note that the component will still render when its internal state changes
+- Use the `useMemo` hook to optimize the `ThemeProviderChallenge` context
+- 💡 This will prevent the Provider's `value` from changing at each render, thereby causing a render of all the users of the `useTheme` hook
 
 </div>
 
@@ -444,9 +465,9 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Click the "Dark mode" button
+- Click the **Dark mode** button
 - Notice that the dark mode button logs a rendered message
-- Now click the "Show filters" button
+- Now click the **Show filters** button
 - The dark mode button no longer logs a rendered message
 - This shows that it has been optimized and doesn't render unnecessarily
 
@@ -471,7 +492,7 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Please note in this step you will need to update the code in "src/pages/index.js" to enable SSR functionality so open this file to get started
+- Please note in this step you will need to update the code in `src/pages/index.js` to enable SSR functionality so open this file to get started
 - Look for the `useMovieQueryChallenge` hook and replace it with a call to `useMovieQueryWithPreloadedData` passing the same first parameter but also including `preloadedMoviesForDefaultYear` as a second parameter
 
 </div>
@@ -492,7 +513,6 @@ Write a custom hook to query the most popular action movies from the current yea
   }
 }
 ```
-- As in the other steps a preview is available: http://localhost:3000/solutions/step-10-ssr. For this note that a network request for the `api/movies` endpoint (check in the network tab of your browser dev tools) isn't fired on page load as this now happens on the server.
 
 </div>
 
@@ -502,16 +522,29 @@ Write a custom hook to query the most popular action movies from the current yea
 
 <div class="dense">
 
-- Open the network tab of chrome dev tools (or equivalent in your browser of choice) 
+- Open the network tab of chrome dev tools (or equivalent in your browser of choice)
 - Refresh the page
-- Notice that the `movies?year=2022` is no longer called 
+- Notice that the `movies?year=2022` is no longer called
 - The endpoint will only be called if you change the year in the filters
 
 </div>
 
 ---
 
+<div class="slidev-layout intro">
 
-# Thanks For Having Us!
+# Congratulations!
 
-## 👏👏👏
+# 👏👏👏
+
+</div>
+
+---
+
+<div class="slidev-layout intro">
+
+# Thanks for having us!
+
+# 🙏🙏🙏
+
+</div>
