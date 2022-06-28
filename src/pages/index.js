@@ -20,7 +20,7 @@ const MovieListContainer = ({ preloadedMoviesForDefaultYear }) => {
   const movieQuery = useMovieQueryChallenge(filterState)
 
   if (!movieQuery.data) {
-    return null
+    return <p>No data yet -- but the application is working! Keep following the slides for further instructions.</p>
   }
 
   return (

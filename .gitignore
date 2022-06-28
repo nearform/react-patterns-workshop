@@ -11,3 +11,6 @@ node_modules
 
 # Local env file
 .env.local
+
+# OS X
+.DS_Store
