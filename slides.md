@@ -119,14 +119,35 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 ---
 
-# Step 2: Context
+# Step 2: Fixing prop drilling with Context
 
 <div class="dense">
 
 - Hooks are a great way to share logic, but the data stored inside a Hook is isolated
 - This means that two components using the same Hook are not necessarily accessing the same data
 - To give multiple components access to the same data, we could pass the data as props from a shared parent
-- React also provides [context](https://reactjs.org/docs/context.html), which can be used to share state across components (and Hooks)
+- This works fine for simple components tree, but deeper the tree then more you'll be repeating yourself,
+  passing data through several nested children components, we call it "prop drilling" issue
+- Abusing of prop drilling decreases performance, because all components touched by the prop drilling might
+  re-render even if not using that variable for nothing else
+- And, of course, repeating yourself so much makes it harder to maintain the code
+
+</div>
+
+---
+
+# Step 2: Fixing prop drilling with Context
+
+<img src="/images/prop-drilling.jpg" style="height: 80%; margin: auto;">
+
+---
+
+# Step 2: Fixing prop drilling with Context
+
+<div class="dense">
+
+- React also provides [Context](https://reactjs.org/docs/context.html), which can be used to share state across
+  components (and Hooks) without failing into prop drilling in case of several nested components
 
 </div>
 
@@ -172,6 +193,17 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 ---
 
+# Step 3: Portals
+
+<div class="dense" style="display: flex;">
+
+<img src="/images/portal-react.jpg" style="height: 80%; margin-right: 10px;">
+<img src="/images/portal-live-dom.jpg" style="height: 80%;">
+
+</div>
+
+---
+
 # Step 3: Exercise 💻
 
 <div class="dense">
@@ -201,9 +233,12 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 <div class="dense">
 
-- Errors in a React component can cause the whole application to break
-- We can improve the user experience by catching the error early, and showing an error state when a component in our application encounters a problem
-- In React this can be achieved using [error boundaries](https://reactjs.org/docs/error-boundaries.html)
+- In React, an error in a small component can crash the whole application
+- We can improve the user experience with [Error Boundaries](https://reactjs.org/docs/error-boundaries.html),
+  so only the affected component will be reactive to the error and not everything else
+
+<img src="/images/error-boundary-react.png" style="margin-bottom: 20px;">
+<img src="/images/error-boundary-demo.jpg" style="">
 
 </div>
 
@@ -378,8 +413,9 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 <div class="dense">
 
-- [Code splitting](https://reactjs.org/docs/code-splitting.html) allows you to optimize the initial bundle size of the app
-- Using `React.lazy` and `Suspense`, modules can be delayed from loading until they are needed by the application
+- [Code splitting and lazy loading](https://reactjs.org/docs/code-splitting.html) allows you to optimize your user experience, by only loading code chunks as needed instead of loading everything at once
+
+<img src="/images/code-splitting.jpg" style="height: 25vh; margin: auto;">
 
 </div>
 
