@@ -31,7 +31,7 @@
     "@commitlint/config-conventional": "^17.0.3",
     "@slidev/cli": "^0.35.4",
     "eslint": "^8.21.0",
-    "eslint-config-next": "12.2.3",
+    "eslint-config-next": "12.2.4",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
