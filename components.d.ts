@@ -3,6 +3,8 @@
 // Read more: https://github.com/vuejs/core/pull/3399
 import '@vue/runtime-core'
 
+export {}
+
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Arrow: typeof import('./node_modules/@slidev/client/builtin/Arrow.vue')['default']
@@ -69,5 +71,3 @@ declare module '@vue/runtime-core' {
     Youtube: typeof import('./node_modules/@slidev/client/builtin/Youtube.vue')['default']
   }
 }
-
-export {}
