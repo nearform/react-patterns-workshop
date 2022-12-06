@@ -30,7 +30,7 @@
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@slidev/cli": "^0.37.1",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-config-next": "13.0.6",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
