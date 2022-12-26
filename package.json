@@ -42,7 +42,7 @@
     "*.{js,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^13.1.0",
+    "@next/bundle-analyzer": "^13.1.1",
     "clsx": "^1.2.1",
     "modern-normalize": "^1.1.0",
     "next": "^13.1.0",
