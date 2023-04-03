@@ -58,7 +58,7 @@ lineNumbers: false
 
 <div class="dense">
 
-- React provides [Hooks](https://reactjs.org/docs/hooks-intro.html) to "hook" into the lifecycle of the React runtime
+- React provides [Hooks](https://react.dev/learn#using-hooks) to "hook" into the lifecycle of the React runtime
 - These hooks can be abstracted into custom hooks to allow easier sharing of stateful and _effectful_ logic
 - We'll use this exercise to get familiar with the codebase and create a custom hook to fetch from our sample movies API
 - 💡 You will work in `src/challenges/step-01-custom-hooks`
@@ -146,7 +146,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 <div class="dense">
 
-- React also provides [Context](https://reactjs.org/docs/context.html), which can be used to share state across
+- React also provides [Context](https://react.dev/learn/passing-data-deeply-with-context), which can be used to share state across
   components (and Hooks) without failing into prop drilling in case of several nested components
 
 </div>
@@ -158,7 +158,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 <div class="dense">
 
 - Implement a year filter for the list of movies
-- Use React's [createContext](https://reactjs.org/docs/context.html#reactcreatecontext) to create a context for storing the filter state
+- Use React's [createContext](https://react.dev/reference/react/createContext) to create a context for storing the filter state
 - In the **Provider** component, keep a local `useState` whose value is an object with a `year` property
 - Populate the context provider `value` property with an object that has a `year` numeric value and a `setYear` function, and wrap the children in the context provider
 - 💡 You can use `useMemo` for optimal performance
@@ -187,7 +187,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 - Components are usually rendered by React as children of other components with a shared parent in the DOM
 - It is sometimes necessary to render components outside of this hierarchy (e.g. for message dialogs)
-- [Portals](https://reactjs.org/docs/portals.html) make it possible to render components outside of the current DOM tree while still allowing access to props inside of React's component tree
+- [Portals](https://react.dev/reference/react-dom/createPortal#rendering-to-a-different-part-of-the-dom) make it possible to render components outside of the current DOM tree while still allowing access to props inside of React's component tree
 
 </div>
 
@@ -211,7 +211,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 - Replace the whole body of `ToggleModalChallenge` with a button labeled **Show Filters** that opens a modal dialog
 - 💡 You will need to import the `useModal` hook in `src/context/ModalContext.js` and call its `toggle` method to open the dialog
 - 💡 You are replacing the filter form with a simple button - a new version of the form will be added to the modal in a later step
-- In `FilterModalChallenge`, instead of directly returning the `ModalContainer` component, surround it with the [`createPortal`](https://reactjs.org/docs/portals.html) built-in Higher Order Component (HOC)
+- In `FilterModalChallenge`, instead of directly returning the `ModalContainer` component, surround it with the [`createPortal`](https://react.dev/reference/react-dom/createPortal) built-in Higher Order Component (HOC)
 - A div with the id `modal` has been setup already to be used as target DOM element for the modal. Check it out in `src/pages/_document.js`
 
 </div>
@@ -234,7 +234,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 <div class="dense">
 
 - In React, an error in a small component can crash the whole application
-- We can improve the user experience with [Error Boundaries](https://reactjs.org/docs/error-boundaries.html),
+- We can improve the user experience with [Error Boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary),
   so only the affected component will be reactive to the error and not everything else
 
 <img src="/images/error-boundary-react.png" style="margin-bottom: 20px;">
@@ -248,7 +248,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 <div class="dense">
 
-- Create an `ErrorBoundary` class component by copying and pasting the boilerplate code from [error boundaries](https://reactjs.org/docs/error-boundaries.html)
+- Create an `ErrorBoundary` class component by copying and pasting the boilerplate code from [error boundaries](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)
 - `console.error` the error in `componentDidCatch`
 - Surround the `children` in `ErrorBoundaryChallenge` with this component
 
@@ -276,7 +276,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 - In controlled components, React manages the component's state
 - This is not always desirable or possible (e.g. for file input data)
 - Instead, we can create uncontrolled components
-- The component state is then managed by the DOM and can be accessed using React [refs](https://reactjs.org/docs/refs-and-the-dom.html)
+- The component state is then managed by the DOM and can be accessed using React [refs](https://react.dev/learn/referencing-values-with-refs)
 
 </div>
 
@@ -320,7 +320,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 - We've previously used `refs` to access the value of an uncontrolled component
 - It is sometimes useful for a parent component to define a ref and pass it to a child component
 - This gives the parent access to the ref that the child component assigns to one of its children
-- React provides [forwardRef](https://reactjs.org/docs/forwarding-refs.html) to help achieve this
+- React provides [forwardRef](https://react.dev/reference/react/forwardRef) to help achieve this
 
 </div>
 
@@ -413,7 +413,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 <div class="dense">
 
-- [Code splitting and lazy loading](https://reactjs.org/docs/code-splitting.html) allows you to optimize your user experience, by only loading code chunks as needed instead of loading everything at once
+- [Code splitting and lazy loading](https://react.dev/reference/react/lazy) allows you to optimize your user experience, by only loading code chunks as needed instead of loading everything at once
 
 <img src="/images/code-splitting.jpg" style="height: 25vh; margin: auto;">
 
