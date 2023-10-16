@@ -28,7 +28,7 @@
   "homepage": "https://github.com/nearform/react-patterns-workshop#readme",
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
-    "@commitlint/config-conventional": "^17.7.0",
+    "@commitlint/config-conventional": "^17.8.0",
     "@slidev/cli": "^0.43.7",
     "eslint": "^8.51.0",
     "eslint-config-next": "13.5.4",
