@@ -29,7 +29,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@slidev/cli": "^0.48.8",
+    "@slidev/cli": "^0.48.9",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.1.4",
     "eslint-config-prettier": "^9.1.0",
