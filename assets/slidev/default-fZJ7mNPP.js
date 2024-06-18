@@ -1,1 +1,0 @@
-import{o,b as t,f as r}from"../modules/vue-6JIR2-ud.js";import{b as s}from"../index-lFThUpK3.js";const a={},n={class:"slidev-layout default"};function c(e,l){return o(),t("div",n,[r(e.$slots,"default")])}const f=s(a,[["render",c],["__file","/home/runner/work/react-patterns-workshop/react-patterns-workshop/node_modules/@slidev/client/layouts/default.vue"]]);export{f as I};
