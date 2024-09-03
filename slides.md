@@ -13,7 +13,7 @@ lineNumbers: false
 
 <div class="copyright">
 
-© Copyright 2022 NearForm Ltd. All Rights Reserved.
+© Copyright 2024 NearForm Ltd. All Rights Reserved.
 
 </div>
 
@@ -560,7 +560,7 @@ Complete a custom Hook to query the most popular action movies of the current ye
 
 - Open the network tab of chrome dev tools (or equivalent in your browser of choice)
 - Refresh the page
-- Notice that the `movies?year=2022` is no longer called
+- Notice that the `movies?year=2024` is no longer called
 - The endpoint will only be called if you change the year in the filters
 
 </div>
