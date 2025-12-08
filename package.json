@@ -47,7 +47,7 @@
     "modern-normalize": "^3.0.1",
     "next": "^15.5.7",
     "prop-types": "^15.8.1",
-    "react": "^19.1.1",
+    "react": "^19.2.1",
     "react-dom": "^19.2.0",
     "slidev-theme-nearform": "^2.1.0"
   }
