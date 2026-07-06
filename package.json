@@ -49,6 +49,6 @@
     "prop-types": "^15.8.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.7",
-    "slidev-theme-nearform": "^2.1.0"
+    "slidev-theme-nearform": "^3.0.0"
   }
 }
