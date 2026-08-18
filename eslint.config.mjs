@@ -5,7 +5,10 @@ import coreWebVitals from 'eslint-config-next/core-web-vitals'
 // "next/core-web-vitals".
 const config = [
   {
-    ignores: ['.next/**', 'out/**']
+    // `next lint` only walked app/pages/components/lib/src. `eslint .` walks the whole
+    // tree, so generated output at the repo root has to be excluded explicitly.
+    // `dist/**` is the slidev build output (`npm run slides:build`).
+    ignores: ['.next/**', 'out/**', 'dist/**']
   },
   ...coreWebVitals
 ]
