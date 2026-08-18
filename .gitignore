@@ -9,6 +9,9 @@ node_modules
 # Next js files
 .next
 
+# Slidev build output (npm run slides:build)
+dist
+
 # Local env file
 .env.local
 
